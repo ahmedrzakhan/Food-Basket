@@ -1,0 +1,42 @@
+.productCard
+{
+    border-left: 0.5px solid rgba(240, 240, 240, 0.836) ;
+    border-right: 0.5px solid rgba(240, 240, 240, 0.836) ;
+    margin: 20px 4px ;
+    text-align: center;
+    padding: 20px;
+}
+
+.productCard:hover
+{
+    -webkit-box-shadow: 5px 5px 8px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    5px 5px 8px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         5px 5px 8px 0px rgba(50, 50, 50, 0.651);
+    border: none;
+}
+
+.mrpBorder
+{
+    border: 0.5px solid rgb(175, 175, 175);
+    padding: 5.9px 5px;  
+}
+
+.starIcon
+{
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    color: rgb(146, 190, 77) ;
+}
+
+.productCard .starIcon
+{
+    visibility: hidden;
+}
+
+.productCard:hover .starIcon
+{
+    visibility: visible;
+    fill: rgb(146, 190, 77);
+    
+}
