@@ -1,0 +1,16 @@
+.checkBoxesList
+{
+    list-style: none;
+}
+
+.checkBoxesList li:hover
+{
+    color: rgb(146, 190, 77);
+    cursor: pointer;
+}
+
+.listHeading
+{
+    margin-left: 40px;
+}
+

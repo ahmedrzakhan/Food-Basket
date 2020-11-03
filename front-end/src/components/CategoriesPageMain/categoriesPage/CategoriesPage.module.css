@@ -1,0 +1,5 @@
+.itemsDisplay
+{
+    display: flex;
+    flex-wrap: wrap;
+}

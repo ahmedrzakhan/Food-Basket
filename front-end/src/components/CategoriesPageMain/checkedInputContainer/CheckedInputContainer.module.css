@@ -1,0 +1,6 @@
+.checkedInputsContainer
+{
+    border: 1px solid black;
+    height: 140px;
+    overflow-y: scroll;
+}
