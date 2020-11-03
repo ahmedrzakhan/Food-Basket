@@ -1,0 +1,49 @@
+.banner{
+     background-image: url("https://d1z88p83zuviay.cloudfront.net/BannerImages/f98ab1c9-184b-448f-9a69-16805a73a70f_1320x376.png");
+background-size: 1500px 376px;
+height: 376px;
+width:100%
+
+}
+.imageBox{
+    float:left;
+    margin:1%;
+    width:30%
+}
+.list{
+float: left;
+width: 100%;
+font-family: "CeraPRO-Light";
+}
+ul>li{
+ color: #333;
+ list-style: none;
+ text-align: left;
+font-size: 13px;
+letter-spacing: 1px;
+padding: 10px 0 10px 3px;
+border-bottom:1px solid #f1f1f1;
+}
+span{
+    color:#83b748
+}
+.link{
+    color:#474B45 ;
+    text-decoration: none;
+    font-size: 20px;
+}
+h3{
+    font-family: 'CeraPRO-Medium'
+}
+p{
+    color:#5F615F ;
+    font-weight: normal
+}
+small{
+   color: #858585
+}
+.event>img{
+width:30%;
+margin:1%
+
+}
