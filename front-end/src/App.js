@@ -6,6 +6,7 @@ import RouteNav from "./components/dashboard/TopNavBar/RouteNav";
 function App() {
   return (
     <div className="App">
+      {/* topnavbar */}
       <TopNav />
       <RouteNav />
       <Routes />{" "}
