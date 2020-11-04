@@ -7,6 +7,7 @@ const Categories = require("./models/Categories");
 const categories = require("./data/categories");
 
 const userRoute = require("./routes/userAuth");
+const categoriesRoute = require("./routes/categories");
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/api/user", userRoute);
+app.use("/api/categories", categoriesRoute)
 
 mongoose.connect(
   process.env.ATLAS_URI,
