@@ -1,5 +1,118 @@
-.itemsDisplay
-{
+.itemsDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* padding: 20px; */
+}
+
+.productsDisplay {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  margin-left: 20px;
+  padding-right: -30px;
+}
+
+.checkBoxesList {
+  list-style: none;
+  font-size: 15px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 2px none #ffffff;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #ab3636;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.checkBoxesList li:hover {
+  color: rgb(146, 190, 77);
+  cursor: pointer;
+}
+
+.listHeading {
+  margin-left: 40px;
+  font-size: 14px;
+}
+
+.InputsContainer {
+  border: 1px solid rgb(232, 232, 232);
+  height: 850px;
+  display: flex;
+  flex-direction: column;
+}
+
+.SubCategoryItem {
+  list-style: none;
+}
+
+.SubCategoryItem li:hover {
+  color: rgb(146, 190, 77);
+  cursor: pointer;
+}
+
+.FilterClearAll {
+  display: flex;
+  padding-left: 20px;
+}
+
+.FilterClearAll p {
+  flex: 1;
+}
+
+@media screen and (max-width: 1066px) and (min-width: 200px) {
+  .productsDisplay {
+    /* width: 80%; */
     display: flex;
     flex-wrap: wrap;
+    /* border: 1px solid black; */
+    padding-left: 20px;
+  }
+
+  .checkBoxesList {
+    list-style: none;
+    font-size: 10px;
+    display: inline;
+  }
+
+  .InputsContainer {
+    border: none;
+    border-bottom: 1px solid rgb(247, 247, 247);
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    opacity: 1;
+    background-color: white;
+  }
 }
