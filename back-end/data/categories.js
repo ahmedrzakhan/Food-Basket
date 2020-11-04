@@ -1,6 +1,5 @@
 const categories = [
   {
-    _id: "5f9aba5735a6cf21a826ad22",
     category: "Fruits-and-Vegetables",
     sub_category: "Daily-Vegetables",
     cities: [
@@ -24,7 +23,6 @@ const categories = [
     sugar_free: true,
   },
   {
-    _id: "5f9aba5735a6cf21a826ad23",
     category: "Fruits-and-Vegetables",
     sub_category: "Exotic-Vegetables",
     cities: [
@@ -48,11 +46,29 @@ const categories = [
     fat_free: true,
   },
   {
-    _id: "5f9aba5735a6cf21a826ad24",
     category: "International-Cuisine",
     sub_category: "Italian-and-Continental",
     cities: [
       { city: "Mumbai", quantity: "10" },
+      { city: "Delhi", quantity: "30" },
+      { city: "Bengaluru", quantity: "20" },
+      { city: "Chennai", quantity: "40" },
+    ],
+    product: {
+      title: "Worchestire Sauce",
+      brand: "American Garden",
+      price: [
+        {
+          "1pc": "200",
+        },
+      ],
+    },
+    fat_free: true,
+  },
+  {
+    category: "International-Cuisine",
+    sub_category: "Masala Puri",
+    cities: [
       { city: "Delhi", quantity: "30" },
       { city: "Bengaluru", quantity: "20" },
       { city: "Chennai", quantity: "40" },
