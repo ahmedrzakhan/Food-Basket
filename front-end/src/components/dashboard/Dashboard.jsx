@@ -13,6 +13,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import ArrowRightOutlinedIcon from '@material-ui/icons/ArrowRightOutlined';
 import Container from '@material-ui/core/Container'
 import { Link } from 'react-router-dom'
 
@@ -52,10 +53,13 @@ function Dashboard() {
 
   const items = [
     {
-      url: "https://d1z88p83zuviay.cloudfront.net/BannerImages/898d3a9d-6c2b-4642-b3d1-78466641efca_1320x376.png"
+      url: "https://d1z88p83zuviay.cloudfront.net/BannerImages/898d3a9d-6c2b-4642-b3d1-78466641efca_1320x376.png",
+      mes: "hello"
+
     },
     {
-      url: "https://d1z88p83zuviay.cloudfront.net/BannerImages/55d10979-d0de-465b-bf0c-aed1f7c753a7_1320x376.jpg"
+      url: "https://d1z88p83zuviay.cloudfront.net/BannerImages/55d10979-d0de-465b-bf0c-aed1f7c753a7_1320x376.jpg",
+      mes: "hi"
     },
     {
       url: "https://d1z88p83zuviay.cloudfront.net/BannerImages/11330ca1-f7f7-4bcd-a3ed-8176fd6cd6fa_1320x376.png"
@@ -75,13 +79,13 @@ function Dashboard() {
 
     <>
 
-      <TopNav />
-      <RouteNav />
+      {/* <TopNav />
+      <RouteNav /> */}
       <Container className={classes.main}>
         <Box>
           <Carousel>
             {
-              items.map((item, i) => <img className={styles.banner} key={i} src={item.url} />)
+              items.map((item, i) => <img onClick={() => alert(item.mes)} className={styles.banner} key={i} src={item.url} />)
             }
           </Carousel>
         </Box>
@@ -104,52 +108,54 @@ function Dashboard() {
 
           <Grid container spacing={3}>
             <Grid item xs>
-
-              <img width="100%" src="https://www.naturesbasket.co.in/Images/static/exotics.png" alt="tea" />
+              <img width="95%" src="https://www.naturesbasket.co.in/Images/static/exotics.png" alt="tea" />
               <p> <Link className={styles.link}>Exotic Vegetables</Link></p>
-              <ul>
-                <li>Asparagus Artichokes</li>
-                <li>Avocados Peppers</li>
-                <li>Broccoli Zucchini</li>
-                <li><span>View All</span></li>
-              </ul>
+              <span className={styles.afterHead}><p>Asparagus Artichokes<ArrowRightOutlinedIcon classes={{ root: styles.arrow }} /></p></span>
+              <span className={styles.afterHead}><p>Avocados Peppers<ArrowRightOutlinedIcon classes={{ root: styles.arrow }} /></p></span>
+              <span className={styles.afterHead}><p>Broccoli Zucchini</p></span>
+              <span className={styles.afterHead}><p><span>View All</span></p></span>
 
             </Grid>
             <Grid item xs>
 
-              <img width="100%" src="https://www.naturesbasket.co.in/Images/static/cold-cuts.png" alt="tea" />
-              <p> <Link className={styles.link}>Cold Cut & Seafood</Link></p>
-              <ul>
-                <li>Chicken Cuts Lollipops Mince</li>
-                <li>Fish Other Seafood</li>
-                <li>Fresh Kebabs Others</li>
-                <li><span>View All</span></li>
-              </ul>
+              <img width="95%" src="https://www.naturesbasket.co.in/Images/static/cold-cuts.png" alt="tea" />
+              <p > <Link className={styles.link}>Cold Cut & Seafood</Link></p>
+
+              <span className={styles.afterHead}><p>Chicken Cuts Lollipops Mince</p></span>
+              <span className={styles.afterHead}><p>Fish Other Seafood</p></span>
+              <span className={styles.afterHead}><p>Fresh Kebabs Others</p></span>
+              <span className={styles.afterHead}><p><span>View All</span></p></span>
+
 
             </Grid>
             <Grid item xs>
 
-              <img width="100%" src="https://www.naturesbasket.co.in/Images/static/Fresh-Artisinal-Breads.png" alt="tea" />
+              <img width="95%" src="https://www.naturesbasket.co.in/Images/static/Fresh-Artisinal-Breads.png" alt="tea" />
               <p><Link className={styles.link}>Fresh Artisanal Breads</Link></p>
-              <ul>
-                <li>Breadsticks Crostinni Lavache</li>
-                <li>Buns Croissants Bagels</li>
-                <li>Muffins Cakes Brownies</li>
-                <li><span>View All</span></li>
-              </ul>
+
+              <span className={styles.afterHead}><p>Breadsticks Crostinni Lavache</p></span>
+              <span className={styles.afterHead}><p>Buns Croissants Bagels</p></span>
+              <span className={styles.afterHead}><p>Muffins Cakes Brownies</p></span>
+              <span className={styles.afterHead}><p><span>View All</span></p></span>
+
+
 
 
             </Grid>
             <Grid item xs>
 
-              <img width="100%" src="https://www.naturesbasket.co.in/Images/static/Daily-Essentials.png" alt="tea" />
+              <img width="95%" src="https://www.naturesbasket.co.in/Images/static/Daily-Essentials.png" alt="tea" />
               <p><Link className={styles.link}>Daily Essentials</Link></p>
-              <ul>
-                <li>Snacks & Beverages </li>
-                <li>Breakfast, Dairy & Bakery </li>
-                <li>Staples </li>
-                <li><span>View All</span></li>
-              </ul>
+
+
+              <span className={styles.afterHead}><p>Snacks & Beverages </p></span>
+
+              <span className={styles.afterHead}><p>Breakfast, Dairy & Bakery </p></span>
+
+              <span className={styles.afterHead}><p>Staples </p></span>
+
+              <span className={styles.afterHead}><p><span>View All</span></p></span>
+
 
             </Grid>
           </Grid>
