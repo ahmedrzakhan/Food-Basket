@@ -1,42 +1,52 @@
-.productCard
-{
-    border-left: 0.5px solid rgba(240, 240, 240, 0.836) ;
-    border-right: 0.5px solid rgba(240, 240, 240, 0.836) ;
-    margin: 20px 4px ;
-    text-align: center;
-    padding: 20px;
+.productCard {
+  border-right: 0.5px solid rgba(240, 240, 240, 0.966);
+  margin: 20px 4px;
+  text-align: center;
+  padding: 10px;
 }
 
-.productCard:hover
-{
-    -webkit-box-shadow: 5px 5px 8px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    5px 5px 8px 0px rgba(50, 50, 50, 0.75);
-    box-shadow:         5px 5px 8px 0px rgba(50, 50, 50, 0.651);
-    border: none;
+.productCard:hover {
+  -webkit-box-shadow: 5px 5px 8px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 5px 5px 8px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 5px 5px 8px 0px rgba(50, 50, 50, 0.651);
+  border: none;
 }
 
-.mrpBorder
-{
-    border: 0.5px solid rgb(175, 175, 175);
-    padding: 5.9px 5px;  
+.mrpBorder {
+  border: 0.5px solid rgb(175, 175, 175);
+  padding: 5.9px 5px;
+  color: black;
 }
 
-.starIcon
-{
-    position: absolute;
-    top: 80px;
-    left: 20px;
-    color: rgb(146, 190, 77) ;
+.starIcon {
+  position: absolute;
+  top: 80px;
+  left: 20px;
+  color: rgb(146, 190, 77);
 }
 
-.productCard .starIcon
-{
-    visibility: hidden;
+.productCard .starIcon {
+  visibility: hidden;
 }
 
-.productCard:hover .starIcon
-{
-    visibility: visible;
-    fill: rgb(146, 190, 77);
-    
+.productCard:hover .starIcon {
+  visibility: visible;
+  fill: rgb(146, 190, 77);
+}
+
+.AddBtn {
+  padding: 10px 25px;
+  background: rgb(146, 190, 77);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.AddBtn:hover {
+  background: linear-gradient(
+    to bottom,
+    rgb(89, 121, 38) 5%,
+    rgb(146, 190, 77) 100%
+  );
+  background: rgb(89, 121, 38);
 }
