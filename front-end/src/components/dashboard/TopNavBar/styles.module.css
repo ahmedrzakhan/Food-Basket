@@ -122,6 +122,19 @@
   display: flex;
   flex-direction: row;
 }
+@media screen and (max-width: 960px) and (min-width: 200px) {
+  .routes {
+    padding-bottom: 2%;
+    display: flex;
+    flex: 1;
+  }
+  .col {
+    flex: 1;
+  }
+  .col1 {
+    flex: 1;
+  }
+}
 .col {
   width: 23%;
   margin-left: 0%;
@@ -183,4 +196,37 @@
   font-size: small;
   margin: 5px;
   float: right;
+}
+
+.hoverDivSearch {
+  position: relative;
+}
+
+.innerHoverDivSearch {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 900px;
+  z-index: 1;
+  border: 1px solid green;
+  text-align: center;
+  top: 37px;
+}
+
+.innerHoverDivSearch > p {
+  /* padding: 12px 16px; */
+  display: block;
+}
+
+.hoverDivSearch:hover .innerHoverDivSearch {
+  display: block;
+}
+.trend {
+  color: #c94267;
+  font-family: "CeraPRO-Light", "CeraPRO-Regular";
+}
+@media screen and (max-width: 1300px) and (min-width: 200px) {
+  .innerHoverDivSearch {
+    min-width: 470px;
+  }
 }

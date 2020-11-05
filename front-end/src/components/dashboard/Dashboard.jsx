@@ -1,18 +1,10 @@
 import React from "react";
-import TopNav from "./TopNavBar/TopNav";
-import RouteNav from "./TopNavBar/RouteNav";
 import styles from "./dashboard.module.css";
 import Box from "@material-ui/core/Box";
 import Carousel from "react-material-ui-carousel";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import ArrowRightOutlinedIcon from "@material-ui/icons/ArrowRightOutlined";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
@@ -39,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
   main: {
     maxWidth: "100%",
+    paddingBottom: "5%"
   },
 }));
 
@@ -75,8 +68,7 @@ function Dashboard() {
   ];
   return (
     <>
-      {/* <TopNav />
-      <RouteNav /> */}
+
       <Container className={classes.main}>
         <Box>
           <Carousel>
@@ -85,28 +77,28 @@ function Dashboard() {
                 onClick={() => alert(item.mes)}
                 className={styles.banner}
                 key={i}
-                src={item.url}
+                src={item.url} alt="carousel"
               />
             ))}
           </Carousel>
         </Box>
         <Box className={classes.root}>
           <Grid container spacing={3}>
-            <Grid item xs>
+            <Grid xs={12} sm={6} md={6} lg={4} item >
               <img
                 width="100%"
                 src="https://www.naturesbasket.co.in/Images/NaturesBasketGifting.jpeg"
                 alt="tea"
               />
             </Grid>
-            <Grid item xs>
+            <Grid xs={12} sm={6} md={6} lg={4} item >
               <img
                 width="100%"
                 src="https://www.naturesbasket.co.in/Images/Japanesecuisine-webbox.png"
                 alt="plater"
               />
             </Grid>
-            <Grid item xs>
+            <Grid xs={12} sm={6} md={6} lg={4} item >
               <img
                 width="100%"
                 src="https://www.naturesbasket.co.in/Images/Gluten-free-web%20box%20banner.png"
@@ -120,7 +112,7 @@ function Dashboard() {
         </Box>
         <Box>
           <Grid container spacing={3}>
-            <Grid item xs>
+            <Grid item xs={12} sm={6} md={6} lg={3}>
               <img
                 width="95%"
                 src="https://www.naturesbasket.co.in/Images/static/exotics.png"
@@ -128,7 +120,7 @@ function Dashboard() {
               />
               <p>
                 {" "}
-                <Link className={styles.link}>Exotic Vegetables</Link>
+                <Link to="/" className={styles.link}>Exotic Vegetables</Link>
               </p>
               <span className={styles.afterHead}>
                 <p>
@@ -151,7 +143,7 @@ function Dashboard() {
                 </p>
               </span>
             </Grid>
-            <Grid item xs>
+            <Grid item xs={12} sm={6} md={6} lg={3}>
               <img
                 width="95%"
                 src="https://www.naturesbasket.co.in/Images/static/cold-cuts.png"
@@ -159,7 +151,7 @@ function Dashboard() {
               />
               <p>
                 {" "}
-                <Link className={styles.link}>Cold Cut & Seafood</Link>
+                <Link to="/" className={styles.link}>Cold Cut & Seafood</Link>
               </p>
 
               <span className={styles.afterHead}>
@@ -177,14 +169,14 @@ function Dashboard() {
                 </p>
               </span>
             </Grid>
-            <Grid item xs>
+            <Grid item xs={12} sm={6} md={6} lg={3}>
               <img
                 width="95%"
                 src="https://www.naturesbasket.co.in/Images/static/Fresh-Artisinal-Breads.png"
                 alt="tea"
               />
               <p>
-                <Link className={styles.link}>Fresh Artisanal Breads</Link>
+                <Link to="/" className={styles.link}>Fresh Artisanal Breads</Link>
               </p>
 
               <span className={styles.afterHead}>
@@ -202,14 +194,14 @@ function Dashboard() {
                 </p>
               </span>
             </Grid>
-            <Grid item xs>
+            <Grid item xs={12} sm={6} md={6} lg={3}>
               <img
                 width="95%"
                 src="https://www.naturesbasket.co.in/Images/static/Daily-Essentials.png"
                 alt="tea"
               />
               <p>
-                <Link className={styles.link}>Daily Essentials</Link>
+                <Link to="/" className={styles.link}>Daily Essentials</Link>
               </p>
 
               <span className={styles.afterHead}>
@@ -235,7 +227,7 @@ function Dashboard() {
         <Box>
           <Carousel>
             {items.map((item, i) => (
-              <img className={styles.banner} key={i} src={item.url} />
+              <img className={styles.banner} key={i} src={item.url} alt="carousel" />
             ))}
           </Carousel>
         </Box>
@@ -246,18 +238,24 @@ function Dashboard() {
           <Typography className={classes.head}>OUR EVENTS</Typography>
         </Box>
         <Box className={styles.event}>
-          <img
-            width="100%"
-            src="https://www.naturesbasket.co.in/Images/PhotoGallery/SanjeevKapoor_at_KolkataGallary.jpg"
-          />
-          <img
-            width="100%"
-            src="https://www.naturesbasket.co.in/Images/PhotoGallery/IndiaSportsHonours2019NaturesBasketGiftingGallary.jpg"
-          />
-          <img
-            width="100%"
-            src="https://www.naturesbasket.co.in/Images/PhotoGallery/SaranshGallary.png"
-          />
+          <Box classes={{ root: styles.imageBoxEvent }}>
+            <img
+              width="100%"
+              src="https://www.naturesbasket.co.in/Images/PhotoGallery/SanjeevKapoor_at_KolkataGallary.jpg" alt="sanjeev kapoor"
+            />
+          </Box>
+          <Box classes={{ root: styles.imageBoxEvent }}>
+            <img
+              width="100%"
+              src="https://www.naturesbasket.co.in/Images/PhotoGallery/IndiaSportsHonours2019NaturesBasketGiftingGallary.jpg" alt="gift"
+            />
+          </Box>
+          <Box classes={{ root: styles.imageBoxEvent }}>
+            <img
+              width="100%"
+              src="https://www.naturesbasket.co.in/Images/PhotoGallery/SaranshGallary.png" alt="people"
+            />
+          </Box>
         </Box>
         <Box>
           <h3>Online Grocery Store India </h3>

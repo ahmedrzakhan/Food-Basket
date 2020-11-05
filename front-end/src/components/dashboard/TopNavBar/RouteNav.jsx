@@ -8,27 +8,15 @@ import ChevronRightOutlinedIcon from '@material-ui/icons/ChevronRightOutlined';
 
 
 const useStyles = makeStyles((theme) => ({
-    routes: {
-        width: '95 %',
-        textAlign: 'center',
-        border: '1px solid #aaaca9',
-        height: '40px',
-        margin: '2 %',
-        marginTop: '6 %',
-        marginBottom: '0px',
-        borderBottom: '0px',
-        display: 'flex',
-        flexDirection: 'row',
-    }
+
 }))
 function RouteNav() {
     const classes = useStyles()
-    // className = { classes.routes }
-    // classes = {{ root: styles.routes }
+
 
     return (
         <>
-            <Box className={classes.routes}>
+            <Box classes={{ root: styles.routes }}>
                 <Box classes={{ root: styles.col1 }}>
                     <Box classes={{ root: styles.hoverDiv }}>
                         <span style={{ color: "#c94267", background: "#f3f3f3" }}>SHOP BY CATEGORY</span>

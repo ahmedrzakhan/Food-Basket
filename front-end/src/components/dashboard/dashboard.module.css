@@ -42,8 +42,16 @@ p {
 small {
   color: #858585;
 }
-.event > img {
-  width: 30%;
+.event {
+  display: flex;
+  flex-direction: row;
+}
+.imageBoxEvent {
+  width: 25%;
+  flex: 1;
+  margin: 1%;
+}
+.event > .imageBoxEvent > img {
   margin: 1%;
 }
 .food {
@@ -56,4 +64,9 @@ small {
   margin-right: 5px;
   width: 5%;
   color: gray;
+}
+@media screen and (max-width: 960px) and (min-width: 200px) {
+  .imageBoxEvent {
+    width: 100%;
+  }
 }

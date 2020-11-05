@@ -1,43 +1,43 @@
 import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import Divider from "@material-ui/core/Divider";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import StarIcon from "@material-ui/icons/Star";
-import { StylesContext } from "@material-ui/styles";
 import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import TextField from "@material-ui/core/TextField";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import FormHelperText from "@material-ui/core/FormHelperText";
-
-import styled from "styled-components";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
-
-const Input = styled.input`
-  width: 60%;
-  height: 60px;
-`;
 
 const useStyles = makeStyles((theme) => ({
     root: {
         //padding: '1px 1px',
         display: "flex",
         alignItems: "center",
+        textAlign: "center",
         width: 900,
         height: "36px",
         border: "1px solid #AAACA9",
         float: "left",
         borderRadius: "8px",
         borderRight: "0px",
-        [theme.breakpoints.down("md")]: {
-            width: "450px",
+        [theme.breakpoints.up("md")]: {
+            width: "900px",
+            alignItems: "center",
+            marginLeft: "2%"
         },
+        [theme.breakpoints.down("md")]: {
+            width: "470px",
+            alignItems: "center",
+            marginLeft: "2%"
+        },
+        // [theme.breakpoints.down("xs")]: {
+        //     width: "370px",
+        //     alignItems: "center",
+        //     marginLeft: "2%"
+        // },
     },
     topDiv: {
         backgroundColor: "#c80066",
@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
     input: {
         marginLeft: theme.spacing(1),
         flex: 1,
+
     },
     iconButton: {
         padding: "0.2%",
@@ -178,7 +179,7 @@ function TopNav() {
               </button>
                         </Box>
                         <Box>
-                            <Box className={classes.root}>
+                            {/* <Box className={classes.root}>
                                 <InputBase
                                     className={classes.input}
                                     placeholder="Start Shopping..."
@@ -188,6 +189,26 @@ function TopNav() {
                                     <IconButton type="submit" aria-label="search">
                                         <SearchIcon className={classes.iconColor} />
                                     </IconButton>
+                                </Box>
+                            </Box> */}
+                            <Box classes={{ root: styles.hoverDivSearch }} className={classes.root}>
+                                <InputBase
+                                    className={classes.input}
+                                    placeholder="Start Shopping..."
+                                    inputProps={{ "aria-label": "start shopping" }}
+                                />
+                                <Box className={classes.iconButton}>
+                                    <IconButton type="submit" aria-label="search">
+                                        <SearchIcon className={classes.iconColor} />
+                                    </IconButton>
+                                </Box>
+
+                                <Box classes={{ root: styles.innerHoverDivSearch }}>
+
+                                    <p className={styles.trend}>Trending Searches</p>
+                                    <p >Indian Grocery</p>
+                                    <p >Fruits & Vegetables </p>
+                                    <p>Snacks </p>
                                 </Box>
                             </Box>
 
