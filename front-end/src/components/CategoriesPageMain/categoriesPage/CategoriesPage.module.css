@@ -1,17 +1,6 @@
-.itemsDisplay {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  /* padding: 20px; */
-}
-
 .productsDisplay {
-  width: 80%;
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid black;
-  margin-left: 20px;
-  padding-right: -30px;
 }
 
 .checkBoxesList {
@@ -52,22 +41,14 @@
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
-
-.checkBoxesList li:hover {
-  color: rgb(146, 190, 77);
+.checkBoxesList li:hover { 
+  color: rgb(146, 190, 77); 
   cursor: pointer;
-}
+}​
 
 .listHeading {
   margin-left: 40px;
   font-size: 14px;
-}
-
-.InputsContainer {
-  border: 1px solid rgb(232, 232, 232);
-  height: 850px;
-  display: flex;
-  flex-direction: column;
 }
 
 .SubCategoryItem {
@@ -82,37 +63,4 @@
 .FilterClearAll {
   display: flex;
   padding-left: 20px;
-}
-
-.FilterClearAll p {
-  flex: 1;
-}
-
-@media screen and (max-width: 1066px) and (min-width: 200px) {
-  .productsDisplay {
-    /* width: 80%; */
-    display: flex;
-    flex-wrap: wrap;
-    /* border: 1px solid black; */
-    padding-left: 20px;
-  }
-
-  .checkBoxesList {
-    list-style: none;
-    font-size: 10px;
-    display: inline;
-  }
-
-  .InputsContainer {
-    border: none;
-    border-bottom: 1px solid rgb(247, 247, 247);
-    height: 300px;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    opacity: 1;
-    background-color: white;
-  }
 }
