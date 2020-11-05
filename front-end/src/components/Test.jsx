@@ -5,7 +5,7 @@ class Test extends Component {
     const config = {
       method: "get",
       url:
-        "http://localhost:5000/api/categories/category?category=Fruits-and-Vegetables",
+        "http://localhost:5000/api/categories/sub-category?sub_category=Daily-Vegetables",
       headers: {
         "Content-Type": "application/json",
       },
