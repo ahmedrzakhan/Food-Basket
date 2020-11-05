@@ -33,11 +33,7 @@ const useStyles = makeStyles((theme) => ({
             alignItems: "center",
             marginLeft: "2%"
         },
-        // [theme.breakpoints.down("xs")]: {
-        //     width: "370px",
-        //     alignItems: "center",
-        //     marginLeft: "2%"
-        // },
+
     },
     topDiv: {
         backgroundColor: "#c80066",
