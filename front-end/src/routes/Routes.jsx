@@ -7,7 +7,7 @@ const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" render={() => <Dashboard />} />
-      <Route path="/fruits-vegetables" render={() => <CategoriesPage/>} />
+      <Route path="/fruits-vegetables" render={() => <CategoriesPage />} />
       <Route path="/test" render={() => <Test />} />
     </Switch>
   );

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import styles from "./dashboard.module.css";
 import Box from "@material-ui/core/Box";
@@ -37,8 +38,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Dashboard() {
+    const classes = useStyles()
+    const [data, setData] = useState([])
+    const history = useHistory()
 
-    const classes = useStyles();
+    useEffect(() => {
+        getData()
+    }, [])
+
+    const getData = async () => {
+        const config = {
+            method: "get",
+            url:
+                "http://localhost:5000/api/categories/category?category=Fruits-and-Vegetables",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+        try {
+            const result = await axios(config);
+            setData(result.data);
+        } catch (err) {
+            console.log("err", err);
+        }
+    };
+
+
 
     const items = [
         {
@@ -68,7 +93,6 @@ function Dashboard() {
                 "https://d1z88p83zuviay.cloudfront.net/BannerImages/5a13f3b3-4f7c-4499-994c-ffd7727424f2_1320x376.png",
         },
     ];
-
 
     return (
         <>
@@ -117,29 +141,29 @@ function Dashboard() {
                 <Box>
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
-                            <img
+                            <img onClick={() => history.push('/fruits-vegetables')}
                                 width="95%"
                                 src="https://www.naturesbasket.co.in/Images/static/exotics.png"
                                 alt="tea"
                             />
                             <p>
                                 {" "}
-                                <Link to="/" className={styles.link}>Exotic Vegetables</Link>
+                                <Link to="/exotic-vegetables" className={styles.link}>Exotic Vegetables</Link>
                             </p>
                             <span className={styles.afterHead}>
                                 <p>
                                     Asparagus Artichokes
-                  <ArrowRightOutlinedIcon classes={{ root: styles.arrow }} />
+                 <ArrowRightOutlinedIcon classes={{ root: styles.arrow }} />
                                 </p>
                             </span>
                             <span className={styles.afterHead}>
                                 <p>
                                     Avocados Peppers
-                  <ArrowRightOutlinedIcon classes={{ root: styles.arrow }} />
+                 <ArrowRightOutlinedIcon classes={{ root: styles.arrow }} />
                                 </p>
                             </span>
                             <span className={styles.afterHead}>
-                                <p>Broccoli Zucchini</p>
+                                <p>Broccoli </p>
                             </span>
                             <span className={styles.afterHead}>
                                 <p>
@@ -155,7 +179,7 @@ function Dashboard() {
                             />
                             <p>
                                 {" "}
-                                <Link to="/" className={styles.link}>Cold Cut & Seafood</Link>
+                                <Link to="/cold-cut" className={styles.link}>Cold Cut & Seafood</Link>
                             </p>
 
                             <span className={styles.afterHead}>
@@ -180,7 +204,7 @@ function Dashboard() {
                                 alt="tea"
                             />
                             <p>
-                                <Link to="/" className={styles.link}>Fresh Artisanal Breads</Link>
+                                <Link to="/fresh-breads" className={styles.link}>Fresh Artisanal Breads</Link>
                             </p>
 
                             <span className={styles.afterHead}>
@@ -209,15 +233,15 @@ function Dashboard() {
                             </p>
 
                             <span className={styles.afterHead}>
-                                <p>Snacks & Beverages </p>
+                                <p>Kellogges Corn Flakes </p>
                             </span>
 
                             <span className={styles.afterHead}>
-                                <p>Breakfast, Dairy & Bakery </p>
+                                <p>Amul Gold Milk </p>
                             </span>
 
                             <span className={styles.afterHead}>
-                                <p>Staples </p>
+                                <p>Tomato ketchup - Top Down </p>
                             </span>
 
                             <span className={styles.afterHead}>
@@ -277,7 +301,7 @@ function Dashboard() {
                         with organic products for fresh and packaged food items. With our
                         offerings, we have the best online food shop & online grocery
                         shopping platform available for all your grocery products as well as
-            physical grocery stores in select cities.{" "}
+           physical grocery stores in select cities.{" "}
                     </p>
                     <h3>Best Online Grocery Supermarket India </h3>
                     <p>
@@ -291,7 +315,7 @@ function Dashboard() {
                         using credit cards, cash, coupons or online banking facility. We are
                         sure to have all the grocery products for your daily dietary needs
                         from regular local Indian brands and products to exotic and
-            international imported ones.{" "}
+           international imported ones.{" "}
                     </p>
                     <h3>Online Grocery Supermarket Shopping India </h3>
                     <p>
@@ -303,15 +327,15 @@ function Dashboard() {
                         groceries and food items. We also have the best online grocery store
                         to shop for fruits and vegetables, meats and seafood, breads and
                         other bakery items as well as cheese and dairy. Order groceries
-            online from the best quality grocery store at best prices.{" "}
+           online from the best quality grocery store at best prices.{" "}
                     </p>
                     <small>
                         Find a variety of Best Christmas gifts such as delightful Cakes,
                         Chocolates, Cookies, Turkey, Stollen, Gourmet Gift Baskets, Sweets &
-            Lots More{" "}
+           Lots More{" "}
                         <Link style={{ color: "red", textDecoration: "none" }} to="/">
                             Here
-            </Link>
+           </Link>
                     </small>
                 </Box>
             </Container>
