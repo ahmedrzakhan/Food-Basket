@@ -1,12 +1,12 @@
 const Categories = require("./../models/Categories");
 
 const getProductsByCity = async (req, res) => {
-  const { city } = req.body;
+  const { city } = req.query;
 
   const items = await Categories.find(
     {
       "cities.city": city,
-    },
+    }
     // {
     //   $filter: {
     //     input: "$cities",
@@ -20,8 +20,8 @@ const getProductsByCity = async (req, res) => {
 };
 
 const getByCategory = async (req, res) => {
-  const { category } = req.body;
-
+  const { category } = req.query;
+  console.log(category);
   const items = await Categories.find({
     category: category,
   });
@@ -30,7 +30,7 @@ const getByCategory = async (req, res) => {
 };
 
 const getBySubCategory = async (req, res) => {
-  const { sub_category } = req.body;
+  const { sub_category } = req.query;
 
   const items = await Categories.find({
     sub_category: sub_category,
@@ -40,7 +40,7 @@ const getBySubCategory = async (req, res) => {
 };
 
 const getProductItem = async (req, res) => {
-  const { _id } = req.body;
+  const { _id } = req.query;
   const item = await Categories.findById(_id);
   res.send(item);
 };
