@@ -5,6 +5,7 @@ import Dashboard from "./../components/dashboard/Dashboard";
 import Dummy from "./../components/dashboard/Dummy";
 import Test from "../components/Test"
 import RegisterOtp from "../components/Register-Otp";
+import SingleProduct from "../components/SingleProduct/SingleProduct";
 
 const Routes = () => {
   return (
@@ -12,6 +13,7 @@ const Routes = () => {
       <Route exact path="/home" render={() => <Dashboard />} />
       <Route path="/home/:category/:sub_category" render={() => <CategoriesPage />} />
       <Route path="/dummy/:id" render={() => <Dummy />} />
+      <Route path="/product/1" render={() => <SingleProduct/>} />
       <Route path="/test" render={() => <Test />} />
       <Route path="/register-otp" render={() => <RegisterOtp />} />
     </Switch>
