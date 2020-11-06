@@ -2,14 +2,16 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import CategoriesPage from "./../components/CategoriesPageMain/categoriesPage/CategoriesPage";
 import Dashboard from "./../components/dashboard/Dashboard";
+import Dummy from "./../components/dashboard/Dummy";
 import Test from "../components/Test"
 import RegisterOtp from "../components/Register-Otp";
 
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/" render={() => <Dashboard />} />
-      <Route path="/fruits-vegetables" render={() => <CategoriesPage />} />
+      <Route exact path="/home" render={() => <Dashboard />} />
+      <Route path="/home/:category/:sub_category" render={() => <CategoriesPage />} />
+      <Route path="/dummy/:id" render={() => <Dummy />} />
       <Route path="/test" render={() => <Test />} />
       <Route path="/register-otp" render={() => <RegisterOtp />} />
     </Switch>

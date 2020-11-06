@@ -138,17 +138,20 @@ function Dashboard() {
                 <Box>
                     <Typography className={classes.head}>SHOP BY CATEGORY</Typography>
                 </Box>
-                <Box>
+                <Box mb={4}>
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
-                            <img onClick={() => history.push('/fruits-vegetables')}
-                                width="95%"
-                                src="https://www.naturesbasket.co.in/Images/static/exotics.png"
-                                alt="tea"
-                            />
+                            <Link to="/home/Fruits-and-Vegetables/Exotic-Vegetables">
+                                <img
+                                    width="95%"
+                                    src="https://www.naturesbasket.co.in/Images/static/exotics.png"
+                                    alt="tea"
+                                />
+                            </Link>
                             <p>
                                 {" "}
-                                <Link to="/exotic-vegetables" className={styles.link}>Exotic Vegetables</Link>
+
+                                <Link to="/home/Fruits-and-Vegetables/Exotic-Vegetables" className={styles.link}>Exotic Vegetables</Link>
                             </p>
                             <span className={styles.afterHead}>
                                 <p>
@@ -167,19 +170,21 @@ function Dashboard() {
                             </span>
                             <span className={styles.afterHead}>
                                 <p>
-                                    <span>View All</span>
+                                    <Link className={styles.span} to="/home/Fruits-and-Vegetables/Exotic-Vegetables">View All</Link>
                                 </p>
                             </span>
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
-                            <img
-                                width="95%"
-                                src="https://www.naturesbasket.co.in/Images/static/cold-cuts.png"
-                                alt="tea"
-                            />
+                            <Link to="/home/Meats Seafoods & Eggs/Cold Cuts & Sausage">
+                                <img
+                                    width="95%"
+                                    src="https://www.naturesbasket.co.in/Images/static/cold-cuts.png"
+                                    alt="tea"
+                                />
+                            </Link>
                             <p>
                                 {" "}
-                                <Link to="/cold-cut" className={styles.link}>Cold Cut & Seafood</Link>
+                                <Link to='/home/Meats Seafoods & Eggs/Cold Cuts & Sausage' className={styles.link}>Cold Cut & Seafood</Link>
                             </p>
 
                             <span className={styles.afterHead}>
@@ -198,13 +203,16 @@ function Dashboard() {
                             </span>
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
-                            <img
-                                width="95%"
-                                src="https://www.naturesbasket.co.in/Images/static/Fresh-Artisinal-Breads.png"
-                                alt="tea"
-                            />
+                            <Link to="/home/Breakfast Dairy & Bakery/Fresh Artisanal Breads">
+                                <img
+                                    width="95%"
+                                    src="https://www.naturesbasket.co.in/Images/static/Fresh-Artisinal-Breads.png"
+                                    alt="tea"
+                                />
+                            </Link>
                             <p>
-                                <Link to="/fresh-breads" className={styles.link}>Fresh Artisanal Breads</Link>
+
+                                <Link to="/home/Breakfast Dairy & Bakery/Fresh Artisanal Breads" className={styles.link}>Fresh Artisanal Breads</Link>
                             </p>
 
                             <span className={styles.afterHead}>
@@ -217,19 +225,19 @@ function Dashboard() {
                                 <p>Muffins Cakes Brownies</p>
                             </span>
                             <span className={styles.afterHead}>
-                                <p>
-                                    <span>View All</span>
-                                </p>
+                                <Link href="/home" onClick={() => history.push('/home/Breakfast Dairy & Bakery/Fresh Artisanal Breads')}>
+                                    View All
+                                </Link>
                             </span>
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
-                            <img
+                            <img onClick={() => history.push('/home/Indian Grocery/Daily Essentials')}
                                 width="95%"
                                 src="https://www.naturesbasket.co.in/Images/static/Daily-Essentials.png"
                                 alt="tea"
                             />
                             <p>
-                                <Link to="/" className={styles.link}>Daily Essentials</Link>
+                                <Link to='/home/Indian Grocery/Daily Essentials' className={styles.link}>Daily Essentials</Link>
                             </p>
 
                             <span className={styles.afterHead}>

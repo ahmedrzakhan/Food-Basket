@@ -1,7 +1,7 @@
 .banner {
   background-image: url("https://d1z88p83zuviay.cloudfront.net/BannerImages/f98ab1c9-184b-448f-9a69-16805a73a70f_1320x376.png");
   background-size: 1500px 376px;
-  height: 376px;
+  height: 436px;
   width: 100%;
 }
 .imageBox {
@@ -24,13 +24,18 @@
   border-bottom: 1px solid #f1f1f1;
   margin: 0em;
 }
-span {
+.span {
   color: #83b748;
+  text-decoration: none;
+  font-size: 14px;
 }
 .link {
   color: #474b45;
   text-decoration: none;
   font-size: 20px;
+  outline: none;
+  border: none;
+  background: transparent;
 }
 h3 {
   font-family: "CeraPRO-Medium";
