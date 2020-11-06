@@ -658,6 +658,368 @@ const categories = [
         "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/8c12ae98-a47e-410c-b417-fd262ee7acb7_425x425.jpg",
     },
   },
+  {
+    category: "Meats, Seafood and Eggs",
+    sub_category: "Cold Cuts and Sausages",
+    cities: [
+      { city: "Mumbai", quantity: 100 },
+      { city: "Delhi", quantity: 200 },
+      { city: "Bengaluru", quantity: 120 },
+      { city: "Chennai", quantity: 320 },
+    ],
+    product: {
+      title: "YUMMIEZ CHCKN PLAIN SAUSAGES 250g - 1 Pc",
+      brand: "Yummiez",
+      price: 140,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/20eb2b5d-2460-4559-8592-f381f1043563_425x425.jpg",
+    },
+  },
+  {
+    category: "Meats, Seafood and Eggs",
+    sub_category: "Cold Cuts and Sausages",
+    cities: [
+      { city: "Mumbai", quantity: 100 },
+      { city: "Delhi", quantity: 200 },
+      { city: "Bengaluru", quantity: 120 },
+      { city: "Chennai", quantity: 320 },
+    ],
+    product: {
+      title: "YUMMIEZ CHICKEN BREAKFAST SAUSAGES 500GM - 1 Pc",
+      brand: "Yummiez",
+      price: 180,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/ae84e458-bcef-4292-9e51-a172c78dc82a_425x425.jpg",
+    },
+  },
+  {
+    category: "Meats, Seafood and Eggs",
+    sub_category: "Cold Cuts and Sausages",
+    cities: [
+      { city: "Mumbai", quantity: 50 },
+      { city: "Delhi", quantity: 100 },
+      { city: "Bengaluru", quantity: 220 },
+      { city: "Chennai", quantity: 120 },
+    ],
+    product: {
+      title: "YUMMIEZ CHCKN ITALIAN SAUSAGES 250g - 1 Pc",
+      brand: "Yummiez",
+      price: 120,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/d95f1d34-90b4-4260-9ae1-805945b39ff1_425x425.jpg",
+    },
+  },
+  {
+    category: "Meats, Seafood and Eggs",
+    sub_category: "Cold Cuts and Sausages",
+    cities: [
+      { city: "Mumbai", quantity: 150 },
+      { city: "Delhi", quantity: 200 },
+      { city: "Bengaluru", quantity: 120 },
+      { city: "Chennai", quantity: 20 },
+    ],
+    product: {
+      title: "Alf Farms Pork Oxford Sausages 250 Gms - 1 Pc",
+      brand: "Alf-Farms",
+      description:
+        "Alf-Farm’s presents Pork Oxford, a superior quality product for the high-end gourmet. This rare breed of Oxfordshire pork is moist and tender. Fresh and fine ingredients are used in its making. This mature tasting pork is flavorsome and succulent. Pan fry, bake, microwave or just have them as it is. ",
+      price: 130,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/fe90ec38-b799-427b-b5a6-aba89aa4723e_425x425.JPG",
+    },
+  },
+  {
+    category: "Meats, Seafood and Eggs",
+    sub_category: "Cold Cuts and Sausages",
+    cities: [
+      { city: "Mumbai", quantity: 150 },
+      { city: "Delhi", quantity: 200 },
+      { city: "Bengaluru", quantity: 120 },
+      { city: "Chennai", quantity: 20 },
+    ],
+    product: {
+      title: "Alf Farms Pork Oxford Sausages 250 Gms - 1 Pc",
+      brand: "Alf-Farms",
+      description:
+        "When it comes to Chicken Hot Dogs, it is always better to have it from Alf-Farms. Alf-Farms Chicken Hot Dog is a mouth watering ready to cook item.",
+      price: 140,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/7e02bfeb-9e98-4085-bc15-94c752ab30f8_425x425.jpg",
+    },
+  },
+  {
+    category: "Meats, Seafood and Eggs",
+    sub_category: "Cold Cuts and Sausages",
+    cities: [
+      { city: "Mumbai", quantity: 250 },
+      { city: "Delhi", quantity: 100 },
+      { city: "Bengaluru", quantity: 320 },
+      { city: "Chennai", quantity: 240 },
+    ],
+    product: {
+      title: "Alf Farms Chkn Chees Paprika Sausg 250 G - 1 Pc",
+      brand: "Alf-Farms",
+      description:
+        "Alf-Farms present Chicken Cheese Paprika with an amazing taste which is just like your home made foods. Alf-Farms are famous for its quality and innovative products. Chicken Cheese Paprika is something which any chicken lover would love to have.",
+      price: 170,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/be35ffb9-4a0a-4669-ba0b-a369617115d6_425x425.jpg",
+    },
+  },
+  {
+    category: "Meats, Seafood and Eggs",
+    sub_category: "Frozen",
+    cities: [
+      { city: "Mumbai", quantity: 200 },
+      { city: "Delhi", quantity: 120 },
+      { city: "Bengaluru", quantity: 120 },
+      { city: "Chennai", quantity: 140 },
+    ],
+    product: {
+      title: "ZORABIAN CHICKEN SHAMI KEBAB 250G - 1 Pc",
+      brand: "Zorabian",
+      description:
+        "Experience a burst of flavors with each bite of Ready to Cook Chicken Shami Kebab.",
+      price: 165,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/125ad1b7-e48b-44e8-b3be-b7e68f020690_425x425.jpg",
+    },
+  },
+  {
+    category: "Meats, Seafood and Eggs",
+    sub_category: "Frozen",
+    cities: [
+      { city: "Mumbai", quantity: 200 },
+      { city: "Delhi", quantity: 120 },
+      { city: "Bengaluru", quantity: 120 },
+      { city: "Chennai", quantity: 140 },
+    ],
+    product: {
+      title: "ZORABIAN CHICKEN SPRING ROLL 250G - 1 Pc",
+      brand: "Zorabian",
+      price: 185,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/6ad01ea6-98f4-478b-88f1-6e1f3323079f_425x425.JPG",
+    },
+  },
+  {
+    category: "Meats, Seafood and Eggs",
+    sub_category: "Frozen",
+    cities: [
+      { city: "Mumbai", quantity: 100 },
+      { city: "Delhi", quantity: 110 },
+      { city: "Bengaluru", quantity: 220 },
+      { city: "Chennai", quantity: 200 },
+    ],
+    product: {
+      title: "ZORABIAN CHICKEN N CHEESE BALLS 250G - 1 Pc",
+      brand: "Zorabian",
+      description:
+        "Zorabian’s Chicken n Cheese Balls are truly delicious and healthy. These cheese balls are baked and not deep fried. To get the crispy taste of these Chicken n Cheese balls, you can also deep fry them until they are golden brown. It is available in a conveniently sized 250 gm polypack and has a shelf life of 6 months.",
+      price: 205,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/bbb6e9c4-b10f-4f74-bd16-329849ceb1f9_425x425.jpg",
+    },
+  },
+  {
+    category: "Breakfast, Dairy and Bakery",
+    sub_category: "Bakery",
+    cities: [
+      { city: "Mumbai", quantity: 100 },
+      { city: "Delhi", quantity: 110 },
+      { city: "Bengaluru", quantity: 120 },
+      { city: "Chennai", quantity: 100 },
+    ],
+    product: {
+      title: "SAPPHIRE BUTTER COOKIES CHOCO CHIPS 400g - 1 Pc",
+      brand: "L Exclusif",
+      price: 300,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/248bffaa-309d-48fb-8ae6-b25bb25fd18b_425x425.JPG",
+    },
+  },
+  {
+    category: "Breakfast, Dairy and Bakery",
+    sub_category: "Bakery",
+    cities: [
+      { city: "Mumbai", quantity: 100 },
+      { city: "Delhi", quantity: 110 },
+      { city: "Bengaluru", quantity: 120 },
+      { city: "Chennai", quantity: 100 },
+    ],
+    product: {
+      title: "BANANA WALNUT CAKE - 150 g 100% WHOLEWHEAT - 1 Pc",
+      brand: "L Exclusif",
+      description: "BANANA WALNUT CAKE - 150 g 100% WHOLEWHEAT",
+      price: 155,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/e4be213c-a54f-40d5-862f-3e88b372f6aa_425x425.jpg",
+    },
+  },
+  {
+    category: "Breakfast, Dairy and Bakery",
+    sub_category: "Bakery",
+    cities: [
+      { city: "Mumbai", quantity: 100 },
+      { city: "Delhi", quantity: 110 },
+      { city: "Bengaluru", quantity: 120 },
+      { city: "Chennai", quantity: 100 },
+    ],
+    product: {
+      title: "BAGEL SESAME (PACK OF 2) 100% WHOLEWHEAT - 1 Pc",
+      brand: "L Exclusif",
+      description: "BAGEL SESAME (PACK OF 2) 100% WHOLEWHEAT",
+      price: 130,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/ebf1333a-5ee3-4284-a579-91be2f6f6c02_425x425.jpg",
+    },
+  },
+  {
+    category: "Breakfast, Dairy and Bakery",
+    sub_category: "Bakery",
+    cities: [
+      { city: "Mumbai", quantity: 200 },
+      { city: "Delhi", quantity: 220 },
+      { city: "Bengaluru", quantity: 320 },
+      { city: "Chennai", quantity: 300 },
+    ],
+    product: {
+      title: "AG MAYONNAISE LITE 16OZ - 1 Pc",
+      brand: "American Garden",
+      description:
+        "American Garden's Reduced Calorie Mayonnaise with 3% Fat 90% less calories than American Garden's Real Mayonnaise all of the rich, creamy taste. Made with 100% certified cage-free eggs and 3.5g fat per serving, our Light mayonnaise.",
+      price: 130,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/bee98725-14e9-4b82-a8e8-b685becfff8b_425x425.JPG",
+    },
+  },
+  {
+    category: "Breakfast, Dairy and Bakery",
+    sub_category: "Bakery",
+    cities: [
+      { city: "Mumbai", quantity: 100 },
+      { city: "Delhi", quantity: 120 },
+      { city: "Bengaluru", quantity: 120 },
+      { city: "Chennai", quantity: 200 },
+    ],
+    product: {
+      title: "AG PEANUT BUTTER CHUNKY 12OZ - 1 Pc",
+      brand: "American Garden",
+      price: 299,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/9971ac5f-b984-41eb-b54c-11525fcbb72d_425x425.jpg",
+    },
+  },
+  {
+    category: "Breakfast, Dairy and Bakery",
+    sub_category: "Bars and Others",
+    cities: [
+      { city: "Mumbai", quantity: 400 },
+      { city: "Delhi", quantity: 20 },
+      { city: "Bengaluru", quantity: 320 },
+      { city: "Chennai", quantity: 210 },
+    ],
+    product: {
+      title: "RITE BITE EASY SLIM 50g - 1 Pc",
+      brand: "Rite Bite",
+      price: 50,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/01712f43-81fd-4293-b3e3-f31edea34a51_425x425.jpg",
+    },
+  },
+  {
+    category: "Breakfast, Dairy and Bakery",
+    sub_category: "Bars and Others",
+    cities: [
+      { city: "Mumbai", quantity: 300 },
+      { city: "Delhi", quantity: 200 },
+      { city: "Bengaluru", quantity: 120 },
+      { city: "Chennai", quantity: 110 },
+    ],
+    product: {
+      title: "RITE BITE WORK OUT DAILY BAR 50g - 1 Pc",
+      brand: "Rite Bite",
+      description:
+        "Get a boost of instant energy and nutrition with this energy bar.",
+      price: 60,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/59cd37f0-c541-45c3-9d93-4f84499859a3_425x425.jpg",
+    },
+  },
+  {
+    category: "Breakfast, Dairy and Bakery",
+    sub_category: "Bars and Others",
+    cities: [
+      { city: "Mumbai", quantity: 100 },
+      { city: "Delhi", quantity: 120 },
+      { city: "Bengaluru", quantity: 100 },
+      { city: "Chennai", quantity: 100 },
+    ],
+    product: {
+      title: "RITEBITE MAX PROTACT ASRT BAR BOX 414g - 1 Pc",
+      brand: "Rite Bite",
+      description:
+        "The ideal health bar that meets your daily protein requirements and can be had at your convenience.",
+      price: 624,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/b8c0679d-a83b-4a76-a11f-de97fd01e454_425x425.jpg",
+    },
+  },
+  {
+    category: "Breakfast, Dairy and Bakery",
+    sub_category: "Bars and Others",
+    cities: [
+      { city: "Mumbai", quantity: 100 },
+      { city: "Delhi", quantity: 120 },
+      { city: "Bengaluru", quantity: 100 },
+      { city: "Chennai", quantity: 100 },
+    ],
+    product: {
+      title: "BAGRRYS WHITE OATS PUCH 500g - 1 Pc",
+      brand: "Baggrys",
+      description:
+        "Kick start your mornings with heart-healthy and wholesome Bagrry’s White Oats. Reap the benefits of our 100% wholegrain and nutrition-packed oats, which are specially processed with our innovative milling technology for a superior taste experience.",
+      price: 99,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/58d6ed5c-3c1f-4003-9320-edd3ff13548c_425x425.jpg",
+    },
+  },
+  {
+    category: "Breakfast, Dairy and Bakery",
+    sub_category: "Bars and Others",
+    cities: [
+      { city: "Mumbai", quantity: 200 },
+      { city: "Delhi", quantity: 200 },
+      { city: "Bengaluru", quantity: 300 },
+      { city: "Chennai", quantity: 200 },
+    ],
+    product: {
+      title: "BAGRRYS FRT FBR STR JR 1 KG - 1 Pc",
+      brand: "Baggrys",
+      description:
+        "A suitable option for a healthy, nutritious and appetizing breakfast cereal, Bagrry's Fruit n Fiber Strawberry Muesli is rich in fiber and has no trans-fatty acids.",
+      price: 99,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/26d06ce2-ffd7-491f-89ff-009689adeb45_425x425.jpg",
+    },
+  },
+  {
+    category: "Breakfast, Dairy and Bakery",
+    sub_category: "Bars and Others",
+    cities: [
+      { city: "Mumbai", quantity: 100 },
+      { city: "Delhi", quantity: 100 },
+      { city: "Bengaluru", quantity: 200 },
+      { city: "Chennai", quantity: 200 },
+    ],
+    product: {
+      title: "BAGRRYS FRT FBR STR JR 1 KG - 1 Pc",
+      brand: "Baggrys",
+      price: 99,
+      image:
+        "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/3f563fe9-e01c-4f9e-9558-0a9596c3447c_425x425.jpg",
+    },
+  },
 ];
 
 module.exports = categories;
