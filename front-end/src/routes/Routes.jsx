@@ -6,6 +6,7 @@ import Dummy from "./../components/dashboard/Dummy";
 import Test from "../components/Test"
 import RegisterOtp from "../components/Register-Otp";
 import SingleProduct from "../components/SingleProduct/SingleProduct";
+import TestGetProduct from "../components/AddProduct/TestGetProduct";
 
 const Routes = () => {
   return (
@@ -15,6 +16,14 @@ const Routes = () => {
       <Route path="/dummy/:id" render={() => <Dummy />} />
       <Route path="/product/1" render={() => <SingleProduct/>} />
       <Route path="/test" render={() => <Test />} />
+      <Route path="/button-test" render={() => {
+       
+        return(
+          <>
+          <TestGetProduct/>
+          </>
+        )
+      }} />
       <Route path="/register-otp" render={() => <RegisterOtp />} />
     </Switch>
   );
