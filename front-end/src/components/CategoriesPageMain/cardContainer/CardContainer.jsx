@@ -16,6 +16,7 @@ function CardContainer(props) {
 
   useEffect(() => {
     dispatch(getSubcategoryProduct(sub_category))
+
   }, [dispatch, sub_category]);
 
 
@@ -32,7 +33,7 @@ function CardContainer(props) {
           return (
             <>
               <Grid key={i} container item xs={12} lg={3} md={4} sm={12} >
-                <div className={styles.productCard}>
+                <div key={i} className={styles.productCard}>
                   <img onClick={() => history.push(`/product/${item._id}`)} height="230px" src={item.product["image"]} alt={item.product["title"]} />                     <div>
                     <img
                       height="20px"
@@ -50,9 +51,18 @@ function CardContainer(props) {
                     </span>
                   </div>
                   <p> {item.product["title"]} </p>
-                  <p> {item.qty}</p>
+                  <p>
+                    {/* {
+                      (Array.isArray(item.product["price"])) ? item.product["price"].map((p) => (p)) : item.product["price"]
+                    } */}
+                  </p>
                   <div style={{ display: "flex", justifyContent: "center" }}>
-                    <span className={styles.mrpBorder}>MRP ₹{item.price} </span>
+                    <span className={styles.mrpBorder}>MRP ₹
+
+                    {
+                        (Array.isArray(item.product["price"])) ? 20 : item.product["price"]
+                      }
+                    </span>
                     <span onClick={handleClick} className={styles.AddBtn}>
                       <TiShoppingCart
                         style={{

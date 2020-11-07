@@ -1,6 +1,6 @@
 .productCard {
   border-right: 0.5px solid rgba(240, 240, 240, 0.966);
-  text-align: center; 
+  text-align: center;
   padding: 20px;
 }
 
@@ -32,4 +32,7 @@
     rgb(146, 190, 77) 100%
   );
   background: rgb(89, 121, 38);
+}
+body {
+  font-family: CeraPRO-Regular;
 }
