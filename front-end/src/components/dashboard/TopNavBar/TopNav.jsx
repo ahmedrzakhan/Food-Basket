@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import Box from "@material-ui/core/Box";
+import { Box, InputBase, Divider, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import InputBase from "@material-ui/core/InputBase";
-import Divider from "@material-ui/core/Divider";
 import SearchIcon from "@material-ui/icons/Search";
-import IconButton from "@material-ui/core/IconButton";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import StarIcon from "@material-ui/icons/Star";
-import Button from "@material-ui/core/Button";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
+import LoginReg from "./LoginReg";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,14 +23,13 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up("md")]: {
             width: "900px",
             alignItems: "center",
-            marginLeft: "2%"
+            marginLeft: "2%",
         },
         [theme.breakpoints.down("md")]: {
             width: "470px",
             alignItems: "center",
-            marginLeft: "2%"
+            marginLeft: "2%",
         },
-
     },
     topDiv: {
         backgroundColor: "#c80066",
@@ -41,20 +37,21 @@ const useStyles = makeStyles((theme) => ({
         display: "block",
         height: "60px",
         top: 0,
+        width: '100%',
         [theme.breakpoints.down("md")]: {
             height: "120px",
+            width: '100%'
         },
     },
     login: {
         [theme.breakpoints.down("md")]: {
-            display: "none",
+            // display: "none",
         },
     },
 
     input: {
         marginLeft: theme.spacing(1),
         flex: 1,
-
     },
     iconButton: {
         padding: "0.2%",
@@ -67,6 +64,12 @@ const useStyles = makeStyles((theme) => ({
         color: "white",
         textAlign: "center",
     },
+    phone: {
+        color: "#c80066",
+        paddingTop: "1%",
+        paddingLeft: "2%",
+    },
+
     divider: {
         height: 18,
         margin: 4,
@@ -85,6 +88,8 @@ function TopNav() {
     const classes = useStyles();
     const [register, setRegister] = useState(false);
     const [login, setLogin] = useState(false);
+    const [otp, setOtp] = useState(false);
+
     return (
         <>
             <Box>
@@ -97,51 +102,16 @@ function TopNav() {
           </Box>
                 </Box>
 
-                {register ? (
-                    <Box classes={{ root: styles.login }}>
-                        <Box classes={{ root: styles.inputBox }}>
-                            <input placeholder="Mobile Number" />
-                            <button className={styles.btnLogin}>Continue</button>
-                            <Button
-                                className={styles.close}
-                                onClick={() => setRegister(false)}
-                            >
-                                {" "}
-                                <img
-                                    src="https://d1z88p83zuviay.cloudfront.net/Images/login-popup-close.png"
-                                    alt="close"
-                                ></img>
-                            </Button>
-                        </Box>
-                    </Box>
-                ) : (
-                        ""
-                    )}
-                {login ? (
-                    <Box classes={{ root: styles.login }}>
-                        <Box classes={{ root: styles.inputBox }}>
-                            <input
-                                className={styles.inputEmail}
-                                placeholder="Email Address"
-                            />
-                            <input className={styles.inputEmail} placeholder="Password" />
-                            <button className={styles.btnLogin}>Login</button>
-                            <Button>Login Via OTP</Button>
-                            <Button
-                                classes={{ root: styles.close }}
-                                onClick={() => setLogin(false)}
-                            >
-                                {" "}
-                                <img
-                                    src="https://d1z88p83zuviay.cloudfront.net/Images/login-popup-close.png"
-                                    alt="close"
-                                ></img>
-                            </Button>
-                        </Box>
-                    </Box>
-                ) : (
-                        ""
-                    )}
+                {/* start from here */}
+                <LoginReg
+                    login={login}
+                    setLogin={setLogin}
+                    register={register}
+                    setRegister={setRegister}
+                    otp={otp}
+                    setOtp={setOtp}
+                />
+
                 <Box>
                     <Box classes={{ root: styles.logo }}>
                         <Link className={styles.photo} to="/">
@@ -157,37 +127,35 @@ function TopNav() {
                             <Link className={styles.Toplink} to="/">
                                 Online Slots Availability
               </Link>
-                            <Link className={styles.Toplink} to="/">
+                            <Link className={styles.Toplink} to="/freshFast">
                                 {" "}
                 Fresh & Fast
               </Link>
                             <button
-                                onClick={() => setLogin(true)}
+                                onClick={() => {
+                                    setRegister(true);
+                                    setLogin(false);
+                                }}
                                 className={styles.topRight}
                             >
                                 Register
               </button>
                             <button
-                                onClick={() => setRegister(true)}
+                                onClick={() => {
+                                    setLogin(true);
+                                    setRegister(false);
+                                }}
                                 className={styles.topRight}
                             >
                                 Login
               </button>
                         </Box>
+
                         <Box>
-                            {/* <Box className={classes.root}>
-                                <InputBase
-                                    className={classes.input}
-                                    placeholder="Start Shopping..."
-                                    inputProps={{ "aria-label": "start shopping" }}
-                                />
-                                <Box className={classes.iconButton}>
-                                    <IconButton type="submit" aria-label="search">
-                                        <SearchIcon className={classes.iconColor} />
-                                    </IconButton>
-                                </Box>
-                            </Box> */}
-                            <Box classes={{ root: styles.hoverDivSearch }} className={classes.root}>
+                            <Box
+                                classes={{ root: styles.hoverDivSearch }}
+                                className={classes.root}
+                            >
                                 <InputBase
                                     className={classes.input}
                                     placeholder="Start Shopping..."
@@ -200,11 +168,79 @@ function TopNav() {
                                 </Box>
 
                                 <Box classes={{ root: styles.innerHoverDivSearch }}>
-
                                     <p className={styles.trend}>Trending Searches</p>
-                                    <p >Indian Grocery</p>
-                                    <p >Fruits & Vegetables </p>
-                                    <p>Snacks </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Fruits-and-Vegetables/Exotic-Vegetables"
+                                            className={styles.afterTrend}
+                                        >
+                                            Exotic Vegetables
+                    </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Fruits-and-Vegetables/Daily-Vegetables"
+                                            className={styles.afterTrend}
+                                        >
+                                            Daily Vegetables{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Indian Grocery/Daily Essentials"
+                                            className={styles.afterTrend}
+                                        >
+                                            Daily essentials{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Indian Grocery/Milk and Cream"
+                                            className={styles.afterTrend}
+                                        >
+                                            Milk and Cream{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Indian Grocery/Cooking Pastes and sauces"
+                                            className={styles.afterTrend}
+                                        >
+                                            Cooking Pastes and Sauces
+                    </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Meats, Seafood and Eggs/Cold Cuts and Sausages"
+                                            className={styles.afterTrend}
+                                        >
+                                            Cold Cuts and Sausages{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Meats, Seafood and Eggs/Frozen"
+                                            className={styles.afterTrend}
+                                        >
+                                            Frozen{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Breakfast, Dairy and Bakery/Bakery"
+                                            className={styles.afterTrend}
+                                        >
+                                            Bakery{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Breakfast, Dairy and Bakery/Bars and Others"
+                                            className={styles.afterTrend}
+                                        >
+                                            Bars and Others{" "}
+                                        </Link>
+                                    </p>
                                 </Box>
                             </Box>
 

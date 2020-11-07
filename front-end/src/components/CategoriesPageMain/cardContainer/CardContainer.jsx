@@ -1,51 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory, useParams } from 'react-router-dom'
-import axios from 'axios'
+import { useDispatch, useSelector } from "react-redux";
+import { getSubcategoryProduct } from '../../Redux/product/action'
 import styles from "./CardContainer.module.css";
 import { TiShoppingCart } from "react-icons/ti";
 import Grid from '@material-ui/core/Grid';
 
 function CardContainer(props) {
-  const [data, setData] = useState([]);
+
+  const data = useSelector(state => state.product.subCategoryData)
+  const dispatch = useDispatch()
   const params = useParams()
   const history = useHistory()
   const { sub_category } = params
 
   useEffect(() => {
-    getData();
-  }, []);
+    dispatch(getSubcategoryProduct(sub_category))
 
-  const getData = async () => {
-    const config = {
-      method: "get",
-      url:
-        `http://localhost:5000/api/categories/sub-category?sub_category=${sub_category}`,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    try {
-      const result = await axios(config);
-      setData(result.data);
-    } catch (err) {
-      console.log("err", err);
-    }
-  };
+  }, [dispatch, sub_category]);
+
+
 
 
   const handleClick = () => {
     alert("Pop");
   };
-  console.log(data)
+
   return (
     <>
       <Grid container >
         {data && data.map((item, i) => {
           return (
             <>
-              <Grid onClick={() => history.push(`/dummy/${item._id}`)} key={i} container item xs={12} lg={3} md={4} sm={12} >
-                <div className={styles.productCard}>
-                  <img height="230px" src={item.product["url"]} alt={item.product["title"]} />                     <div>
+              <Grid key={i} container item xs={12} lg={3} md={4} sm={12} >
+                <div key={i} className={styles.productCard}>
+                  <img onClick={() => history.push(`/product/${item._id}`)} height="230px" src={item.product["image"]} alt={item.product["title"]} />                     <div>
                     <img
                       height="20px"
                       src="https://gnbdevcdn.s3-ap-southeast-1.amazonaws.com/Marketing/8ab57ed4-47e0-426a-8382-f4c89b11826a.png"
@@ -62,9 +51,18 @@ function CardContainer(props) {
                     </span>
                   </div>
                   <p> {item.product["title"]} </p>
-                  <p> {item.qty}</p>
+                  <p>
+                    {/* {
+                      (Array.isArray(item.product["price"])) ? item.product["price"].map((p) => (p)) : item.product["price"]
+                    } */}
+                  </p>
                   <div style={{ display: "flex", justifyContent: "center" }}>
-                    <span className={styles.mrpBorder}>MRP ₹{item.price} </span>
+                    <span className={styles.mrpBorder}>MRP ₹
+
+                    {
+                        (Array.isArray(item.product["price"])) ? 20 : item.product["price"]
+                      }
+                    </span>
                     <span onClick={handleClick} className={styles.AddBtn}>
                       <TiShoppingCart
                         style={{

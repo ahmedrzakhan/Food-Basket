@@ -2,13 +2,13 @@ import React from "react";
 import { useParams } from 'react-router-dom'
 import CardContainer from "../cardContainer/CardContainer";
 import styles from "./CategoriesPage.module.css";
-import TopNav from "./../../dashboard/TopNavBar/TopNav"
 import Grid from '@material-ui/core/Grid';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography'
 import Box from "@material-ui/core/Box";
 import Hidden from '@material-ui/core/Hidden';
+import TopNav from "../../dashboard/TopNavBar/TopNav";
+import RouteNav from "../../dashboard/TopNavBar/RouteNav";
 
 
 const checkBoxInputsArr = [
@@ -54,7 +54,6 @@ const dietaryLifestyle = [
 function CategoriesPage() {
   const params = useParams()
   const { sub_category } = params
-  console.log(sub_category)
   const checkBoxChange = (e) => {
     if ([e.target.name] === e.target.value) {
       e.target.checked = !e.target.checked;
@@ -73,7 +72,8 @@ function CategoriesPage() {
 
   return (
     <>
-      {/* <TopNav /> */}
+      <TopNav />
+      <RouteNav />
       <div style={{ clear: "both" }}></div>
       <div >
         <div className={styles.FilterClearAll}>
@@ -98,8 +98,8 @@ function CategoriesPage() {
             <Grid item style={{ borderBottom: "1px solid rgb(232, 232, 232)", padding: "10px 0px", height: "250px", overflowY: "scroll" }} sm={4} md={5} lg={12}>
               <h4 className={styles.listHeading}> {sub_category} </h4>
               <ul className={styles.checkBoxesList}>
-                {SubCategoryItemsArr.map((item) => {
-                  return <li style={{ fontSize: "15px", marginBottom: "15px" }}>{item}</li>;
+                {SubCategoryItemsArr.map((item, i) => {
+                  return <li key={i} style={{ fontSize: "15px", marginBottom: "15px" }}>{item}</li>;
                 })}
               </ul>
             </Grid>
@@ -225,10 +225,6 @@ function CategoriesPage() {
         </Grid>
       </Grid>
 
-
-
-      {/* </div> */}
-      {/* </div> */}
     </>
   );
 }
