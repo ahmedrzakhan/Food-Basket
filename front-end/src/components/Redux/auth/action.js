@@ -62,7 +62,6 @@ export const registerUser = (payload) => async (dispatch) => {
     payload,
   };
   try {
-    console.log(payload);
     const result = await axios(config);
     dispatch(regSuccess(result.data));
   } catch (err) {

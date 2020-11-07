@@ -1,3 +1,6 @@
+body {
+  font-family: CeraPRO-Regular;
+}
 .banner {
   background-image: url("https://d1z88p83zuviay.cloudfront.net/BannerImages/f98ab1c9-184b-448f-9a69-16805a73a70f_1320x376.png");
   background-size: 1500px 376px;
@@ -14,9 +17,9 @@
   width: 100%;
   font-family: "CeraPRO-Light";
 }
-.afterHead > p {
+.linking {
   color: #333;
-  list-style: none;
+  text-decoration: none;
   text-align: left;
   font-size: 13px;
   letter-spacing: 1px;

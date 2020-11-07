@@ -1,3 +1,7 @@
+body {
+  font-family: CeraPRO-Regular;
+}
+
 .innerDiv {
   padding-top: 9px;
   padding-left: 2px;
@@ -94,6 +98,7 @@
   font-size: 14px;
   padding: 0.8%;
   margin: 1%;
+  padding: 1.2%;
 }
 .otpEmail {
   border: 1px solid #9f9f9f;
@@ -119,12 +124,12 @@
   float: left;
   margin: 2%;
 }
-.outerBox > input {
+.outerBox > .inn {
   border: none;
   outline: none;
   width: 100px;
   padding-top: 0.5%;
-  padding-bottom: 2%;
+  /* padding-bottom: 1%; */
   align-items: center;
   margin-bottom: 5%;
 }
@@ -199,7 +204,7 @@
 }
 
 .innerHoverDiv > p {
-  padding: 12px 16px;
+  /* padding: 12px 16px; */
   display: block;
   border-bottom: 1px solid #e1e1e1;
 }
@@ -209,6 +214,9 @@
 
 .innerHoverDiv > p:hover {
   background-color: #85b847;
+  color: white;
+}
+.shop:hover {
   color: white;
 }
 .chevron > :hover {
@@ -251,9 +259,26 @@
 .hoverDivSearch:hover .innerHoverDivSearch {
   display: block;
 }
+.shop {
+  text-decoration: none;
+  color: grey;
+  font-family: "CeraPRO-Regular", "CeraPRO-Light";
+  font-size: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 .trend {
   color: #c94267;
   font-family: "CeraPRO-Light", "CeraPRO-Regular";
+  font-size: 20px;
+}
+.afterTrend {
+  text-decoration: none;
+  color: black;
+  font-family: "CeraPRO-Regular", "CeraPRO-Light";
+  font-size: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 @media screen and (max-width: 1300px) and (min-width: 200px) {
   .innerHoverDivSearch {

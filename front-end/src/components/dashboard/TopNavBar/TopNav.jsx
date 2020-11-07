@@ -1,24 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import Box from "@material-ui/core/Box";
+import { Box, InputBase, Divider, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import InputBase from "@material-ui/core/InputBase";
-import Divider from "@material-ui/core/Divider";
 import SearchIcon from "@material-ui/icons/Search";
-import IconButton from "@material-ui/core/IconButton";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import PhoneAndroidOutlinedIcon from "@material-ui/icons/PhoneAndroidOutlined";
 import StarIcon from "@material-ui/icons/Star";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
-import EmailIcon from "@material-ui/icons/Email";
-import VpnKeyIcon from "@material-ui/icons/VpnKey";
-import FormHelperText from "@material-ui/core/FormHelperText";
-
-import { registerUser, loginUser } from "../../Redux/auth/action";
+import LoginReg from "./LoginReg";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,13 +37,15 @@ const useStyles = makeStyles((theme) => ({
         display: "block",
         height: "60px",
         top: 0,
+        width: '100%',
         [theme.breakpoints.down("md")]: {
             height: "120px",
+            width: '100%'
         },
     },
     login: {
         [theme.breakpoints.down("md")]: {
-            display: "none",
+            // display: "none",
         },
     },
 
@@ -99,53 +89,6 @@ function TopNav() {
     const [register, setRegister] = useState(false);
     const [login, setLogin] = useState(false);
     const [otp, setOtp] = useState(false);
-    const [logEmail, setLogEmail] = useState("");
-    const [logPassword, setLogPassword] = useState("");
-    const [regEmail, setRegEmail] = useState("");
-    const [regPassword, setRegPassword] = useState("");
-    const [mobile, setMobile] = useState("");
-    const [userOtp, setUserOtp] = useState("");
-
-    const dispatch = useDispatch();
-    const { isError, message, validation } = useSelector((state) => state.auth);
-    const handleLogin = () => {
-        dispatch(loginUser({ logEmail, logPassword }));
-    };
-    const handleRegister = () => {
-        let obj = {
-            email: regEmail,
-            password: regPassword,
-            userOTP: userOtp,
-            username: regEmail,
-            mobile_no: mobile,
-        };
-        console.log(obj)
-        dispatch(registerUser(obj));
-        alert("user successfully logged in");
-    };
-    const handleOtp = async () => {
-        setRegister(false);
-        setLogin(false);
-        setOtp(true);
-        if (mobile.length < 10 || isNaN(Number(mobile))) {
-            return;
-        }
-        const data = { mobileNumber: mobile };
-        var config = {
-            method: "post",
-            url: "http://localhost:5000/api/user/send-otp",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            data: data,
-        };
-        try {
-            const result = await axios(config);
-            console.log(result.data);
-        } catch (err) {
-            console.log(err);
-        }
-    };
 
     return (
         <>
@@ -159,167 +102,15 @@ function TopNav() {
           </Box>
                 </Box>
 
-                {register ? (
-                    <Box classes={{ root: styles.login }}>
-                        <Box classes={{ root: styles.inputBox }}>
-                            <Box classes={{ root: styles.outerBox }}>
-                                <PhoneAndroidOutlinedIcon className={classes.phone} />
-                                <input
-
-                                    name="mobile"
-                                    value={mobile}
-                                    onChange={(e) => setMobile(e.target.value)}
-                                    placeholder="Mobile No."
-                                />
-                            </Box>
-
-                            <button onClick={handleOtp} className={styles.btnLogin}>
-                                Continue
-              </button>
-                            <Button
-                                className={styles.close}
-                                onClick={() => {
-                                    setRegister(false);
-                                    setLogin(false);
-                                    setOtp(false);
-                                }}
-                            >
-                                {" "}
-                                <img
-                                    src="https://d1z88p83zuviay.cloudfront.net/Images/login-popup-close.png"
-                                    alt="close"
-                                ></img>
-                            </Button>
-                        </Box>
-                    </Box>
-                ) : login ? (
-                    <Box classes={{ root: styles.login }}>
-                        <Box classes={{ root: styles.inputBox }}>
-                            <Box classes={{ root: styles.outerBox }}>
-                                <EmailIcon className={classes.phone} />
-                                <input
-                                    name="logEmail"
-                                    value={logEmail}
-                                    onChange={(e) => setLogEmail(e.target.value)}
-                                    className={styles.otpEmail}
-                                    placeholder="Email Address"
-                                />
-                            </Box>
-                            <Box classes={{ root: styles.outerBox }}>
-                                <VpnKeyIcon className={classes.phone} />
-                                <input
-                                    type="password"
-                                    name="logPassword"
-                                    value={logPassword}
-                                    onChange={(e) => setLogPassword(e.target.value)}
-                                    className={styles.inputEmail}
-                                    placeholder="Set Password"
-                                />
-                            </Box>
-                            <button onClick={() => handleLogin} className={styles.btnLogin}>
-                                Login
-              </button>
-                            <Button>Login Via OTP</Button>
-                            <Button
-                                classes={{ root: styles.close }}
-                                onClick={() => {
-                                    setRegister(false);
-                                    setLogin(false);
-                                    setOtp(false);
-                                }}
-                            >
-                                {" "}
-                                <img
-                                    src="https://d1z88p83zuviay.cloudfront.net/Images/login-popup-close.png"
-                                    alt="close"
-                                ></img>
-                            </Button>
-                        </Box>
-                        {isError && (
-                            <Typography
-                                variant="subtitle1"
-                                component="h3"
-                                gutterBottom
-                                color="error"
-                            >
-                                {message}
-                            </Typography>
-                        )}
-                    </Box>
-                ) : otp ? (
-                    <Box classes={{ root: styles.login }}>
-                        <Box classes={{ root: styles.otpBox }}>
-                            <Box classes={{ root: styles.outerBox }}>
-                                <PhoneAndroidOutlinedIcon className={classes.phone} />
-                                <input placeholder="Mobile No." />
-                            </Box>
-                            <input
-                                name="otp"
-                                value={userOtp}
-                                onChange={(e) => setUserOtp(e.target.value)}
-                                className={styles.inputEmail}
-                                placeholder="Enter OTP"
-                            />
-
-                            <Box classes={{ root: styles.outerBox }}>
-                                <EmailIcon className={classes.phone} />
-                                <input
-                                    name="regEmail"
-                                    value={regEmail}
-                                    onChange={(e) => setRegEmail(e.target.value)}
-                                    className={styles.otpEmail}
-                                    placeholder="Email Address"
-                                />
-                                {/* {validation && validation.split(" ")[0] === '"email"' && (
-                                    <FormHelperText error>{validation}</FormHelperText>
-                                )} */}
-                            </Box>
-                            <Box classes={{ root: styles.outerBox }}>
-                                <VpnKeyIcon className={classes.phone} />
-                                <input
-                                    type="password"
-                                    name="regPassword"
-                                    value={regPassword}
-                                    onChange={(e) => setRegPassword(e.target.value)}
-                                    className={styles.inputEmail}
-                                    placeholder="Set Password"
-                                />
-                                {validation && validation.split(" ")[0] === '"password"' && (
-                                    <FormHelperText error>{validation}</FormHelperText>
-                                )}
-                            </Box>
-                            <button onClick={handleRegister} className={styles.btnLogin}>
-                                Register
-              </button>
-                            <Button
-                                classes={{ root: styles.close }}
-                                onClick={() => {
-                                    setRegister(false);
-                                    setLogin(false);
-                                    setOtp(false);
-                                }}
-                            >
-                                {" "}
-                                <img
-                                    src="https://d1z88p83zuviay.cloudfront.net/Images/login-popup-close.png"
-                                    alt="close"
-                                ></img>
-                            </Button>
-                        </Box>
-                        {isError && (
-                            <Typography
-                                variant="subtitle1"
-                                component="h3"
-                                gutterBottom
-                                color="error"
-                            >
-                                {message}
-                            </Typography>
-                        )}
-                    </Box>
-                ) : (
-                                ""
-                            )}
+                {/* start from here */}
+                <LoginReg
+                    login={login}
+                    setLogin={setLogin}
+                    register={register}
+                    setRegister={setRegister}
+                    otp={otp}
+                    setOtp={setOtp}
+                />
 
                 <Box>
                     <Box classes={{ root: styles.logo }}>
@@ -336,7 +127,7 @@ function TopNav() {
                             <Link className={styles.Toplink} to="/">
                                 Online Slots Availability
               </Link>
-                            <Link className={styles.Toplink} to="/">
+                            <Link className={styles.Toplink} to="/freshFast">
                                 {" "}
                 Fresh & Fast
               </Link>
@@ -378,9 +169,78 @@ function TopNav() {
 
                                 <Box classes={{ root: styles.innerHoverDivSearch }}>
                                     <p className={styles.trend}>Trending Searches</p>
-                                    <p>Indian Grocery</p>
-                                    <p>Fruits & Vegetables </p>
-                                    <p>Snacks </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Fruits-and-Vegetables/Exotic-Vegetables"
+                                            className={styles.afterTrend}
+                                        >
+                                            Exotic Vegetables
+                    </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Fruits-and-Vegetables/Daily-Vegetables"
+                                            className={styles.afterTrend}
+                                        >
+                                            Daily Vegetables{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Indian Grocery/Daily Essentials"
+                                            className={styles.afterTrend}
+                                        >
+                                            Daily essentials{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Indian Grocery/Milk and Cream"
+                                            className={styles.afterTrend}
+                                        >
+                                            Milk and Cream{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Indian Grocery/Cooking Pastes and sauces"
+                                            className={styles.afterTrend}
+                                        >
+                                            Cooking Pastes and Sauces
+                    </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Meats, Seafood and Eggs/Cold Cuts and Sausages"
+                                            className={styles.afterTrend}
+                                        >
+                                            Cold Cuts and Sausages{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Meats, Seafood and Eggs/Frozen"
+                                            className={styles.afterTrend}
+                                        >
+                                            Frozen{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Breakfast, Dairy and Bakery/Bakery"
+                                            className={styles.afterTrend}
+                                        >
+                                            Bakery{" "}
+                                        </Link>
+                                    </p>
+                                    <p>
+                                        <Link
+                                            to="/home/Breakfast, Dairy and Bakery/Bars and Others"
+                                            className={styles.afterTrend}
+                                        >
+                                            Bars and Others{" "}
+                                        </Link>
+                                    </p>
                                 </Box>
                             </Box>
 

@@ -1,3 +1,6 @@
+body {
+  font-family: CeraPRO-Regular;
+}
 .productsDisplay {
   display: flex;
   flex-wrap: wrap;
@@ -41,12 +44,11 @@
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
-.checkBoxesList li:hover { 
-  color: rgb(146, 190, 77); 
+.checkBoxesList li:hover {
+  color: rgb(146, 190, 77);
   cursor: pointer;
-}​
-
-.listHeading {
+}
+​ .listHeading {
   margin-left: 40px;
   font-size: 14px;
 }
