@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from 'react-router-dom'
-import axios from 'axios'
+import React from "react";
 import styles from "./dashboard.module.css";
 import Box from "@material-ui/core/Box";
 import Carousel from "react-material-ui-carousel";
@@ -33,37 +31,13 @@ const useStyles = makeStyles((theme) => ({
     },
     main: {
         maxWidth: "100%",
-        paddingBottom: "5%"
+        paddingBottom: "5%",
+        margin: 'auto'
     },
 }));
 
 function Dashboard() {
     const classes = useStyles()
-    const [data, setData] = useState([])
-    const history = useHistory()
-
-    useEffect(() => {
-        getData()
-    }, [])
-
-    const getData = async () => {
-        const config = {
-            method: "get",
-            url:
-                "http://localhost:5000/api/categories/category?category=Fruits-and-Vegetables",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
-        try {
-            const result = await axios(config);
-            setData(result.data);
-        } catch (err) {
-            console.log("err", err);
-        }
-    };
-
-
 
     const items = [
         {
@@ -156,13 +130,13 @@ function Dashboard() {
                             <span className={styles.afterHead}>
                                 <p>
                                     Asparagus Artichokes
-                 <ArrowRightOutlinedIcon classes={{ root: styles.arrow }} />
+                 {/* <ArrowRightOutlinedIcon classes={{ root: styles.arrow }} /> */}
                                 </p>
                             </span>
                             <span className={styles.afterHead}>
                                 <p>
                                     Avocados Peppers
-                 <ArrowRightOutlinedIcon classes={{ root: styles.arrow }} />
+                 {/* <ArrowRightOutlinedIcon classes={{ root: styles.arrow }} /> */}
                                 </p>
                             </span>
                             <span className={styles.afterHead}>
@@ -198,7 +172,7 @@ function Dashboard() {
                             </span>
                             <span className={styles.afterHead}>
                                 <p>
-                                    <span>View All</span>
+                                    <Link className={styles.span} to="/home/Meats Seafoods & Eggs/Cold Cuts & Sausage">View All</Link>
                                 </p>
                             </span>
                         </Grid>
@@ -225,17 +199,19 @@ function Dashboard() {
                                 <p>Muffins Cakes Brownies</p>
                             </span>
                             <span className={styles.afterHead}>
-                                <Link href="/home" onClick={() => history.push('/home/Breakfast Dairy & Bakery/Fresh Artisanal Breads')}>
-                                    View All
-                                </Link>
+                                <p>
+                                    <Link className={styles.span} to="/home/Breakfast Dairy & Bakery/Fresh Artisanal Breads">View All</Link>
+                                </p>
                             </span>
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
-                            <img onClick={() => history.push('/home/Indian Grocery/Daily Essentials')}
-                                width="95%"
-                                src="https://www.naturesbasket.co.in/Images/static/Daily-Essentials.png"
-                                alt="tea"
-                            />
+                            <Link to="/home/Indian Grocery/Daily Essentials">
+                                <img
+                                    width="95%"
+                                    src="https://www.naturesbasket.co.in/Images/static/Daily-Essentials.png"
+                                    alt="tea"
+                                />
+                            </Link>
                             <p>
                                 <Link to='/home/Indian Grocery/Daily Essentials' className={styles.link}>Daily Essentials</Link>
                             </p>
@@ -254,7 +230,7 @@ function Dashboard() {
 
                             <span className={styles.afterHead}>
                                 <p>
-                                    <span>View All</span>
+                                    <Link className={styles.span} to="/home/Indian Grocery/Daily Essentials">View All</Link>
                                 </p>
                             </span>
                         </Grid>
