@@ -15,6 +15,6 @@ router.post("/send-otp", sendOTP);
 
 router.post("/register", [body("email").isEmail()], registerUser);
 
-router.post("/login", [body("email").isEmail()], loginUser);
+router.post("/login", loginUser);
 
 module.exports = router;

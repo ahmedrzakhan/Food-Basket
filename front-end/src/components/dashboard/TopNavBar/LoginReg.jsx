@@ -49,6 +49,7 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
     const dispatch = useDispatch();
     const { isError, message, validation } = useSelector((state) => state.auth);
     const handleLogin = () => {
+        alert("1")
         dispatch(loginUser({ logEmail, logPassword }));
     };
     const handleRegister = () => {
@@ -192,6 +193,16 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
                             <InputBase
                                 name="regEmail"
                                 value={regEmail}
+                                onChange={handleChange}
+                                classes={{ root: styles.inn }}
+                                placeholder="Email Address"
+                            />
+                        </Box>
+                        <Box classes={{ root: styles.outerBox }}>
+                            <EmailIcon className={classes.phone} />
+                            <InputBase
+                                name="regPassword"
+                                value={regPassword}
                                 onChange={handleChange}
                                 classes={{ root: styles.inn }}
                                 placeholder="Email Address"

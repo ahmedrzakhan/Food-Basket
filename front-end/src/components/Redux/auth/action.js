@@ -25,11 +25,11 @@ const loginFailure = (payload) => ({
 });
 
 export const loginUser = (payload) => async (dispatch) => {
-  dispatch(loginAttempt());
+  dispatch(loginAttempt(payload));
   var config = {
     method: "post",
     url: "http://localhost:5000/api/user/login",
-    payload,
+    data: payload,
   };
   try {
     const result = await axios(config);
@@ -55,12 +55,16 @@ const regFailure = (payload) => ({
 });
 
 export const registerUser = (payload) => async (dispatch) => {
-  dispatch(regAttempt());
+  dispatch(regAttempt(payload));
   var config = {
     method: "post",
     url: "http://localhost:5000/api/user/register",
-    payload,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: payload,
   };
+
   try {
     const result = await axios(config);
     dispatch(regSuccess(result.data));
