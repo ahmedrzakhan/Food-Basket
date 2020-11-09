@@ -4,19 +4,33 @@ import Box from '@material-ui/core/Box';
 import { Grid } from "@material-ui/core";
 import styles from "./AddProduct.module.css"
 import { TiShoppingCart } from "react-icons/ti";
-import dataArr from "./testData"
+import { useHistory, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+// import dataArr from "./testData"
 
 function AddProduct(props)
 {
     const [counter, setCounter] = React.useState(0)
     const [hideFlag, setHideFlag] = React.useState(false)
+    const dataArr = useSelector(state => state.product.subCategoryData)
     let storageArr = []
+    const dispatch = useDispatch()
+    const params = useParams()
 
-    console.log(props)
+    const { sub_category } = params
+    console.log(sub_category)
+    console.log(props.id, "PROPS")
     // console.log(dataArr)
+    console.log(dataArr)
 
     let prodId = props.id
 
+    let itemFromDataArr = dataArr.find(item => prodId === item._id)
+    let itemFromLocalStorage = JSON.parse(localStorage.getItem(`${prodId}`)) || ""
+    
+    console.log(itemFromDataArr, "ITEM FROM DATA ARR")
+    console.log(itemFromLocalStorage, "ITEM FROM LOCAL STORAGE")
+    
     const handleAddClick = () => {
 
         setCounter(counter => counter + 1)
@@ -24,7 +38,21 @@ function AddProduct(props)
 
         setHideFlag(true)
 
-        let reqProd = dataArr.find(item => prodId === item.id)
+        let reqitem = dataArr.find(item => prodId === item._id ) 
+
+        console.log(reqitem)
+
+        let reqProd = {
+                id: reqitem._id, 
+                title: reqitem.product.title, 
+                imageLink: reqitem.product.image, 
+                category: reqitem.category, 
+                // price: reqitem.price.map(item => item),
+                inCartQty: 0 ,
+                presentInCart: false
+            }
+
+        console.log(reqProd)    
 
         // storageArr = JSON.parse(localStorage.getItem("all-prods")) || []
 
@@ -37,9 +65,6 @@ function AddProduct(props)
             localStorage.setItem(`${reqProd.id}`, JSON.stringify(reqProd))
         }
             
-        
-
-        console.log(reqProd, "REQ PROD")
     }
 
     const handleCounterAdd = () => {
@@ -68,7 +93,7 @@ function AddProduct(props)
         reqProdToDec.inCartQty = reqProdToDec.inCartQty - 1
 
         
-        if(JSON.parse(localStorage.getItem(`${prodId}`)).inCartQty === 0)
+        if(reqProdToDec.inCartQty == 0)
         {
             // let itemToRemove = JSON.parse(lo)
             reqProdToDec = JSON.parse(localStorage.getItem(`${prodId}`))
@@ -76,37 +101,38 @@ function AddProduct(props)
             reqProdToDec.presentInCart = false
 
             localStorage.setItem(`${prodId}`, JSON.stringify(reqProdToDec))
-            localStorage.removeItem(`${reqProdToDec.id}`)
+            localStorage.removeItem(`${prodId}`)
+            console.log("REMOVED", prodId)
             return
 
         }
         localStorage.setItem(`${prodId}`, JSON.stringify(reqProdToDec))
     }
 
-    for(let i=0; i<=localStorage.length; i++)
-    {
-        console.log(localStorage[i])
-    }
+    // for(let i=0; i<=localStorage.length; i++)
+    // {
+    //     console.log(localStorage[i])
+    // }
     return(
         <>
-            <Box style={{margin: "50px"}}>
+            <Box>
                 <div style={{clear: "both"}}></div>
                 {
-                    hideFlag && counter>0?
+                    hideFlag && counter>0 ||itemFromLocalStorage.inCartQty > 0?
                     <Grid container>
                         <span className={styles.AddDecBtn} onClick={handleCounterDec}>-</span>
-                        <span className={styles.AddDecBtn}>{counter}</span>
+                        <span className={styles.AddDecBtn}>{itemFromLocalStorage.inCartQty}</span>
                         <span className={styles.AddDecBtn} onClick={handleCounterAdd}>+</span>
                     </Grid>
                     :
-                    <Button variant="contained" onClick={handleAddClick} color="primary"> 
+                    <Button variant="contained" onClick={handleAddClick} style={{background: "#92BE4B", color: "white"}}> 
                     <TiShoppingCart
                         style={{
                         color: "white",
                         marginRight: "2px",
                         marginTop: "-2px",
                         }}
-                    /> Add
+                    /> <span style={{color: "white"}}>Add </span> 
                   </Button>
                 }
             </Box>

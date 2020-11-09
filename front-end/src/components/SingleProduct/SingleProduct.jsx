@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,  useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleProduct } from "../Redux/product/action";
 import Box from "@material-ui/core/Box";
@@ -64,14 +64,15 @@ function SingleProduct() {
   const data = useSelector((state) => state.product.singleProData);
   const dispatch = useDispatch();
   const params = useParams();
-
+  const history = useHistory()
 
   useEffect(() => {
     dispatch(getSingleProduct(params.id));
   }, [dispatch, params.id]);
 
   const handleAddClick = () => {
-    alert("Clicked on Add button");
+    // alert("Clicked on Add button");
+    history.go(-1)
   };
   console.log(data);
   if (data.length === 0) {
@@ -161,5 +162,4 @@ function SingleProduct() {
     </>
   );
 }
-
 export default SingleProduct;

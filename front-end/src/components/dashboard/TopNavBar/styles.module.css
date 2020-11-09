@@ -169,8 +169,8 @@ body {
   .col1 {
     flex: 1;
   }
-  .hoverDiv>span{
-    font-size:13px
+  .hoverDiv > span {
+    font-size: 13px;
   }
 }
 .col {
@@ -207,27 +207,23 @@ body {
 }
 
 .innerHoverDiv > div {
-  
   display: block;
   border-bottom: 1px solid #e1e1e1;
-  margin:0px;
+  margin: 0px;
   text-align: left;
-  padding:0.5%;
-  margin-left:1%
+  padding: 0.5%;
+  margin-left: 1%;
 }
 
 .innerHoverDiv > div:hover {
   background-color: #85b847;
   color: white;
-
 }
-.box{
-  float:left;
-  width:90%;
-  text-align:left
+.box {
+  float: left;
+  width: 90%;
+  text-align: left;
 }
-
-
 
 .shop:hover {
   color: white;
@@ -244,9 +240,7 @@ body {
 }
 .chevron {
   color: grey;
-
 }
-
 
 .hoverDivSearch {
   position: relative;
@@ -266,7 +260,7 @@ body {
 .innerHoverDivSearch > p {
   /* padding: 12px 16px; */
   display: block;
-  text-align:center
+  text-align: center;
 }
 
 .hoverDivSearch:hover .innerHoverDivSearch {
@@ -279,19 +273,16 @@ body {
   font-size: 16px;
   padding-top: 10px;
   padding-bottom: 10px;
- 
-  
 }
-.demo{
-width:90%;
- float:left
-
+.demo {
+  width: 90%;
+  float: left;
 }
 .trend {
   color: #c94267;
   font-family: "CeraPRO-Light", "CeraPRO-Regular";
   font-size: 20px;
-  text-align:center
+  text-align: center;
 }
 .afterTrend {
   text-decoration: none;

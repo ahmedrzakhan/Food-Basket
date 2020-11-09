@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSubcategoryProduct } from "../../Redux/product/action";
 import styles from "./CardContainer.module.css";
 import { TiShoppingCart } from "react-icons/ti";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import AddProduct from "./../../AddProduct/AddProduct"
+
 
 function CardContainer(props) {
   const data = useSelector((state) => state.product.subCategoryData);
@@ -66,37 +68,19 @@ function CardContainer(props) {
                       </div>
                       <p style={{textAlign:"center "}}> {items.product["title"]} </p>
                       <p>
-                        {/* {
-                      (Array.isArray(item.product["price"])) ?
-                        item.product["price"].map((p) => (
-                       
-                        } */}
-                      </p>
-                      <div
-                        style={{ display: "flex", justifyContent: "center" }}
-                      >
-                        <span className={styles.mrpBorder}>
-                          MRP ₹
-                          {/* {
-                        (Array.isArray(item.product["price"])) ? item.product["price"].includes(200)? : item.product["price"]
-                      } */}
-                        </span>
-                        <span onClick={handleClick} className={styles.AddBtn}>
-                          <TiShoppingCart
-                            style={{
-                              color: "white",
-                              marginRight: "2px",
-                              marginTop: "-2px",
-                            }}
-                          />
-                          Add
-                        </span>
-                      </div>
-                    </div>
-                  </Grid>
-                </>
-              );
-            })}
+                        {
+                  </p>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <span className={styles.mrpBorder}>MRP ₹
+                    </span>
+                      <AddProduct id={item._id} />
+
+                  </div>
+                </div>
+              </Grid>
+            </>
+          );
+        })}
         </Grid>
       </Container>
     </>
