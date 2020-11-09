@@ -18,14 +18,23 @@ body {
   font-family: "CeraPRO-Light";
 }
 .linking {
-  color: #333;
+  color: #5f615f;
   text-decoration: none;
   text-align: left;
-  font-size: 13px;
+  font-size: 16px;
   letter-spacing: 1px;
   padding: 10px 0 10px 3px;
-  border-bottom: 1px solid #f1f1f1;
+  /* border-bottom: 1px solid #f1f1f1; */
   margin: 0em;
+  font-weight: initial;
+}
+.arrowBox{
+
+  float:left;
+  width:80%;
+  text-align:left;
+    border-bottom: 1px solid #f1f1f1;
+
 }
 .span {
   color: #83b748;
@@ -59,6 +68,7 @@ small {
   flex: 1;
   margin: 1%;
 }
+
 .event > .imageBoxEvent > img {
   margin: 1%;
 }
@@ -69,12 +79,16 @@ small {
   margin-right: 20%;
 }
 .arrow {
-  margin-right: 5px;
-  width: 5%;
   color: gray;
 }
-@media screen and (max-width: 960px) and (min-width: 200px) {
+@media screen and (max-width: 800px) and (min-width: 200px) {
   .imageBoxEvent {
     width: 100%;
+
+  }
+  .event{
+    flex-direction: column;
+        margin-right:2%
   }
 }
+

@@ -5,6 +5,7 @@ import { getSubcategoryProduct } from '../../Redux/product/action'
 import styles from "./CardContainer.module.css";
 import { TiShoppingCart } from "react-icons/ti";
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 
 function CardContainer(props) {
 
@@ -28,12 +29,13 @@ function CardContainer(props) {
 
   return (
     <>
-      <Grid container >
+      <Container>
+      <Grid m={2}container >
         {data && data.map((item, i) => {
           return (
             <>
-              <Grid key={i} container item xs={12} lg={3} md={4} sm={12} >
-                <div key={i} className={styles.productCard}>
+              <Grid m={2}key={i} container item xs={12} lg={3} md={6} sm={6} >
+                <div  className={styles.productCard}>
                   <img onClick={() => history.push(`/product/${item._id}`)} height="230px" src={item.product["image"]} alt={item.product["title"]} />                     <div>
                     <img
                       height="20px"
@@ -53,15 +55,17 @@ function CardContainer(props) {
                   <p> {item.product["title"]} </p>
                   <p>
                     {/* {
-                      (Array.isArray(item.product["price"])) ? item.product["price"].map((p) => (p)) : item.product["price"]
-                    } */}
+                      (Array.isArray(item.product["price"])) ?
+                        item.product["price"].map((p) => (
+                       
+                        } */}
                   </p>
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <span className={styles.mrpBorder}>MRP ₹
 
-                    {
-                        (Array.isArray(item.product["price"])) ? 20 : item.product["price"]
-                      }
+                    {/* {
+                        (Array.isArray(item.product["price"])) ? item.product["price"].includes(200)? : item.product["price"]
+                      } */}
                     </span>
                     <span onClick={handleClick} className={styles.AddBtn}>
                       <TiShoppingCart
@@ -79,7 +83,8 @@ function CardContainer(props) {
             </>
           );
         })}
-      </Grid>
+        </Grid>
+      </Container>
     </>
   );
 }
