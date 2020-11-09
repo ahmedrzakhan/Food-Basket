@@ -9,6 +9,7 @@ import Box from "@material-ui/core/Box";
 import Hidden from '@material-ui/core/Hidden';
 import TopNav from "../../dashboard/TopNavBar/TopNav";
 import RouteNav from "../../dashboard/TopNavBar/RouteNav";
+import Footer from '../../Footer/Footer'
 
 
 const checkBoxInputsArr = [
@@ -224,6 +225,7 @@ function CategoriesPage() {
           </Box>
         </Grid>
       </Grid>
+      <Footer />
 
     </>
   );
