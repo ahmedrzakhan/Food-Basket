@@ -67,13 +67,11 @@ function CardContainer(props) {
                         </span>
                       </div>
                       <p style={{textAlign:"center "}}> {items.product["title"]} </p>
-                      <p>
-                        {
-                  </p>
+                   
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <span className={styles.mrpBorder}>MRP ₹
                     </span>
-                      <AddProduct id={item._id} />
+                      <AddProduct id={items._id} />
 
                   </div>
                 </div>

@@ -147,6 +147,7 @@ function CategoriesPage() {
                 })}
               </ul>
             </Grid>
+            </Grid>
           </Grid>
         </Hidden>
 
@@ -228,6 +229,7 @@ function CategoriesPage() {
           </Box>
         </Grid>
       </Grid>
+       
       <Footer />
 
     </>
