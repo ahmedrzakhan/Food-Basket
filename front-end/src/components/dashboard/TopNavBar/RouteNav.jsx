@@ -19,7 +19,7 @@ function RouteNav() {
             <Box classes={{ root: styles.innerHoverDiv }}>
               <div>
                 <div className={styles.box}>
-                  <Link className={styles.shop} to="/home/Indian Grocery">
+                  <Link className={styles.shop} to="/home/Indian_Grocery">
                     Indian Grocery
                   </Link>
                 </div>
@@ -31,7 +31,7 @@ function RouteNav() {
               </div>
               <div>
                 <div className={styles.box}>
-                  <Link className={styles.shop} to="/home/Indian Grocery">
+                  <Link className={styles.shop} to="/home/Fruits-and-Vegetables">
                     {" "}
                     Fruits and Vegetables{" "}
                   </Link>
@@ -44,7 +44,7 @@ function RouteNav() {
               </div>
               <div>
                 <div className={styles.box}>
-                  <Link className={styles.shop} to="/">
+                  <Link className={styles.shop} to="/home/Meats, Seafood and Eggs">
                     {" "}
                     Meats, Seafood and Eggs{" "}
                   </Link>
@@ -57,7 +57,7 @@ function RouteNav() {
               </div>
               <div>
                 <div className={styles.box}>
-                  <Link className={styles.shop} to="/">
+                  <Link className={styles.shop} to="/home/Breakfast, Dairy and Bakery">
                     {" "}
                     Breakfast, Dairy and Bakery{" "}
                   </Link>
@@ -69,45 +69,7 @@ function RouteNav() {
                 </div>
               </div>
 
-              {/* <p>
-                                <Link className={styles.shop} to="/home/Indian Grocery">
-                                    Indian Grocery
-                                     
-                                </Link>
-                                <span  classes={{ root: styles.chevron }}>
-                                    <ChevronRightOutlinedIcon  />
-                                </span>
-                            </p>
-                            <p>
-                                <Link className={styles.shop} to="/home/Fruits-and-Vegetables">
-                                    Fruits and Vegetables{" "}
-                                    <span >
-                                        <ChevronRightOutlinedIcon classes={{ root: styles.chevron }} />
-                                    </span>
-                                </Link>
-                            </p>
-                            <p>
-                                <Link
-                                    className={styles.shop}
-                                    to="/home/Meats, Seafood and Eggs"
-                                >
-                                    Meats, Seafood and Eggs{" "}
-                                    <span >
-                                        <ChevronRightOutlinedIcon classes={{ root: styles.chevron }}/>
-                                    </span>
-                                </Link>
-                            </p>
-                            <p>
-                                <Link
-                                    className={styles.shop}
-                                    to="/home/Breakfast, Dairy and Bakery"
-                                >
-                                    Breakfast, Dairy and Bakery{" "}
-                                    <span >
-                                        <ChevronRightOutlinedIcon classes={{ root: styles.chevron }}/>
-                                    </span>
-                                </Link>
-                            </p> */}
+             
             </Box>
           </Box>
         </Box>

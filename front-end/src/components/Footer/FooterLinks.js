@@ -4,27 +4,27 @@ const details = [
     links: [
       {
         title: "",
-        url: "/",
+       
       },
       {
         title: "",
-        url: "/",
+       
       },
       {
         title: "",
-        url: "/",
+       
       },
       {
         title: "",
-        url: "/",
+       
       },
       {
         title: "",
-        url: "/",
+       
       },
       {
         title: "",
-        url: "/",
+       
       },
     ],
   },
@@ -33,27 +33,27 @@ const details = [
     links: [
       {
         title: "About Us",
-        url: "/About Us",
+ 
       },
       {
         title: "Our Vision & Purpose",
-        url: "/Our Vision & Purpose",
+    
       },
       {
         title: "Quality Standards",
-        url: "/Quality Standards",
+     
       },
       {
         title: "Awards",
-        url: "/Awards",
+     
       },
       {
         title: "FAQ'S",
-        url: "/FAQ'S",
+ 
       },
       {
         title: "Vendors Connect",
-        url: "/Vendors Connect",
+     
       },
     ],
   },
@@ -62,27 +62,27 @@ const details = [
     links: [
       {
         title: "Press Releases",
-        url: "/Press Releases",
+       
       },
       {
         title: "Newsletters",
-        url: "/Newsletters",
+       
       },
       {
         title: "Events",
-        url: "/Events",
+       
       },
       {
         title: "Photo Gallery",
-        url: "/Photo Gallery",
+     
       },
       {
         title: "Recipes",
-        url: "/Recipes",
+ 
       },
       {
         title: "NBTV",
-        url: "/NBTV",
+ 
       },
     ],
   },
@@ -91,7 +91,7 @@ const details = [
     links: [
       {
         title: "Privacy Policy",
-        url: "/Privacy Policy",
+     
       },
       {
         title: "Payment Policy",
