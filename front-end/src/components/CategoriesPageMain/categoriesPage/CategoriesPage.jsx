@@ -10,6 +10,7 @@ import Hidden from '@material-ui/core/Hidden';
 import TopNav from "../../dashboard/TopNavBar/TopNav";
 import RouteNav from "../../dashboard/TopNavBar/RouteNav";
 import Footer from '../../Footer/Footer'
+import CategoryCard from '../cardContainer/CategoryCard'
 
 
 const checkBoxInputsArr = [
@@ -55,12 +56,12 @@ const dietaryLifestyle = [
 function CategoriesPage() {
   const params = useParams()
   const { sub_category } = params
+  const { categories } = params
   const checkBoxChange = (e) => {
     if ([e.target.name] === e.target.value) {
       e.target.checked = !e.target.checked;
     }
   };
-
   const checkBoxClick = (e) => {
     if (e.target.checked === true) {
       alert(e.target.value);
@@ -96,6 +97,8 @@ function CategoriesPage() {
         <div style={{ clear: "both" }}></div>
         <Hidden only={['sm', 'md', 'xs']}>
           <Grid display={{ xs: 'none', sm: 'none', md: 'none', lg: 'block' }} item sm={12} md={12} lg={2} style={{ border: "1px solid rgb(232, 232, 232)" }}>
+            <Grid item style={{ borderBottom: "1px solid rgb(232, 232, 232)", padding: "10px 0px", height: "250px", overflowY: "scroll" }} sm={4} md={5} lg={12}>
+              <h4 className={styles.listHeading}>  {categories === undefined ? sub_category : categories} </h4>
             <Grid className={styles.ScrollBarContainer} item style={{ borderBottom: "1px solid rgb(232, 232, 232)", padding: "10px 0px", height: "250px", overflowY: "scroll" }} sm={4} md={5} lg={12}>
               <h4 className={styles.listHeading}> {sub_category} </h4>
               <ul className={styles.checkBoxesList}>
@@ -151,21 +154,21 @@ function CategoriesPage() {
 
         <Grid item style={{ paddingLeft: "20px", marginBottom: "20px" }} sm={12} md={12} lg={9}>
           <Breadcrumbs separator="›" aria-label="breadcrumb">
-            <Link color="inherit" href="/home" onClick={handleClick}>
+            <Link color="inherit" href="/" onClick={handleClick}>
               Home
                 </Link>
-            <Link color="inherit" href="/fruits-vegetables" onClick={handleClick}>
-              {sub_category}
+            <Link color="inherit" href="/"onClick={handleClick}>
+              {categories === undefined ? sub_category : categories}
             </Link>
           </Breadcrumbs>
           <div >
-            <h2 style={{ borderBottom: "1px solid rgb(232, 232, 232)" }}>{sub_category}</h2>
+            <h1 style={{ borderBottom: "1px solid rgb(232, 232, 232)" }}>   {categories === undefined ? sub_category : categories}</h1>
           </div>
           <div style={{ fontSize: "20px", fontWeight: "600" }} >
             Explore
                 </div>
           <div className={styles.productsDisplay}>
-            <CardContainer />
+            {categories === undefined ? <CardContainer />:<CategoryCard/>}
           </div>
         </Grid>
 

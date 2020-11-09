@@ -1,25 +1,22 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSubcategoryProduct } from "../../Redux/product/action";
+import { getCategoryProduct } from "../../Redux/product/action";
 import styles from "./CardContainer.module.css";
 import { TiShoppingCart } from "react-icons/ti";
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import AddProduct from "./../../AddProduct/AddProduct"
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 
-
-function CardContainer(props) {
-  const data = useSelector((state) => state.product.subCategoryData);
+function CategoryCard(props) {
+  const data = useSelector((state) => state.product.categoryData);
   const dispatch = useDispatch();
   const params = useParams();
   const history = useHistory();
-  const { sub_category } = params;
-
+  const { categories } = params;
 
   useEffect(() => {
-    dispatch(getSubcategoryProduct(sub_category));
-  }, [dispatch, sub_category]);
+    dispatch(getCategoryProduct(categories));
+  }, [dispatch, categories]);
 
   const handleClick = () => {
     alert("Pop");
@@ -66,25 +63,35 @@ function CardContainer(props) {
                           DELIVERY IN 60 MINUTES{" "}
                         </span>
                       </div>
-                      <p style={{textAlign:"center "}}> {items.product["title"]} </p>
-                      <p>
-                        {
-                  </p>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <span className={styles.mrpBorder}>MRP ₹
-                    </span>
-                      <AddProduct id={item._id} />
-
-                  </div>
-                </div>
-              </Grid>
-            </>
-          );
-        })}
+                      <p style={{ textAlign: "center " }}>
+                        {" "}
+                        {items.product["title"]}{" "}
+                      </p>
+                      <p></p>
+                      <div
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
+                        <span className={styles.mrpBorder}>MRP ₹</span>
+                        <span onClick={handleClick} className={styles.AddBtn}>
+                          <TiShoppingCart
+                            style={{
+                              color: "white",
+                              marginRight: "2px",
+                              marginTop: "-2px",
+                            }}
+                          />
+                          Add
+                        </span>
+                      </div>
+                    </div>
+                  </Grid>
+                </>
+              );
+            })}
         </Grid>
       </Container>
     </>
   );
 }
 
-export default CardContainer;
+export default CategoryCard;

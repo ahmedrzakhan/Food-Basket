@@ -260,9 +260,11 @@ function TopNav() {
                 <Box>
                   <StarIcon classes={{ root: styles.starCart }} />
                   <Divider className={classes.divider} orientation="vertical" />
+                  <Link to="/cart">
                   <ShoppingCartOutlinedIcon
                     classes={{ root: styles.starCart }}
-                  />
+                    />
+                  </Link>
                   <div className={styles.myCart}>
                     <span className={styles.value}>0</span>
                   </div>

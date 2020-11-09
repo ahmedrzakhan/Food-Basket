@@ -69,7 +69,7 @@ const productReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
-        subCategoryData: payload,
+        categoryData: payload,
       };
     }
 
