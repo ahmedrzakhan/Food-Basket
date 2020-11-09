@@ -5,7 +5,7 @@
     border: 1px solid white;
     cursor: pointer;
   }
-  .AddDecBtn:hover {
+.AddDecBtn:hover {
     background: linear-gradient(
       to bottom,
       rgb(89, 121, 38) 5%,

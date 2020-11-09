@@ -6,6 +6,7 @@ import styles from "./CardContainer.module.css";
 import { TiShoppingCart } from "react-icons/ti";
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import AddProduct from "./../../AddProduct/AddProduct"
 
 function CardContainer(props) {
 
@@ -52,7 +53,7 @@ function CardContainer(props) {
                       DELIVERY IN 60 MINUTES{" "}
                     </span>
                   </div>
-                  <p> {item.product["title"]} </p>
+                  <p style={{textAlign: "center"}}> {item.product["title"]} </p>
                   <p>
                     {/* {
                       (Array.isArray(item.product["price"])) ?
@@ -62,21 +63,13 @@ function CardContainer(props) {
                   </p>
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <span className={styles.mrpBorder}>MRP ₹
-
+                        {/* {item.product.price} */}
                     {/* {
                         (Array.isArray(item.product["price"])) ? item.product["price"].includes(200)? : item.product["price"]
                       } */}
                     </span>
-                    <span onClick={handleClick} className={styles.AddBtn}>
-                      <TiShoppingCart
-                        style={{
-                          color: "white",
-                          marginRight: "2px",
-                          marginTop: "-2px",
-                        }}
-                      />
-                    Add
-                  </span>
+                      <AddProduct id={item._id} />
+
                   </div>
                 </div>
               </Grid>
