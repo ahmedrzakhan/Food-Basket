@@ -10,7 +10,7 @@ body {
   list-style: none;
   font-size: 15px;
 }
-
+/* 
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;
@@ -43,7 +43,7 @@ body {
 }
 ::-webkit-scrollbar-corner {
   background: transparent;
-}
+} */
 .checkBoxesList li:hover {
   color: rgb(146, 190, 77);
   cursor: pointer;
