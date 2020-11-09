@@ -96,7 +96,7 @@ function CategoriesPage() {
         <div style={{ clear: "both" }}></div>
         <Hidden only={['sm', 'md', 'xs']}>
           <Grid display={{ xs: 'none', sm: 'none', md: 'none', lg: 'block' }} item sm={12} md={12} lg={2} style={{ border: "1px solid rgb(232, 232, 232)" }}>
-            <Grid item style={{ borderBottom: "1px solid rgb(232, 232, 232)", padding: "10px 0px", height: "250px", overflowY: "scroll" }} sm={4} md={5} lg={12}>
+            <Grid className={styles.ScrollBarContainer} item style={{ borderBottom: "1px solid rgb(232, 232, 232)", padding: "10px 0px", height: "250px", overflowY: "scroll" }} sm={4} md={5} lg={12}>
               <h4 className={styles.listHeading}> {sub_category} </h4>
               <ul className={styles.checkBoxesList}>
                 {SubCategoryItemsArr.map((item, i) => {
@@ -104,7 +104,7 @@ function CategoriesPage() {
                 })}
               </ul>
             </Grid>
-            <Grid item style={{ borderBottom: "1px solid rgb(232, 232, 232)", padding: "10px 0px", height: "250px", overflowY: "scroll" }} sm={4} md={5} lg={12}>
+            <Grid className={styles.ScrollBarContainer} item style={{ borderBottom: "1px solid rgb(232, 232, 232)", padding: "10px 0px", height: "250px", overflowY: "scroll" }} sm={4} md={5} lg={12}>
               <h4 className={styles.listHeading}> {listHeading} </h4>
               <ul className={styles.checkBoxesList}>
                 {checkBoxInputsArr.map((item, i) => {
@@ -124,7 +124,7 @@ function CategoriesPage() {
                 })}
               </ul>
             </Grid>
-            <Grid item style={{ borderBottom: "1px solid rgb(232, 232, 232)", padding: "10px 0px", height: "250px", overflowY: "scroll" }} sm={4} md={5} lg={12}>
+            <Grid className={styles.ScrollBarContainer} item style={{ borderBottom: "1px solid rgb(232, 232, 232)", padding: "10px 0px", height: "250px", overflowY: "scroll" }} sm={4} md={5} lg={12}>
               <h4 className={styles.listHeading}> {`Dietary & Lifestyle`} </h4>
               <ul className={styles.checkBoxesList}>
                 {dietaryLifestyle.map((item, i) => {
