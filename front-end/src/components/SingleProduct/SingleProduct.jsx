@@ -15,6 +15,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import Footer from "../Footer/Footer";
 import TopNav from "../dashboard/TopNavBar/TopNav";
 import RouteNav from "../dashboard/TopNavBar/RouteNav";
+import AddProduct from "../AddProduct/AddProduct";
 
 const singleProductSample = {
   name: "Apple Royal Gala - New Zealand",
@@ -74,7 +75,7 @@ function SingleProduct() {
     // alert("Clicked on Add button");
     history.go(-1)
   };
-  console.log(data);
+  // console.log(data);
   if (data.length === 0) {
     return null;
   }
@@ -133,9 +134,10 @@ function SingleProduct() {
             <Box>
               <div style={{ display: "flex" }}>
                 <span className={styles.mrpBorder}>
-                  MRP ₹{singleProductSample.price}{" "}
+                  MRP ₹{data.product.price}{" "}
                 </span>
-                <span onClick={handleAddClick} className={styles.AddBtn}>
+                <AddProduct subCategory ={data.sub_category} id={data._id} />
+                {/* <span onClick={handleAddClick} className={styles.AddBtn}>
                   <TiShoppingCart
                     style={{
                       color: "white",
@@ -144,7 +146,7 @@ function SingleProduct() {
                     }}
                   />
                   Add
-                </span>
+                </span> */}
               </div>
             </Box>
             <Box className={classes.borderBottomOnly}>

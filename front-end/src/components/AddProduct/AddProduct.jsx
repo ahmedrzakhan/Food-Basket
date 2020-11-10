@@ -1,4 +1,4 @@
-import React from "react"
+import React,{ useEffect }  from "react"
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { Grid } from "@material-ui/core";
@@ -6,6 +6,7 @@ import styles from "./AddProduct.module.css"
 import { TiShoppingCart } from "react-icons/ti";
 import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
+import {getSubcategoryProduct} from "./../Redux/product/action"
 // import dataArr from "./testData"
 
 function AddProduct(props)
@@ -18,18 +19,26 @@ function AddProduct(props)
     const params = useParams()
 
     const { sub_category } = params
-    console.log(sub_category)
-    console.log(props.id, "PROPS")
+    // console.log(sub_category)
+    // console.log(props.id, "PROPS")
     // console.log(dataArr)
-    console.log(dataArr)
+    // console.log(dataArr)
+
+    useEffect(() => {
+        if(props.subCategory)
+        {
+            dispatch(getSubcategoryProduct(props.subCategory));
+        }
+      }, [dispatch, props.subCategory]);
+    
 
     let prodId = props.id
 
     let itemFromDataArr = dataArr.find(item => prodId === item._id)
     let itemFromLocalStorage = JSON.parse(localStorage.getItem(`${prodId}`)) || ""
     
-    console.log(itemFromDataArr, "ITEM FROM DATA ARR")
-    console.log(itemFromLocalStorage, "ITEM FROM LOCAL STORAGE")
+    // console.log(itemFromDataArr, "ITEM FROM DATA ARR")
+    // console.log(itemFromLocalStorage, "ITEM FROM LOCAL STORAGE")
     
     const handleAddClick = () => {
 
@@ -47,12 +56,13 @@ function AddProduct(props)
                 title: reqitem.product.title, 
                 imageLink: reqitem.product.image, 
                 category: reqitem.category, 
-                // price: reqitem.price.map(item => item),
+                sub_ctg: reqitem.sub_category,
+                price: reqitem.product.price,
                 inCartQty: 0 ,
                 presentInCart: false
             }
 
-        console.log(reqProd)    
+        // console.log(reqProd)    
 
         // storageArr = JSON.parse(localStorage.getItem("all-prods")) || []
 
@@ -73,7 +83,7 @@ function AddProduct(props)
         let reqProdToAdd = JSON.parse(localStorage.getItem(`${prodId}`))
 
 
-        console.log(reqProdToAdd, "req prod to add")
+        // console.log(reqProdToAdd, "req prod to add")
 
         setCounter(counter => counter + 1)
 
@@ -86,7 +96,7 @@ function AddProduct(props)
 
         let reqProdToDec = JSON.parse(localStorage.getItem(`${prodId}`))
 
-        console.log(reqProdToDec, "req prod to dec")
+        // console.log(reqProdToDec, "req prod to dec")
 
         setCounter(counter => counter - 1)
 
@@ -102,7 +112,7 @@ function AddProduct(props)
 
             localStorage.setItem(`${prodId}`, JSON.stringify(reqProdToDec))
             localStorage.removeItem(`${prodId}`)
-            console.log("REMOVED", prodId)
+            // console.log("REMOVED", prodId)
             return
 
         }
@@ -125,15 +135,15 @@ function AddProduct(props)
                         <span className={styles.AddDecBtn} onClick={handleCounterAdd}>+</span>
                     </Grid>
                     :
-                    <Button variant="contained" onClick={handleAddClick} style={{background: "#92BE4B", color: "white"}}> 
+                    <Box className={styles.AddBtn}  onClick={handleAddClick} style={{background: "#92BE4B", color: "white"}}> 
                     <TiShoppingCart
                         style={{
                         color: "white",
                         marginRight: "2px",
                         marginTop: "-2px",
                         }}
-                    /> <span style={{color: "white"}}>Add </span> 
-                  </Button>
+                    /> <span style={{color: "white"}}>ADD </span> 
+                  </Box>
                 }
             </Box>
 
