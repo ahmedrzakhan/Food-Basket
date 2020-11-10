@@ -7,6 +7,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import AddProduct from "./../../AddProduct/AddProduct"
+import { Typography } from "@material-ui/core";
 
 
 function CardContainer(props) {
@@ -66,10 +67,10 @@ function CardContainer(props) {
                           DELIVERY IN 60 MINUTES{" "}
                         </span>
                       </div>
-                      <p style={{textAlign:"center "}}> {items.product["title"]} </p>
+                      <p style={{textAlign:"center "}}> {items.product["title"]}  </p>
                    
                   <div style={{ display: "flex", justifyContent: "center" }}>
-                    <span className={styles.mrpBorder}>MRP ₹
+                    <span className={styles.mrpBorder}>MRP ₹ {items.product.price}
                     </span>
                       <AddProduct id={items._id} />
 

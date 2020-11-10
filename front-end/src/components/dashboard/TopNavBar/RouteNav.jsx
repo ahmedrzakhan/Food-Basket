@@ -31,7 +31,7 @@ function RouteNav() {
               </div>
               <div>
                 <div className={styles.box}>
-                  <Link className={styles.shop} to="/home/Fruits-and-Vegetables">
+                  <Link className={styles.shop} to="/home/Fruits-and-Vegetables/Daily-Vegetables">
                     {" "}
                     Fruits and Vegetables{" "}
                   </Link>

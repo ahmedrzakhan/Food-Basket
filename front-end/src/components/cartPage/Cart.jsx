@@ -6,36 +6,55 @@ import Footer from "../Footer/Footer";
 import styles from "./cart.module.css";
 import { styled } from '@material-ui/styles';
 import { useHistory } from 'react-router-dom' 
+import { keys } from "../AddProduct/testData";
+import AddProduct from "../AddProduct/AddProduct";
 
-const cartData = [
+// const cartData = [
+//   {
+//     image:
+//       "https://gnbdevcdn.s3.amazonaws.com/ProductVariantThumbnailImages/6151dbdd-4c99-4614-a330-6909526fc3f6_50x50.JPG",
+//     name: "corn flakes corn flakes corn flakes corn flakes",
+//     price: 20,
+//     qty: 1,
+//     subtotal: 11,
+//     category: "confectionari",
+//   },
+//   {
+//     image:
+//       "https://gnbdevcdn.s3.amazonaws.com/ProductVariantThumbnailImages/6151dbdd-4c99-4614-a330-6909526fc3f6_50x50.JPG",
+//     name: "corn flakes corn flakes corn flakes corn flakes",
+//     price: 20,
+//     qty: 1,
+//     subtotal: 11,
+//     category: "confectionari",
+//   },
+//   {
+//     image:
+//       "https://gnbdevcdn.s3.amazonaws.com/ProductVariantThumbnailImages/6151dbdd-4c99-4614-a330-6909526fc3f6_50x50.JPG",
+//     name: "corn flakes",
+//     price: 20,
+//     qty: 1,
+//     subtotal: 11,
+//     category: "confectionari23",
+//   },
+// ];
+let cartData = []
+if(localStorage.length !==0)
+{
+  for(let i=0; i<localStorage.length; i++)
   {
-    image:
-      "https://gnbdevcdn.s3.amazonaws.com/ProductVariantThumbnailImages/6151dbdd-4c99-4614-a330-6909526fc3f6_50x50.JPG",
-    name: "corn flakes corn flakes corn flakes corn flakes",
-    price: 20,
-    qty: 1,
-    subtotal: 11,
-    category: "confectionari",
-  },
-  {
-    image:
-      "https://gnbdevcdn.s3.amazonaws.com/ProductVariantThumbnailImages/6151dbdd-4c99-4614-a330-6909526fc3f6_50x50.JPG",
-    name: "corn flakes corn flakes corn flakes corn flakes",
-    price: 20,
-    qty: 1,
-    subtotal: 11,
-    category: "confectionari",
-  },
-  {
-    image:
-      "https://gnbdevcdn.s3.amazonaws.com/ProductVariantThumbnailImages/6151dbdd-4c99-4614-a330-6909526fc3f6_50x50.JPG",
-    name: "corn flakes",
-    price: 20,
-    qty: 1,
-    subtotal: 11,
-    category: "confectionari23",
-  },
-];
+    cartData.push(JSON.parse(localStorage.getItem( localStorage.key( i ))))
+  }
+}
+
+console.log(cartData)
+let sum = 0
+let deliveryCharge = 50
+for(let i=0; i<cartData.length; i++)
+{
+  sum = sum + (cartData[i].inCartQty * cartData[i].price)
+}
+
 const MyButton1 = styled(Box)({
     background: 'transparent',
     border:'2px solid #92be4d',
@@ -58,6 +77,23 @@ const MyButton2 = styled(Box)({
     color: 'white',
 });
 function Cart() {
+
+  let cartData = []
+  if(localStorage.length !==0)
+  {
+    for(let i=0; i<localStorage.length; i++)
+    {
+      cartData.push(JSON.parse(localStorage.getItem( localStorage.key( i ))))
+    }
+  }
+  
+  console.log(cartData)
+  let sum = 0
+  let deliveryCharge = 50
+  for(let i=0; i<cartData.length; i++)
+  {
+    sum = sum + (cartData[i].inCartQty * cartData[i].price)
+  }
     const history =useHistory()
   return (
     <>
@@ -67,14 +103,14 @@ function Cart() {
         <Box classes={{ root: styles.shopping }}>
           <Box classes={{ root: styles.head }}>
             {" "}
-            MY CART <span>(2 ITEMS)</span>
+            MY CART <span>({cartData.length} ITEMS)</span>
           </Box>
           <Box>
             <MyButton1 onClick ={()=>history.push('/')}>
               CONTINUE SHOPPING
             </MyButton1>
             <MyButton2 onClick={() => history.push('/checkout')}>
-            PROCCED TO CHECKOUT
+            PROCEED TO CHECKOUT
             </MyButton2>
           </Box>
         </Box>
@@ -89,7 +125,7 @@ function Cart() {
         </Box>
              
     <Box classes={{root:styles.newShopping}}>
-        {cartData.map((item, i) => (
+        { cartData.map((item, i) => (
           <Box key={i}>
                 <Box classes={{ root: styles.subheading }}>
               <h3>{item.category}</h3>
@@ -101,23 +137,30 @@ function Cart() {
              <Box classes={{ root: styles.items }}>
               <Box classes={{ root: styles.name1 }}>
                 <Box>
-                  <img src={item.image} alt="food" />
+                  <img src={item.imageLink} height="100px" alt="food" />
                 </Box>
-                <Box>{item.name}</Box>
-                <Box>
+                <Box onClick={() => history.push(`/product/${item.id}`) }>{item.title}</Box>
+                {/* <Box>
                   <img
                     height="20px"
                     src="https://gnbdevcdn.s3-ap-southeast-1.amazonaws.com/Marketing/8ab57ed4-47e0-426a-8382-f4c89b11826a.png"
                     alt="delivery"
                   />{" "}
-                </Box>
+                </Box> */}
               </Box>
 
               <Box>₹{item.price}</Box>
 
-              <Box>{item.qty}</Box>
+                { item.inCartQty > 0?
+                  <Box>
+                      <AddProduct subCategory={item.sub_ctg} id={item.id} />
+                  </Box>
+                  :
+                  ""
+                }
+             
               <Box>
-                ₹{item.subtotal}{" "}
+                ₹{item.price * item.inCartQty}{" "}
                 <img
                   className={styles.close}
                   src="https://d1z88p83zuviay.cloudfront.net/Images/login-close.png"
@@ -131,9 +174,9 @@ function Cart() {
               </Box> 
               
               <Box classes={{root:styles.total}}>
-                  <Box classes ={{root:styles.sub}}> Sub-Total: </Box>
-                  <Box classes ={{root:styles.del}}> Delivery Charges :</Box>
-                  <Box classes ={{root:styles.tot}}> Total: </Box>
+                  <Box classes ={{root:styles.sub}}> Sub-Total: ₹ {sum} </Box>
+                  <Box classes ={{root:styles.del}}> Delivery Charges : ₹ {deliveryCharge} </Box>
+                  <Box classes ={{root:styles.tot}}> Total: ₹ {sum + deliveryCharge}</Box>
               </Box>
               <Box classes={{ root: styles.shopping }}>
                   <Box classes={{ root: styles.head }}>
@@ -144,7 +187,7 @@ function Cart() {
                           CONTINUE SHOPPING
             </MyButton1>
             <MyButton2 onClick={() => history.push('/checkout')}c>
-                          PROCCED TO CHECKOUT
+                          PROCEED TO CHECKOUT
             </MyButton2>
                   </Box>
               </Box>
