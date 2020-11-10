@@ -14,15 +14,8 @@ const categories = [
         "Try masala curry which is an amazing mix of brinjals with simmering spices cooked in gravy",
       image:
         "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/03dff5a4-7597-4057-b485-7305c85b0251_425x425.JPG",
-      title: "Brinjal Small",
-      price: [
-        {
-          200: 30,
-        },
-        {
-          500: 70,
-        },
-      ],
+      title: "Brinjal Small 250g",
+      price: 40,
     },
   },
 
@@ -54,18 +47,8 @@ const categories = [
     ],
     product: {
       brand: "Natures Best",
-      title: "SALAD READY TO EAT 1 PC PK NB - 1 Pc",
-      price: [
-        {
-          500: 40,
-        },
-        {
-          1000: 60,
-        },
-        {
-          2000: 120,
-        },
-      ],
+      title: "SALAD READY TO EAT 1 PC PK NB - 1 Pc - 500g",
+      price: 40,
       image:
         "https://d1z88p83zuviay.cloudfront.net/ProductVariantThumbnailImages/6d4cd380-9b73-4092-9704-945abfe09637_425x425.JPG",
     },
@@ -98,18 +81,8 @@ const categories = [
     ],
     product: {
       brand: "Fruit and Vegetable",
-      title: "Potato",
-      price: [
-        {
-          500: 33,
-        },
-        {
-          1000: 40,
-        },
-        {
-          2000: 60,
-        },
-      ],
+      title: "Potato - 500g",
+      price: 33,
       description:
         "People of all regions and culinary tastes love potatoes.They have a thin skin that covers the hard flesh. It's eaten with or without its peel. It can be consumed as a roast, a mash, in fried form, etc.",
       image:
@@ -127,18 +100,8 @@ const categories = [
     ],
     product: {
       brand: "Fruit and Vegetable",
-      title: "Onion",
-      price: [
-        {
-          500: "55",
-        },
-        {
-          1000: "109",
-        },
-        {
-          2000: "210",
-        },
-      ],
+      title: "Onion 500g",
+      price: 55,
       description:
         "Add sage and cheddar to make an extra special and delicious onion soup",
       image:
@@ -156,18 +119,8 @@ const categories = [
     ],
     product: {
       brand: "Fruit and Vegetable",
-      title: "Tomato",
-      price: [
-        {
-          500: 38,
-        },
-        {
-          1000: 64,
-        },
-        {
-          2000: 120,
-        },
-      ],
+      title: "Tomato - 500g",
+      price: 38,
       description:
         "Stuff tomatoes with some mixed veggies and crumbled panner and enjoy them grilled",
       image:
@@ -204,18 +157,8 @@ const categories = [
     ],
     product: {
       brand: "Fruit and Vegetable",
-      title: "Capsicum",
-      price: [
-        {
-          250: 30,
-        },
-        {
-          500: 60,
-        },
-        {
-          1000: 110,
-        },
-      ],
+      title: "Capsicum - 500gm",
+      price: 30,
       description:
         "Capsicums are , thin smooth skinned, crunchy, mildly sweet tasting, hollow vegetables that are juicier variants of the green capsicum. They are a rich source of antioxidants, carotenoids and vitamins C, K, B6 and A. They are high in water content and dietary fibre and potassium, and are cholesterol-free.",
       image:
@@ -252,18 +195,8 @@ const categories = [
     ],
     product: {
       brand: "Organic India",
-      title: "Organic Crushed Mint Leaves",
-      price: [
-        {
-          50: 45,
-        },
-        {
-          500: 380,
-        },
-        {
-          100: 79,
-        },
-      ],
+      title: "Organic Crushed Mint Leaves - 500g",
+      price: 45,
       description:
         "Mint is a type of herb with a refreshing flavor. It can be used dried or fresh. They have a sweet flavor with a cool after taste. It has a strong, sharp scent.",
       image:
@@ -281,15 +214,8 @@ const categories = [
     ],
     product: {
       brand: "Fruit and Vegetable",
-      title: "Baby Corn - Exotic",
-      price: [
-        {
-          200: 50,
-        },
-        {
-          300: 75,
-        },
-      ],
+      title: "Baby Corn - Exotic - 200g",
+      price: 50,
       description:
         "Baby corn is internationally loved and used in multiple continental cuisines from European to South East Asian. It is majorly used in pizzas, pastas, noodles, stir fry, salad, rice preparations, etc. Its looks and taste are its winning attributes.",
       image:
@@ -328,14 +254,7 @@ const categories = [
     product: {
       brand: "Fruit and Vegetable",
       title: "Avocado Indian - 1 kg",
-      price: [
-        {
-          1000: 499,
-        },
-        {
-          500: 259,
-        },
-      ],
+      price: 499,
       description:
         "Avocados are commercially valuable and are cultivated in tropical and Mediterranean climates throughout the world.They have a green-skinned, fleshy body that may be pear-shaped, egg-shaped, or spherical.",
       image:
@@ -353,18 +272,8 @@ const categories = [
     ],
     product: {
       brand: "Fruit and Vegetable",
-      title: "Broccoli - Exotic",
-      price: [
-        {
-          250: 75,
-        },
-        {
-          500: 149,
-        },
-        {
-          1000: 299,
-        },
-      ],
+      title: "Broccoli - Exotic - 500g",
+      price: 149,
       description:
         "Broccoli is an edible green plant in the cabbage family, whose large flower head is used as a vegetable. The word broccoli, from the Italian plural of broccolo, refers to the flowering top of a cabbage.Broccoli is often boiled or steamed but may be eaten raw.",
       image:
@@ -382,15 +291,8 @@ const categories = [
     ],
     product: {
       brand: "Fruit and Vegetable",
-      title: "Parsley Curled",
-      price: [
-        {
-          50: 25,
-        },
-        {
-          100: 49,
-        },
-      ],
+      title: "Parsley Curled - 50g",
+      price: 200,
       description:
         "Bright and fresh-tasting, parsley is a tasty addition to your soups and stews",
       image:
@@ -408,15 +310,8 @@ const categories = [
     ],
     product: {
       brand: "Fruit and Vegetable",
-      title: "Zucchini Yellow - Exotic",
-      price: [
-        {
-          250: 74,
-        },
-        {
-          500: 149,
-        },
-      ],
+      title: "Zucchini Yellow - Exotic - 250g",
+      price: 74,
       description:
         "The low-caloried Zucchini is a versatile side dish that goes with everything",
       image:

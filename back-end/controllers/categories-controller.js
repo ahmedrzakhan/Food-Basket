@@ -3,25 +3,16 @@ const Categories = require("./../models/Categories");
 const getProductsByCity = async (req, res) => {
   const { city } = req.query;
 
-  const items = await Categories.find(
-    {
-      "cities.city": city,
-    }
-    // {
-    //   $filter: {
-    //     input: "$cities",
-    //     as: "city",
-    //     cond: { $eq: ["$$city", city] },
-    //   },
-    // }
-  );
+  const items = await Categories.find({
+    "cities.city": city,
+  });
 
   res.send(items);
 };
 
 const getByCategory = async (req, res) => {
   const { category } = req.query;
-  console.log(category);
+
   const items = await Categories.find({
     category: category,
   });
@@ -41,8 +32,20 @@ const getBySubCategory = async (req, res) => {
 
 const getProductItem = async (req, res) => {
   const { _id } = req.query;
+
   const item = await Categories.findById(_id);
+
   res.send(item);
+};
+
+const getProductsBySearch = async (req, res) => {
+  const { query } = req.query;
+  
+  const items = await Categories.find({
+    "product.title": { $regex: query, $options: "i" },
+  }).limit(5);
+
+  res.send(items);
 };
 
 module.exports = {
@@ -50,4 +53,5 @@ module.exports = {
   getByCategory,
   getBySubCategory,
   getProductItem,
+  getProductsBySearch,
 };
