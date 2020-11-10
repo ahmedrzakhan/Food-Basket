@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Box, InputBase, Divider, IconButton } from "@material-ui/core";
+import { useSelector, useDispatch } from "react-redux";
+import { Box, InputBase, Divider, IconButton, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
@@ -7,6 +8,7 @@ import StarIcon from "@material-ui/icons/Star";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 import LoginReg from "./LoginReg";
+import { logout } from "../../Redux/auth/action";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
       width: "600px",
       alignItems: "center",
       marginLeft: "2%",
-      border:'1px solid blue'
+      border: "1px solid blue",
     },
     [theme.breakpoints.down("sm")]: {
       width: "350px",
@@ -63,7 +65,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     flex: 1,
   },
-
 
   iconButton: {
     padding: "0.2%",
@@ -101,6 +102,14 @@ function TopNav() {
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
   const [otp, setOtp] = useState(false);
+  const loginStatus = useSelector((state) => state.auth.loginStatus);
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const status = JSON.parse(localStorage.getItem("status"));
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <>
@@ -113,8 +122,6 @@ function TopNav() {
             and 25+ for strong beer and wine.
           </Box>
         </Box>
-
-        {/* start from here */}
         <LoginReg
           login={login}
           setLogin={setLogin}
@@ -143,24 +150,37 @@ function TopNav() {
                 {" "}
                 Fresh & Fast
               </Link>
-              <button
-                onClick={() => {
-                  setRegister(true);
-                  setLogin(false);
-                }}
-                className={styles.topRight}
-              >
-                Register
-              </button>
-              <button
-                onClick={() => {
-                  setLogin(true);
-                  setRegister(false);
-                }}
-                className={styles.topRight}
-              >
-                Login
-              </button>
+              {status ? (
+                <>
+                  <div className={styles.hoverUser}>
+                    {userData.username}
+                    <div className={styles.innerHoverUser}>
+                      <Button onClick={handleLogout}>LogOut</Button>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => {
+                      setRegister(true);
+                      setLogin(false);
+                    }}
+                    className={styles.topRight}
+                  >
+                    Register
+                  </button>
+                  <button
+                    onClick={() => {
+                      setLogin(true);
+                      setRegister(false);
+                    }}
+                    className={styles.topRight}
+                  >
+                    Login
+                  </button>
+                </>
+              )}
             </Box>
 
             <Box>
@@ -261,8 +281,8 @@ function TopNav() {
                   <StarIcon classes={{ root: styles.starCart }} />
                   <Divider className={classes.divider} orientation="vertical" />
                   <Link to="/cart">
-                  <ShoppingCartOutlinedIcon
-                    classes={{ root: styles.starCart }}
+                    <ShoppingCartOutlinedIcon
+                      classes={{ root: styles.starCart }}
                     />
                   </Link>
                   <div className={styles.myCart}>
