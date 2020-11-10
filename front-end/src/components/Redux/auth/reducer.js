@@ -7,6 +7,7 @@ import {
   REG_FAILURE,
   LOGOUT,
 } from "./actionTypes";
+import { saveUser ,saveStatus} from '../../localStorage'
 
 const initialState = {
   loginStatus: false,
@@ -15,23 +16,24 @@ const initialState = {
   user_id: "",
   message: "",
   validation: "",
+  userData:""
 };
 
 const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case LOGIN_ATTEMPT: {
+
       return { ...state, isLoading: true, message: "", validation: "" };
     }
     case LOGIN_SUCCESS: {
-      const { name, user_id } = payload;
-      return { ...state, isLoading: false, loginStatus: true, name, user_id };
+      saveStatus('status',true)
+      return { ...state, isLoading: false, loginStatus: true };
     }
     case LOGIN_FAILURE: {
       const { message, validation } = payload;
       return { ...state, isLoading: false, isError: true, message, validation };
     }
     case REG_ATTEMPT: {
-      console.log(payload);
       return {
         ...state,
         message: "",
@@ -40,7 +42,9 @@ const authReducer = (state = initialState, { type, payload }) => {
       };
     }
     case REG_SUCCESS: {
-      return { ...state, loginStatus: true };
+      saveUser("user", payload)
+      saveStatus("status", true )
+      return { ...state, loginStatus: true ,userData:payload};
     }
     case REG_FAILURE: {
       const { validation, message } = payload;
@@ -48,6 +52,7 @@ const authReducer = (state = initialState, { type, payload }) => {
       return { ...state, isError: true, validation, message: payload };
     }
     case LOGOUT:
+      saveStatus("status", false)
       return {
         ...state,
         loginStatus: false,

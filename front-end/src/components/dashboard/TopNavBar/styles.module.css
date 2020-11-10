@@ -8,13 +8,6 @@ body {
   font-size: 18px;
   font-weight: normal;
 }
-/* .topDiv {
- background-color: #c80066;
- color: white;
- display: block;
- height: 60px;
- top: 0;
-} */
 
 .Toplink {
   padding: 1%;
@@ -45,12 +38,6 @@ body {
   margin-right: 12px;
   background: transparent;
 }
-
-/* .newBox {
- float: right;
- margin-right: 2%;
- width: 7%;
-} */
 
 .starCart {
   color: #7ccb55;
@@ -83,13 +70,46 @@ body {
 
 .login {
   width: 100%;
-  height: 100px;
+  height: 120px;
   background-color: #ededed;
   padding: 0.5%;
+}
+.regis {
+  margin-top: 0;
+  margin-left: 30%;
+  height: 120px;
+}
+.newBox {
+  display: flex;
+  flex-direction: row;
+}
+.oneBox {
+  height: 100px;
+  margin: 2%;
+  max-width: 170px;
+}
+.secBox {
+  height: 100px;
+  margin: 2%;
+}
+
+.btnLogin {
+  color: white;
+  background-color: #7ccb55;
+  margin: 5%;
+  border: none;
+  outline: none;
+  padding: 0.8%;
+  font-size: inherit;
+  width: 110px;
+  height: 40px;
 }
 .close {
   float: right;
   padding: 1%;
+  margin-left: 55%;
+  margin-top: -100px;
+  border: 1px solid green;
 }
 .inputEmail {
   border: 1px solid #9f9f9f;
@@ -111,36 +131,63 @@ body {
 
 .inputBox {
   margin-top: 0;
-  margin-left: 30%;
+  margin-left: 8%;
+  display: flex;
+  flex-direction: row;
 }
 .otpBox {
   margin-top: 0;
   margin-left: 5%;
 }
 .outerBox {
-  width: 150px;
+  width: 170px;
   background: #ffffff;
   border: 1px solid #9f9f9f;
   float: left;
   margin: 2%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5%;
+
+  height: 40px;
 }
 .outerBox > .inn {
   border: none;
   outline: none;
   width: 100px;
-  padding-top: 0.5%;
-  /* padding-bottom: 1%; */
-  align-items: center;
-  margin-bottom: 5%;
+  font-size: 16px;
 }
-.btnLogin {
-  color: white;
-  background-color: #7ccb55;
-  margin: 2%;
-  border: none;
+
+.hoverUser {
+  position: relative;
+  float: right;
+  color: grey;
+  font-size: 14px;
   outline: none;
-  padding: 1%;
-  font-size: inherit;
+  border: none;
+  margin-right: 12px;
+  background: transparent;
+}
+.hoverUser:hover .innerHoverUser {
+  display: block;
+}
+.innerHoverUser {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 100px;
+  z-index: 1;
+  margin-left: -60px;
+}
+
+.innerHoverUser > div {
+  display: block;
+  border-bottom: 1px solid #e1e1e1;
+  margin: 0px;
+  text-align: left;
+  padding: 0.5%;
+  margin-left: 1%;
 }
 
 /* RouteNav component style */

@@ -10,8 +10,9 @@ import {
   LOGOUT,
 } from "./actionTypes";
 
-const loginAttempt = () => ({
+const loginAttempt = (payload) => ({
   type: LOGIN_ATTEMPT,
+  payload,
 });
 
 const loginSuccess = (payload) => ({
@@ -29,6 +30,9 @@ export const loginUser = (payload) => async (dispatch) => {
   var config = {
     method: "post",
     url: "http://localhost:5000/api/user/login",
+    headers: {
+      "Content-Type": "application/json",
+    },
     data: payload,
   };
   try {
