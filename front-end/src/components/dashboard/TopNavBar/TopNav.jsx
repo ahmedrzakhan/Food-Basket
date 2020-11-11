@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import {
+  useDispatch, useSelector
+} from "react-redux";
+import throttle from 'lodash.throttle'
 import { Box, InputBase, Divider, IconButton, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import StarIcon from "@material-ui/icons/Star";
-import styles from "./styles.module.css";
+import styles from "./TopNav.module.css";
 import { Link } from "react-router-dom";
 import LoginReg from "./LoginReg";
 import { logout } from "../../Redux/auth/action";
+import { getBySearch } from "../../Redux/product/action";
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -111,17 +115,26 @@ const StyledBadge = withStyles((theme) => ({
 
 function TopNav() {
   const classes = useStyles();
+  const [val,setVal] = useState("")
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
   const [otp, setOtp] = useState(false);
-  const loginStatus = useSelector((state) => state.auth.loginStatus);
+  const[load,setLoad] = useState(true)
   const userData = JSON.parse(localStorage.getItem("user"));
   const status = JSON.parse(localStorage.getItem("status"));
+  const { searchData, isLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(logout());
   };
+   
+  const handleInput = (e) => {
+    setVal(e.target.value)
+    dispatch(getBySearch(val))
+  }
+  const thrott = throttle(handleInput, 1000)
+
 
   let [cartCount, setCartCount] = React.useState(0)
 
@@ -207,91 +220,111 @@ function TopNav() {
                 className={classes.root}
               >
                 <InputBase
+                  name="val"
+                  value={val}
+                  onChange ={thrott}
                   className={classes.input}
                   placeholder="Start Shopping..."
-                  inputProps={{ "aria-label": "start shopping" }}
                 />
                 <Box className={classes.iconButton}>
                   <IconButton type="submit" aria-label="search">
                     <SearchIcon className={classes.iconColor} />
                   </IconButton>
                 </Box>
-
-                <Box classes={{ root: styles.innerHoverDivSearch }}>
-                  <p className={styles.trend}>Trending Searches</p>
-                  <p>
-                    <Link
-                      to="/home/Fruits-and-Vegetables/Exotic-Vegetables"
-                      className={styles.afterTrend}
-                    >
-                      Exotic Vegetables
+                {/* start from here */}
+                
+              
+                {val.length === 0 ?
+                  <Box classes={{ root: styles.innerHoverDivSearch }}>
+                    <p className={styles.trend}>Trending Searches</p>
+                    <p>
+                      <Link
+                        to="/home/Fruits-and-Vegetables/Exotic-Vegetables"
+                        className={styles.afterTrend}
+                      >
+                        Exotic Vegetables
                     </Link>
-                  </p>
-                  <p>
-                    <Link
-                      to="/home/Fruits-and-Vegetables/Daily-Vegetables"
-                      className={styles.afterTrend}
-                    >
-                      Daily Vegetables{" "}
+                    </p>
+                    <p>
+                      <Link
+                        to="/home/Fruits-and-Vegetables/Daily-Vegetables"
+                        className={styles.afterTrend}
+                      >
+                        Daily Vegetables{" "}
+                      </Link>
+                    </p>
+                    <p>
+                      <Link
+                        to="/home/Indian Grocery/Daily Essentials"
+                        className={styles.afterTrend}
+                      >
+                        Daily essentials{" "}
+                      </Link>
+                    </p>
+                    <p>
+                      <Link
+                        to="/home/Indian Grocery/Milk and Cream"
+                        className={styles.afterTrend}
+                      >
+                        Milk and Cream{" "}
+                      </Link>
+                    </p>
+                    <p>
+                      <Link
+                        to="/home/Indian Grocery/Cooking Pastes and sauces"
+                        className={styles.afterTrend}
+                      >
+                        Cooking Pastes and Sauces
                     </Link>
-                  </p>
-                  <p>
-                    <Link
-                      to="/home/Indian Grocery/Daily Essentials"
-                      className={styles.afterTrend}
-                    >
-                      Daily essentials{" "}
-                    </Link>
-                  </p>
-                  <p>
-                    <Link
-                      to="/home/Indian Grocery/Milk and Cream"
-                      className={styles.afterTrend}
-                    >
-                      Milk and Cream{" "}
-                    </Link>
-                  </p>
-                  <p>
-                    <Link
-                      to="/home/Indian Grocery/Cooking Pastes and sauces"
-                      className={styles.afterTrend}
-                    >
-                      Cooking Pastes and Sauces
-                    </Link>
-                  </p>
-                  <p>
-                    <Link
-                      to="/home/Meats, Seafood and Eggs/Cold Cuts and Sausages"
-                      className={styles.afterTrend}
-                    >
-                      Cold Cuts and Sausages{" "}
-                    </Link>
-                  </p>
-                  <p>
-                    <Link
-                      to="/home/Meats, Seafood and Eggs/Frozen"
-                      className={styles.afterTrend}
-                    >
-                      Frozen{" "}
-                    </Link>
-                  </p>
-                  <p>
-                    <Link
-                      to="/home/Breakfast, Dairy and Bakery/Bakery"
-                      className={styles.afterTrend}
-                    >
-                      Bakery{" "}
-                    </Link>
-                  </p>
-                  <p>
-                    <Link
-                      to="/home/Breakfast, Dairy and Bakery/Bars and Others"
-                      className={styles.afterTrend}
-                    >
-                      Bars and Others{" "}
-                    </Link>
-                  </p>
-                </Box>
+                    </p>
+                    <p>
+                      <Link
+                        to="/home/Meats, Seafood and Eggs/Cold Cuts and Sausages"
+                        className={styles.afterTrend}
+                      >
+                        Cold Cuts and Sausages{" "}
+                      </Link>
+                    </p>
+                    <p>
+                      <Link
+                        to="/home/Meats, Seafood and Eggs/Frozen"
+                        className={styles.afterTrend}
+                      >
+                        Frozen{" "}
+                      </Link>
+                    </p>
+                    <p>
+                      <Link
+                        to="/home/Breakfast, Dairy and Bakery/Bakery"
+                        className={styles.afterTrend}
+                      >
+                        Bakery{" "}
+                      </Link>
+                    </p>
+                    <p>
+                      <Link
+                        to="/home/Breakfast, Dairy and Bakery/Bars and Others"
+                        className={styles.afterTrend}
+                      >
+                        Bars and Others{" "}
+                      </Link>
+                    </p>
+                  </Box> :
+                  !isLoading && val.length > 0 && 
+                    <Box classes={{ root: styles.innerHoverDivSearch }}>
+                  {searchData.map((item, i) => (
+                    <Box key={i} classes ={{root:styles.getsea}}>
+                      <Box><img width="70px"src={item.product["image"]} alt={item.product["title"]}/></Box>
+                      <Box><Link className={styles.newLink}to={`/product/${item._id}`}>{item.product["title"]}</Link></Box>
+                      <Box>1 Pc</Box>
+                      <Box>{item.product["price"]}</Box>
+                    </Box>
+                   
+                  ))}
+                    </Box>
+               
+                
+                }
               </Box>
 
               <Box className={classes.newBox}>

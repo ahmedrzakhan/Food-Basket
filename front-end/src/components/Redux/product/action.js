@@ -10,6 +10,9 @@ import {
   GET_CATEGORY_FAILURE,
   GET_CATEGORY_ATTEMPT,
   GET_CATEGORY_SUCCESS,
+  GET_BY_SEARCH_FAILURE,
+  GET_BY_SEARCH_SUCCESS,
+  GET_BY_SEARCH_ATTEMPT
 } from "./actionTypes";
 
 const getProductAttempt = (payload) => ({
@@ -57,6 +60,21 @@ const getCategoryFailure = (payload) => ({
   payload,
 });
 
+const getBySearchAttempt = (payload) => ({
+  type: GET_BY_SEARCH_ATTEMPT,
+  payload,
+});
+
+const getBySearchSuccess = (payload) => ({
+  type: GET_BY_SEARCH_SUCCESS,
+  payload,
+});
+
+const getBySearchFailure = (payload) => ({
+  type: GET_BY_SEARCH_FAILURE,
+  payload,
+});
+
 export const getSingleProduct = (payload) => async (dispatch) => {
   dispatch(getProductAttempt(payload));
 
@@ -98,5 +116,20 @@ export const getCategoryProduct = (payload) => async (dispatch) => {
     dispatch(getCategorySuccess(result.data));
   } catch (err) {
     dispatch(getCategoryFailure(err.response.data));
+  }
+};
+
+export const getBySearch = (payload) => async (dispatch) => {
+  dispatch(getBySearchAttempt(payload));
+
+  var config = {
+    method: 'get',
+    url: `http://localhost:5000/api/categories/product/search?query=${payload}`,
+  }
+  try {
+    const result = await axios(config);
+    dispatch(getBySearchSuccess(result.data));
+  } catch (err) {
+    dispatch(getBySearchFailure(err.response.data));
   }
 };

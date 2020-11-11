@@ -47,9 +47,9 @@ const authReducer = (state = initialState, { type, payload }) => {
       return { ...state, loginStatus: true ,userData:payload};
     }
     case REG_FAILURE: {
-      const { validation, message } = payload;
+      const { validation} = payload;
 
-      return { ...state, isError: true, validation, message: payload };
+      return { ...state, isError: true, validation,message: payload };
     }
     case LOGOUT:
       saveStatus("status", false)

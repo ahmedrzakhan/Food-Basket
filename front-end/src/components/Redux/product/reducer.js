@@ -8,6 +8,9 @@ import {
   GET_CATEGORY_FAILURE,
   GET_CATEGORY_ATTEMPT,
   GET_CATEGORY_SUCCESS,
+  GET_BY_SEARCH_FAILURE,
+  GET_BY_SEARCH_SUCCESS,
+  GET_BY_SEARCH_ATTEMPT
 } from "./actionTypes";
 
 export const initState = {
@@ -15,6 +18,7 @@ export const initState = {
   singleProData: [],
   subCategoryData: [],
   categoryData: [],
+  searchData :[]
 };
 
 const productReducer = (state = initState, { type, payload }) => {
@@ -49,7 +53,8 @@ const productReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
-        subCategoryData: payload,
+        subCategoryData:payload
+     
       };
     }
 
@@ -79,6 +84,27 @@ const productReducer = (state = initState, { type, payload }) => {
         isLoading: false,
       };
     }
+    case GET_BY_SEARCH_ATTEMPT: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case GET_BY_SEARCH_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        searchData: payload,
+      };
+    }
+
+    case GET_BY_SEARCH_FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+      };
+    }
+
     default:
       return state;
   }
