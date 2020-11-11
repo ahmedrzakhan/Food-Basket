@@ -2,7 +2,7 @@ import {ADD_PROD, SUB_PROD} from "./actionTypes"
 
 const initState = {
 
-    cartArrData: []
+    cartChange:"1"
 }
 
 const cartReducer = (state = initState, action) => {
@@ -10,11 +10,19 @@ const cartReducer = (state = initState, action) => {
     switch(action.type)
     {
         case ADD_PROD:
-            JSON.stringify(localStorage.setItem(`${action.payload.id}`, action.payload))
             return{
                 ...state,
-                cartArrData: []
+                cartChange: action.payload
             }
+
+        case SUB_PROD:
+            return{
+                ...state,
+                cartChange: action.payload
+            }
+            
+       default:
+           return state     
     }
 
 }
