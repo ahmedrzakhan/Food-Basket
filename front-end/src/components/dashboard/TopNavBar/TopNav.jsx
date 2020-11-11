@@ -135,13 +135,17 @@ function TopNav() {
   }
   const thrott = throttle(handleInput, 1000)
 
+  const cartStateChange = useSelector((state) => state.cart.cartChange); //Changes added bu Rutvik
 
-  let [cartCount, setCartCount] = React.useState(0)
+  let [cartCount, setCartCount] = React.useState(0) //Changes added by Rutvik
 
+  // Changes added by Rutvik:
   React.useEffect(() =>{
+ 
+    setCartCount(localStorage.length - 2 )
+  },[cartStateChange])
+  //Changes added by Rutvik
 
-    setCartCount(localStorage.length)
-  },[])
   return (
     <>
       <Box>
@@ -332,12 +336,13 @@ function TopNav() {
                   <StarIcon classes={{ root: styles.starCart }} />
                   <Divider className={classes.divider} orientation="vertical" />
                   <Link to="/cart">
-                  <StyledBadge badgeContent={cartCount} color="primary">
+                    {/* Changes Added by RUTVIK */}
+                  <StyledBadge badgeContent={cartCount} color="primary"> 
                     <ShoppingCartOutlinedIcon
                       classes={{ root: styles.starCart }}
                     />
                   </StyledBadge>
-                    
+                    {/* Changes Added by Rutvik */}
                   </Link>
                 </Box>
               </Box>

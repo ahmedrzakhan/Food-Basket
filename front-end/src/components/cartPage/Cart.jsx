@@ -6,25 +6,9 @@ import Footer from "../Footer/Footer";
 import styles from "./cart.module.css";
 import { styled } from '@material-ui/styles';
 import { useHistory } from 'react-router-dom' 
-import { keys } from "../AddProduct/testData";
 import AddProduct from "../AddProduct/AddProduct";
+import {  useSelector } from "react-redux";
 
-// let cartData = []
-// if(localStorage.length !==0)
-// {
-//   for(let i=0; i<localStorage.length; i++)
-//   {
-//     cartData.push(JSON.parse(localStorage.getItem( localStorage.key( i ))))
-//   }
-// }
-
-// console.log(cartData)
-// let sum = 0
-// let deliveryCharge = 50
-// for(let i=0; i<cartData.length; i++)
-// {
-//   sum = sum + (cartData[i].inCartQty * cartData[i].price)
-// }
 
 const MyButton1 = styled(Box)({
     background: 'transparent',
@@ -48,34 +32,50 @@ const MyButton2 = styled(Box)({
     color: 'white',
 });
 function Cart() {
-  let cartData = []
 
-  let [cartArr, setCartArr] = React.useState([])
-  let [totalSum, setTotalSum] = React.useState(0)
+  // Keep changes from here...by Rutvik
+  const reqId = useSelector((state) => state.cart.cartChange); //by Rutvik
+  let cartData = [] //by Rutvik
+
+  let [cartArr, setCartArr] = React.useState([]) //by Rutvik
+  let [totalSum, setTotalSum] = React.useState(0) //by Rutvik
   
-  if(localStorage.length !==0)
-  {
-    for(let i=0; i<localStorage.length; i++)
+  
+  for(let i=0; i<localStorage.length; i++) //by Rutvik
     {
-      cartData.push(JSON.parse(localStorage.getItem( localStorage.key( i ))))
-    }
-  }
+      if( typeof( JSON.parse( localStorage.getItem( localStorage.key( i ) ) ) ) === "boolean"   ) //by Rutvik
+      { 
+        continue
+      }
+      else if( JSON.parse( localStorage.getItem( localStorage.key( i ) ) ).username  ) //by Rutvik
+      {
+        continue
+      }
+      else
+      {
+        cartData.push(JSON.parse(localStorage.getItem( localStorage.key( i ) ) ) ) //by Rutvik
 
-  // console.log(cartArr)
-  let sum = 0
-  let deliveryCharge = 50
-  for(let i=0; i<cartData.length; i++)
+      }
+    }
+  
+    let sum = 0 //by Rutvik
+  let deliveryCharge = 50 //by Rutvik
+  for(let i=0; i<cartData.length; i++) //by Rutvik
   {
-    sum = sum + (cartData[i].inCartQty * cartData[i].price)
+    sum = sum + (cartData[i].inCartQty * cartData[i].price) //by Rutvik
   }
   
+
   useEffect(() => 
   {
-    setCartArr( cartData);
-    setTotalSum(sum)
-  },[cartArr.inCartQty]);
-                
+      setCartArr(cartData) //by Rutvik
+      setTotalSum(sum) //by Rutvik
+      
+  },[reqId]); //by Rutvik
+     console.log(totalSum) //by Rutvik
     const history =useHistory()
+
+ //Keep all this..   
   return (
     <>
       <TopNav />
