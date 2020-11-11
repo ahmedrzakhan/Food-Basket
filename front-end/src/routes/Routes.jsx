@@ -10,7 +10,7 @@ import SingleProduct from "../components/SingleProduct/SingleProduct";
 import TestGetProduct from "../components/AddProduct/TestGetProduct";
 
 import Store from "./../components/storeLocator/Store";
-
+import Razorpay from "./../components/payments/Razorpay";
 const Routes = () => {
   return (
     <Switch>
@@ -25,6 +25,9 @@ const Routes = () => {
       <Route path="/store-locator" render={() => <Store />} />
       <Route path="/cart" render={(props) => <Cart {...props} />} />
       <Route path="/checkout" render={() => <Checkout />} />
+      // Render this component in place of make payment button and pass amount
+      in props
+      <Route path="/payments" render={() => <Razorpay />} />
     </Switch>
   );
 };
