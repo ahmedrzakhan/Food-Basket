@@ -34,16 +34,15 @@ function AddProduct(props)
     const handleAddClick = () => {
 
         setCounter(counter => counter + 1)
-        console.log(counter)
 
         setHideFlag(true)
 
-        let reqitem = dataArr.find(item => prodId === item._id ) 
+        let reqitem = dataArr.find(item => prodId === item._id) 
+        console.log(dataArr)
 
-        console.log(reqitem)
 
         let reqProd = {
-                id: reqitem._id, 
+                id: reqitem._id || prodId,
                 title: reqitem.product.title, 
                 imageLink: reqitem.product.image, 
                 category: reqitem.category, 
