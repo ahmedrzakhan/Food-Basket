@@ -11,6 +11,7 @@ import StarIcon from "@material-ui/icons/Star";
 import styles from "./TopNav.module.css";
 import { Link } from "react-router-dom";
 import LoginReg from "./LoginReg";
+import AddProduct from "./../../AddProduct/AddProduct"
 import { logout } from "../../Redux/auth/action";
 import { getBySearch } from "../../Redux/product/action";
 import Badge from '@material-ui/core/Badge';
@@ -119,7 +120,6 @@ function TopNav() {
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
   const [otp, setOtp] = useState(false);
-  const[load,setLoad] = useState(true)
   const userData = JSON.parse(localStorage.getItem("user"));
   const status = JSON.parse(localStorage.getItem("status"));
   const { searchData, isLoading } = useSelector((state) => state.product);
@@ -133,9 +133,20 @@ function TopNav() {
     setVal(e.target.value)
     dispatch(getBySearch(val))
   }
-  const thrott = throttle(handleInput, 1000)
+  const thrott = throttle(handleInput, 100)
+  const handleEnter = (e) => {
+    switch (e.keyCode) {
+      case 13: {
+        alert("hey" +val)
+        break
 
-
+      }
+      default: {
+        return
+      }
+    }
+}
+console.log(searchData)
   let [cartCount, setCartCount] = React.useState(0)
 
   React.useEffect(() =>{
@@ -311,13 +322,15 @@ function TopNav() {
                     </p>
                   </Box> :
                   !isLoading && val.length > 0 && 
-                    <Box classes={{ root: styles.innerHoverDivSearch }}>
+                  <Box  classes={{ root: styles.innerHoverDivSearch }}>
                   {searchData.map((item, i) => (
                     <Box key={i} classes ={{root:styles.getsea}}>
                       <Box><img width="70px"src={item.product["image"]} alt={item.product["title"]}/></Box>
                       <Box><Link className={styles.newLink}to={`/product/${item._id}`}>{item.product["title"]}</Link></Box>
                       <Box>1 Pc</Box>
-                      <Box>{item.product["price"]}</Box>
+                      <Box>₹ {item.product["price"]}</Box>
+                      <Box>Qty</Box>
+                      <Box> <AddProduct subCategory={item.sub_category}id={item._id}/></Box>
                     </Box>
                    
                   ))}
