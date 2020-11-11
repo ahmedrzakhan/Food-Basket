@@ -239,11 +239,32 @@ body {
     flex-direction: row;
     border-bottom:1px solid #cdcdcd;
     align-items: center;
+
     
 }
 .newLink{
     text-decoration:none;
+    color:black;
+    font-size: small;
+    text-transform: uppercase;
 }
-.getsea>*{
-    flex:1
+
+ .getsea>*{ 
+  flex-shrink: 0;
+  flex-basis: 80px;
+  text-align: left;
+  color: #555555;
+
+ }
+.getsea>*:nth-of-type(2) {
+  flex-basis: 400px;
+  color:black
+}
+.getsea>*:nth-of-type(6) {
+  flex-basis: 120px;
+
+}
+.newLink:hover {
+  text-decoration: underline;
+
 }

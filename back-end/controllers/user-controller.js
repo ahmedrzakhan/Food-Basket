@@ -88,7 +88,7 @@ const loginUser = async (req, res) => {
 
   if (!validPassword) return res.status(400).send("Invalid Password");
 
-  res.json({ username: user.email, message: "Logged in Successfully" });
+  res.json({ user: user, message: "Logged in Successfully" });
 };
 
 module.exports = { sendOTP, registerUser, loginUser };

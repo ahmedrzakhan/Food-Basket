@@ -9,6 +9,8 @@ const categories = require("./data/categories");
 const userRoute = require("./routes/userAuth");
 const categoriesRoute = require("./routes/categories");
 const storesRoute = require("./routes/stores");
+const paymentsRoute = require("./routes/payments");
+const ordersRoute = require("./routes/orders");
 
 dotenv.config();
 
@@ -17,8 +19,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/user", userRoute);
-app.use("/api/categories", categoriesRoute)
-app.use("/api/stores", storesRoute)
+app.use("/api/categories", categoriesRoute);
+app.use("/api/stores", storesRoute);
+app.use("/api/payments", paymentsRoute);
+app.use("/api/orders", ordersRoute);
 
 mongoose.connect(
   process.env.ATLAS_URI,

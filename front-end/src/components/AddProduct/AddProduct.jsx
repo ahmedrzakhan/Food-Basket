@@ -31,20 +31,23 @@ function AddProduct(props)
     const handleAddClick = () => {
 
         setCounter(counter => counter + 1)
-        console.log(counter)
+
         setHideFlag(true)
-        let reqitem = dataArr.find(item => prodId === item._id )      
-        console.log(reqitem)
-            let reqProd = {
-            id: reqitem._id, 
-            title: reqitem.product.title, 
-            imageLink: reqitem.product.image, 
-            category: reqitem.category, 
-            sub_ctg: reqitem.sub_category,
-            price: reqitem.product.price,
-            inCartQty: 0 ,
-            presentInCart: false
-        }  
+
+        let reqitem = dataArr.find(item => prodId === item._id) 
+        console.log(dataArr)
+
+        let reqProd = {
+                id: reqitem._id || prodId,
+                title: reqitem.product.title, 
+                imageLink: reqitem.product.image, 
+                category: reqitem.category, 
+                sub_ctg: reqitem.sub_category,
+                price: reqitem.product.price,
+                inCartQty: 0 ,
+                presentInCart: false
+            }
+        
         reqProd.presentInCart = true
         reqProd.inCartQty =  1
         dispatch(addProd(reqProd.inCartQty)) //by Rutvik
