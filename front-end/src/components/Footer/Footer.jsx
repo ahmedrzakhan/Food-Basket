@@ -2,7 +2,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import details from './FooterLinks'
-import { Link } from 'react-router-dom'
+
 
 const FooterContainer = styled.div`
 display:flex;

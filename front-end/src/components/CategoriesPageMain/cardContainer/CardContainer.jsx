@@ -20,6 +20,7 @@ function CardContainer(props) {
 
   useEffect(() => {
     dispatch(getSubcategoryProduct(sub_category));
+    console.log(data)
   }, [dispatch, sub_category]);
 
   const handleClick = () => {

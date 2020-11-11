@@ -5,15 +5,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import EmailIcon from "@material-ui/icons/Email";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import {
-  FormHelperText,
   Button,
-  Typography,
   Box,
-  InputBase,
 } from "@material-ui/core";
 import PhoneAndroidOutlinedIcon from "@material-ui/icons/PhoneAndroidOutlined";
 import { registerUser, loginUser } from "../../Redux/auth/action";
-import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -58,7 +54,7 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
     logPassword,
   } = state;
   const dispatch = useDispatch();
-  const { isError, message, validation } = useSelector((state) => state.auth);
+  const {  message } = useSelector((state) => state.auth);
 
   const handleLogin = () => {
     dispatch(loginUser({ email: logEmail, password: logPassword }));
