@@ -9,6 +9,8 @@ import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 import LoginReg from "./LoginReg";
 import { logout } from "../../Redux/auth/action";
+import Badge from '@material-ui/core/Badge';
+import { withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -97,6 +99,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}))(Badge);
+
 function TopNav() {
   const classes = useStyles();
   const [register, setRegister] = useState(false);
@@ -111,6 +123,12 @@ function TopNav() {
     dispatch(logout());
   };
 
+  let [cartCount, setCartCount] = React.useState(0)
+
+  React.useEffect(() =>{
+
+    setCartCount(localStorage.length)
+  },[])
   return (
     <>
       <Box>
@@ -281,13 +299,13 @@ function TopNav() {
                   <StarIcon classes={{ root: styles.starCart }} />
                   <Divider className={classes.divider} orientation="vertical" />
                   <Link to="/cart">
+                  <StyledBadge badgeContent={cartCount} color="primary">
                     <ShoppingCartOutlinedIcon
                       classes={{ root: styles.starCart }}
                     />
+                  </StyledBadge>
+                    
                   </Link>
-                  <div className={styles.myCart}>
-                    <span className={styles.value}>0</span>
-                  </div>
                 </Box>
               </Box>
             </Box>

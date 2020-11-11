@@ -41,7 +41,7 @@ function CardContainer(props) {
                     item
                     xs={12}
                     lg={3}
-                    md={6}
+                    md={4}
                     sm={6}
                   >
                     <div className={styles.productCard}>
