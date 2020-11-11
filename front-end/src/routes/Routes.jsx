@@ -23,7 +23,7 @@ const Routes = () => {
       <Route path="/home/:categories" render={() => <CategoriesPage />} />
       <Route path="/freshFast" render={() => <FreshFast />} />
       <Route path="/store-locator" render={() => <Store />} />
-      <Route path="/cart" render={() => <Cart />} />
+      <Route path="/cart" render={(props) => <Cart {...props} />} />
       <Route path="/checkout" render={() => <Checkout />} />
     </Switch>
   );

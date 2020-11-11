@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Box, Container, Button } from "@material-ui/core";
 import TopNav from "../dashboard/TopNavBar/TopNav";
 import RouteNav from "../dashboard/TopNavBar/RouteNav";
@@ -9,51 +9,22 @@ import { useHistory } from 'react-router-dom'
 import { keys } from "../AddProduct/testData";
 import AddProduct from "../AddProduct/AddProduct";
 
-// const cartData = [
+// let cartData = []
+// if(localStorage.length !==0)
+// {
+//   for(let i=0; i<localStorage.length; i++)
 //   {
-//     image:
-//       "https://gnbdevcdn.s3.amazonaws.com/ProductVariantThumbnailImages/6151dbdd-4c99-4614-a330-6909526fc3f6_50x50.JPG",
-//     name: "corn flakes corn flakes corn flakes corn flakes",
-//     price: 20,
-//     qty: 1,
-//     subtotal: 11,
-//     category: "confectionari",
-//   },
-//   {
-//     image:
-//       "https://gnbdevcdn.s3.amazonaws.com/ProductVariantThumbnailImages/6151dbdd-4c99-4614-a330-6909526fc3f6_50x50.JPG",
-//     name: "corn flakes corn flakes corn flakes corn flakes",
-//     price: 20,
-//     qty: 1,
-//     subtotal: 11,
-//     category: "confectionari",
-//   },
-//   {
-//     image:
-//       "https://gnbdevcdn.s3.amazonaws.com/ProductVariantThumbnailImages/6151dbdd-4c99-4614-a330-6909526fc3f6_50x50.JPG",
-//     name: "corn flakes",
-//     price: 20,
-//     qty: 1,
-//     subtotal: 11,
-//     category: "confectionari23",
-//   },
-// ];
-let cartData = []
-if(localStorage.length !==0)
-{
-  for(let i=0; i<localStorage.length; i++)
-  {
-    cartData.push(JSON.parse(localStorage.getItem( localStorage.key( i ))))
-  }
-}
+//     cartData.push(JSON.parse(localStorage.getItem( localStorage.key( i ))))
+//   }
+// }
 
-console.log(cartData)
-let sum = 0
-let deliveryCharge = 50
-for(let i=0; i<cartData.length; i++)
-{
-  sum = sum + (cartData[i].inCartQty * cartData[i].price)
-}
+// console.log(cartData)
+// let sum = 0
+// let deliveryCharge = 50
+// for(let i=0; i<cartData.length; i++)
+// {
+//   sum = sum + (cartData[i].inCartQty * cartData[i].price)
+// }
 
 const MyButton1 = styled(Box)({
     background: 'transparent',
@@ -77,8 +48,11 @@ const MyButton2 = styled(Box)({
     color: 'white',
 });
 function Cart() {
-
   let cartData = []
+
+  let [cartArr, setCartArr] = React.useState([])
+  let [totalSum, setTotalSum] = React.useState(0)
+  
   if(localStorage.length !==0)
   {
     for(let i=0; i<localStorage.length; i++)
@@ -86,14 +60,21 @@ function Cart() {
       cartData.push(JSON.parse(localStorage.getItem( localStorage.key( i ))))
     }
   }
-  
-  console.log(cartData)
+
+  // console.log(cartArr)
   let sum = 0
   let deliveryCharge = 50
   for(let i=0; i<cartData.length; i++)
   {
     sum = sum + (cartData[i].inCartQty * cartData[i].price)
   }
+  
+  useEffect(() => 
+  {
+    setCartArr( cartData);
+    setTotalSum(sum)
+  },[cartArr.inCartQty]);
+                
     const history =useHistory()
   return (
     <>
@@ -125,7 +106,7 @@ function Cart() {
         </Box>
              
     <Box classes={{root:styles.newShopping}}>
-        { cartData.map((item, i) => (
+        { cartArr.map((item, i) => (
           <Box key={i}>
                 <Box classes={{ root: styles.subheading }}>
               <h3>{item.category}</h3>
@@ -174,9 +155,9 @@ function Cart() {
               </Box> 
               
               <Box classes={{root:styles.total}}>
-                  <Box classes ={{root:styles.sub}}> Sub-Total: ₹ {sum} </Box>
+                  <Box classes ={{root:styles.sub}}> Sub-Total: ₹ {totalSum} </Box>
                   <Box classes ={{root:styles.del}}> Delivery Charges : ₹ {deliveryCharge} </Box>
-                  <Box classes ={{root:styles.tot}}> Total: ₹ {sum + deliveryCharge}</Box>
+                  <Box classes ={{root:styles.tot}}> Total: ₹ {totalSum + deliveryCharge}</Box>
               </Box>
               <Box classes={{ root: styles.shopping }}>
                   <Box classes={{ root: styles.head }}>

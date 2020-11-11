@@ -1,28 +1,21 @@
 import React,{ useEffect }  from "react"
-import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { Grid } from "@material-ui/core";
 import styles from "./AddProduct.module.css"
 import { TiShoppingCart } from "react-icons/ti";
-import { useHistory, useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import {getSubcategoryProduct} from "./../Redux/product/action"
-// import dataArr from "./testData"
+
 
 function AddProduct(props)
 {
     const [counter, setCounter] = React.useState(0)
     const [hideFlag, setHideFlag] = React.useState(false)
     const dataArr = useSelector(state => state.product.subCategoryData)
-    let storageArr = []
     const dispatch = useDispatch()
     const params = useParams()
-
-    const { sub_category } = params
-    // console.log(sub_category)
-    // console.log(props.id, "PROPS")
-    // console.log(dataArr)
-    // console.log(dataArr)
+    
 
     useEffect(() => {
         if(props.subCategory)
@@ -37,9 +30,7 @@ function AddProduct(props)
     let itemFromDataArr = dataArr.find(item => prodId === item._id)
     let itemFromLocalStorage = JSON.parse(localStorage.getItem(`${prodId}`)) || ""
     
-    // console.log(itemFromDataArr, "ITEM FROM DATA ARR")
-    // console.log(itemFromLocalStorage, "ITEM FROM LOCAL STORAGE")
-    
+   
     const handleAddClick = () => {
 
         setCounter(counter => counter + 1)
@@ -62,11 +53,7 @@ function AddProduct(props)
                 presentInCart: false
             }
 
-        // console.log(reqProd)    
-
-        // storageArr = JSON.parse(localStorage.getItem("all-prods")) || []
-
-        // storageArr.push(reqProd)
+        
         reqProd.presentInCart = true
         reqProd.inCartQty =  1
 
@@ -82,9 +69,6 @@ function AddProduct(props)
 
         let reqProdToAdd = JSON.parse(localStorage.getItem(`${prodId}`))
 
-
-        // console.log(reqProdToAdd, "req prod to add")
-
         setCounter(counter => counter + 1)
 
         reqProdToAdd.inCartQty = reqProdToAdd.inCartQty + 1
@@ -96,8 +80,6 @@ function AddProduct(props)
 
         let reqProdToDec = JSON.parse(localStorage.getItem(`${prodId}`))
 
-        // console.log(reqProdToDec, "req prod to dec")
-
         setCounter(counter => counter - 1)
 
         reqProdToDec.inCartQty = reqProdToDec.inCartQty - 1
@@ -105,14 +87,12 @@ function AddProduct(props)
         
         if(reqProdToDec.inCartQty == 0)
         {
-            // let itemToRemove = JSON.parse(lo)
             reqProdToDec = JSON.parse(localStorage.getItem(`${prodId}`))
 
             reqProdToDec.presentInCart = false
 
             localStorage.setItem(`${prodId}`, JSON.stringify(reqProdToDec))
             localStorage.removeItem(`${prodId}`)
-            // console.log("REMOVED", prodId)
             return
 
         }
