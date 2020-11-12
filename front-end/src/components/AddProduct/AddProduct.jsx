@@ -14,7 +14,6 @@ function AddProduct(props)
     const dataArr = useSelector(state => state.product.subCategoryData)
     const dispatch = useDispatch()
     
-
     useEffect(() => {
         if(props.subCategory)
         {

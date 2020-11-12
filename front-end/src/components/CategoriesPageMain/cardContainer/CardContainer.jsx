@@ -21,8 +21,6 @@ function CardContainer(props) {
     dispatch(getSubcategoryProduct(sub_category));
   }, [dispatch, sub_category]);
 
-  
-
   return (
     <>
       <Container>

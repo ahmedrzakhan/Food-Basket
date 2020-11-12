@@ -8,6 +8,7 @@ import Checkout from "../components/checkout/Checkout";
 import SingleProduct from "../components/SingleProduct/SingleProduct";
 import Store from "./../components/storeLocator/Store";
 import Razorpay from "./../components/payments/Razorpay";
+import SearchCategory from "../components/CategoriesPageMain/searchCategory/CategoryPage";
 const Routes = () => {
   return (
     <Switch>
@@ -20,6 +21,7 @@ const Routes = () => {
       <Route path="/home/:categories" render={() => <CategoriesPage />} />
       <Route path="/freshFast" render={() => <FreshFast />} />
       <Route path="/store-locator" render={() => <Store />} />
+      <Route path="/search-page" render={() => <SearchCategory />} />
       <Route path="/cart" render={(props) => <Cart {...props} />} />
       <Route path="/checkout" render={() => <Checkout />} />
       <Route path="/payments" render={() => <Razorpay />} />

@@ -31,40 +31,42 @@ const MyButton2 = styled(Box)({
     color: 'white',
 });
 function Cart() {
+
   const reqId = useSelector((state) => state.cart.cartChange); 
   let cartData = [] 
   let [cartArr, setCartArr] = React.useState([]) 
-  let [totalSum, setTotalSum] = React.useState(0) 
+  let [totalSum, setTotalSum] = React.useState(0)
+  const history = useHistory()
+
   
   
   for(let i=0; i<localStorage.length; i++) 
     {
 
-      // console.log(Object.keys(localStorage))
-      if(Object.keys(localStorage)[i] !== "rzp_device_id"   )
+    if (Object.keys(localStorage)[i] !== "rzp_device_id")
+    {
+      if (((localStorage.getItem(localStorage.key(i)))) === "true" ||
+        localStorage.getItem(localStorage.key(i)) === "false" ||
+        Object.keys(localStorage)[i] === "user" || Object.keys(localStorage)[i] === "mapbox.eventData:YWhtZWRyemFraGFu" 
+          || Object.keys(localStorage)[i] === "mapbox.eventData.uuid:YWhtZWRyemFraGFu" ||
+          Object.keys(localStorage)[i] === "OrderSummary"  || Object.keys(localStorage)[i] ==="mainCartDataLength" )
       {
-            if( (( localStorage.getItem( localStorage.key( i ) ) ) ) === "true" 
-            || localStorage.getItem( localStorage.key( i ) ) === "false" 
-             || Object.keys(localStorage)[i] === "user"
-             || Object.keys(localStorage)[i] === "OrderSummary"
-             || Object.keys(localStorage)[i] ==="mainCartDataLength" )  
-            { 
-              continue
-            }
-            else
-            {
-              console.log(localStorage.getItem( localStorage.key( i ) ), "LOCAL STORAGE")
-              let temp = JSON.parse(localStorage.getItem( localStorage.key( i ) ))
-              // console.log(temp, "TEMP")
-              cartData.push(temp) 
-
-            }
+        continue
       }
-    }
+      else
+      {
+        console.log(localStorage.getItem(localStorage.key(i)), "LOCAL STORAGE")
+        let temp = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        console.log(temp, "TEMP")
+        cartData.push(temp)
+
+      }
+    } 
+  }
   
-    // console.log(cartData)
-    localStorage.setItem("mainCartDataLength", JSON.stringify(cartData.length))
-    let sum = 0 
+  
+  localStorage.setItem("mainCartDataLength", JSON.stringify(cartData.length))
+  let sum = 0 
   let deliveryCharge = 50 
   for(let i=0; i<cartData.length; i++) 
   {
@@ -76,12 +78,12 @@ function Cart() {
   {
       setCartArr(cartData) 
       setTotalSum(sum) 
-      // localStorage.setItem("myCart", JSON.stringify(cartData))
       
-  },[reqId]); 
+  },[reqId]);
+ 
+      // localStorage.setItem("myCart", JSON.stringify(cartData))
     //  console.log(totalSum) 
     const history =useHistory()
-
 
   return (
     <>
