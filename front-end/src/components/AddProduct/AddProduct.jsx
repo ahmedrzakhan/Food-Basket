@@ -3,10 +3,9 @@ import Box from '@material-ui/core/Box';
 import { Grid } from "@material-ui/core";
 import styles from "./AddProduct.module.css"
 import { TiShoppingCart } from "react-icons/ti";
-import {  useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import {getSubcategoryProduct} from "./../Redux/product/action"
-
+import {addProd, subProd} from "./../Redux/cart/actions"
 
 function AddProduct(props)
 {
@@ -14,7 +13,6 @@ function AddProduct(props)
     const [hideFlag, setHideFlag] = React.useState(false)
     const dataArr = useSelector(state => state.product.subCategoryData)
     const dispatch = useDispatch()
-    const params = useParams()
     
 
     useEffect(() => {
@@ -27,7 +25,6 @@ function AddProduct(props)
 
     let prodId = props.id
 
-    let itemFromDataArr = dataArr.find(item => prodId === item._id)
     let itemFromLocalStorage = JSON.parse(localStorage.getItem(`${prodId}`)) || ""
     
    
@@ -38,7 +35,7 @@ function AddProduct(props)
         setHideFlag(true)
 
         let reqitem = dataArr.find(item => prodId === item._id) 
-        console.log(dataArr)
+        // console.log(dataArr)
 
 
         let reqProd = {
@@ -56,6 +53,7 @@ function AddProduct(props)
         reqProd.presentInCart = true
         reqProd.inCartQty =  1
 
+        dispatch(addProd(reqProd.inCartQty))
         if(reqProd.presentInCart === true)
         {
             localStorage.setItem(`${reqProd.id}`, JSON.stringify(reqProd))
@@ -70,6 +68,7 @@ function AddProduct(props)
 
         reqProdToAdd.inCartQty = reqProdToAdd.inCartQty + 1
 
+        dispatch(addProd(reqProdToAdd.inCartQty))
         localStorage.setItem(`${prodId}`, JSON.stringify(reqProdToAdd))
     }
 
@@ -81,6 +80,7 @@ function AddProduct(props)
 
         reqProdToDec.inCartQty = reqProdToDec.inCartQty - 1
 
+        dispatch(subProd(reqProdToDec.inCartQty))
         
         if(reqProdToDec.inCartQty === 0)
         {
@@ -94,12 +94,10 @@ function AddProduct(props)
 
         }
         localStorage.setItem(`${prodId}`, JSON.stringify(reqProdToDec))
+
     }
 
-    // for(let i=0; i<=localStorage.length; i++)
-    // {
-    //     console.log(localStorage[i])
-    // }
+   
     return(
         <>
             <Box>
@@ -123,10 +121,6 @@ function AddProduct(props)
                   </Box>
                 }
             </Box>
-
-            
-
-            
         </>
     )
 }

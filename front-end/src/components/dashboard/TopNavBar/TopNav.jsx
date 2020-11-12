@@ -123,7 +123,7 @@ function TopNav() {
 
   const { searchData, isLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
-  const [userData, setuserData] = useState(null)
+  const [userData, setuserData] = useState("")
   const[status,setStatus] = useState("")
 
 
@@ -135,13 +135,15 @@ function TopNav() {
     setVal(e.target.value)
     dispatch(getBySearch(val))
   }
- console.log(userData)
+//  console.log(userData)
   const thrott = throttle(handleInput, 1000)
 
 
   const cartStateChange = useSelector((state) => state.cart.cartChange); //Changes added bu Rutvik
 
   let [cartCount, setCartCount] = React.useState(0) //Changes added by Rutvik
+
+  const mainCartLength = JSON.parse(localStorage.getItem("mainCartDataLength")) 
 
   const handleEnter = (e) => {
     switch (e.keyCode) {
@@ -159,8 +161,12 @@ function TopNav() {
   useEffect(() => {
     setuserData (JSON.parse(localStorage.getItem("user")))
     setStatus (JSON.parse(localStorage.getItem("status")))
-    setCartCount(localStorage.length)
-  },[userData,status])
+  },[status])
+
+  useEffect(() => {
+
+    setCartCount(mainCartLength)
+  }, [mainCartLength])
   return (
     <>
       <Box>
@@ -203,8 +209,8 @@ function TopNav() {
               {status ? (
                 <>
                   <div className={styles.hoverUser}>
-                    {userData.username}
-                  
+                    {/* {userData.username} */}
+                  dummy
                     <div className={styles.innerHoverUser}>
                       <Button onClick={handleLogout}>LogOut</Button>
                     </div>
