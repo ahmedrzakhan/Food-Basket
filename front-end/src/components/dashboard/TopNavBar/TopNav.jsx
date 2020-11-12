@@ -143,7 +143,7 @@ function TopNav() {
 
   let [cartCount, setCartCount] = React.useState(0) //Changes added by Rutvik
 
-  const mainCartLength = JSON.parse(localStorage.getItem("mainCartDataLength")) || 0
+  const mainCartLength = JSON.parse(localStorage.getItem("mainCartDataLength")) 
 
   const handleEnter = (e) => {
     switch (e.keyCode) {

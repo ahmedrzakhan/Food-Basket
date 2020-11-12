@@ -35,7 +35,7 @@ function AddProduct(props)
         setHideFlag(true)
 
         let reqitem = dataArr.find(item => prodId === item._id) 
-        console.log(dataArr)
+        // console.log(dataArr)
 
 
         let reqProd = {

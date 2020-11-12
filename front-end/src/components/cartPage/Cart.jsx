@@ -40,7 +40,7 @@ function Cart() {
   for(let i=0; i<localStorage.length; i++) 
     {
 
-      console.log(Object.keys(localStorage))
+      // console.log(Object.keys(localStorage))
       if(Object.keys(localStorage)[i] !== "rzp_device_id"   )
       {
             if( (( localStorage.getItem( localStorage.key( i ) ) ) ) === "true" 
@@ -55,14 +55,15 @@ function Cart() {
             {
               console.log(localStorage.getItem( localStorage.key( i ) ), "LOCAL STORAGE")
               let temp = JSON.parse(localStorage.getItem( localStorage.key( i ) ))
-              console.log(temp, "TEMP")
+              // console.log(temp, "TEMP")
               cartData.push(temp) 
 
             }
       }
     }
   
-    console.log(cartData)
+    // console.log(cartData)
+    localStorage.setItem("mainCartDataLength", JSON.stringify(cartData.length))
     let sum = 0 
   let deliveryCharge = 50 
   for(let i=0; i<cartData.length; i++) 
@@ -78,10 +79,9 @@ function Cart() {
       // localStorage.setItem("myCart", JSON.stringify(cartData))
       
   },[reqId]); 
-     console.log(totalSum) 
+    //  console.log(totalSum) 
     const history =useHistory()
 
-    localStorage.setItem("mainCartDataLength", JSON.stringify(cartArr.length))
 
   return (
     <>
