@@ -142,7 +142,7 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf53"
+                    to="/product/5faa4180706898075a9b2ec2"
                   >
                     Baby Corn{" "}
                   </Link>
@@ -156,7 +156,7 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf54"
+                    to="/product/5faa4180706898075a9b2ec3"
                   >
                     {" "}
                     Avocados Peppers
@@ -171,7 +171,7 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf56"
+                    to="/product/5faa4180706898075a9b2ec5"
                   >
                     {" "}
                     Broccoli{" "}
@@ -217,7 +217,7 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf66"
+                    to="/product/5faa4180706898075a9b2ed6"
                   >
                     Chicken Cuts Lollipops Mince
                   </Link>
@@ -231,7 +231,7 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf67"
+                    to="/product/5faa4180706898075a9b2edb"
                   >
                     Fish Other Seafood
                   </Link>
@@ -245,7 +245,7 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf68"
+                    to="/product/5faa4180706898075a9b2edc"
                   >
                     Fresh Kebabs Others
                   </Link>
@@ -289,7 +289,7 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf73"
+                    to="/product/5faa4180706898075a9b2ee2"
                   >
                     Peanut Butter
                   </Link>
@@ -303,7 +303,7 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf71"
+                    to="/product/5faa4180706898075a9b2ee0"
                   >
                     Buns Croissants Bagels
                   </Link>
@@ -317,7 +317,7 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf70"
+                    to="/product/5faa4180706898075a9b2edf"
                   >
                     Muffins Cakes Brownies
                   </Link>
@@ -361,9 +361,9 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf5f"
+                    to="/product/5faa4180706898075a9b2ecb"
                   >
-                    Kellogges Corn Flakes{" "}
+                   Orange Juice{" "}
                   </Link>
                 </div>
                 <div>
@@ -375,7 +375,7 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf60"
+                    to="/product/5faa4180706898075a9b2ecf"
                   >
                     Amul Gold Milk{" "}
                   </Link>
@@ -389,7 +389,7 @@ function Dashboard() {
                 <div className={styles.arrowBox}>
                   <Link
                     className={styles.linking}
-                    to="/product/5fa59db92294321a6fc7bf5a"
+                    to="/product/5faa4180706898075a9b2ec9"
                   >
                     Tomato ketchup - Top Down{" "}
                   </Link>

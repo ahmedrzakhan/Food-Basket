@@ -81,6 +81,7 @@ export const getSingleProduct = (payload) => async (dispatch) => {
   var config = {
     method: "get",
     url: `http://localhost:5000/api/categories/product?_id=${payload}`,
+    
   };
   try {
     const result = await axios(config);

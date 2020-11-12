@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   useDispatch, useSelector
 } from "react-redux";
@@ -120,10 +120,12 @@ function TopNav() {
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
   const [otp, setOtp] = useState(false);
-  const userData = JSON.parse(localStorage.getItem("user"));
-  const status = JSON.parse(localStorage.getItem("status"));
+ 
   const { searchData, isLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
+  const [userData, setuserData] = useState(null)
+  const[status,setStatus] = useState("")
+
 
   const handleLogout = () => {
     dispatch(logout());
@@ -133,14 +135,8 @@ function TopNav() {
     setVal(e.target.value)
     dispatch(getBySearch(val))
   }
-
+ console.log(userData)
   const thrott = throttle(handleInput, 1000)
-
-  const cartStateChange = useSelector((state) => state.cart.cartChange); //Changes added bu Rutvik
-
-  let [cartCount, setCartCount] = React.useState(0) //Changes added by Rutvik
-
-  const thrott = throttle(handleInput, 100)
   const handleEnter = (e) => {
     switch (e.keyCode) {
       case 13: {
@@ -153,16 +149,13 @@ function TopNav() {
       }
     }
 }
-console.log(searchData)
+  let [cartCount, setCartCount] = React.useState(0)
 
-
-  // Changes added by Rutvik:
-  React.useEffect(() =>{
- 
-    setCartCount(localStorage.length - 2 )
-  },[cartStateChange])
-  //Changes added by Rutvik
-
+  useEffect(() => {
+    setuserData (JSON.parse(localStorage.getItem("user")))
+    setStatus (JSON.parse(localStorage.getItem("status")))
+    setCartCount(localStorage.length)
+  },[userData,status])
   return (
     <>
       <Box>
@@ -206,6 +199,7 @@ console.log(searchData)
                 <>
                   <div className={styles.hoverUser}>
                     {userData.username}
+                  
                     <div className={styles.innerHoverUser}>
                       <Button onClick={handleLogout}>LogOut</Button>
                     </div>
@@ -340,7 +334,7 @@ console.log(searchData)
                       <Box>1 Pc</Box>
                       <Box>₹ {item.product["price"]}</Box>
                       <Box>Qty</Box>
-                      <Box> <AddProduct subCategory={item.sub_category}id={item._id}/></Box>
+                      <Box> <AddProduct id={item._id} /></Box>
                     </Box>
                    
                   ))}
@@ -355,13 +349,12 @@ console.log(searchData)
                   <StarIcon classes={{ root: styles.starCart }} />
                   <Divider className={classes.divider} orientation="vertical" />
                   <Link to="/cart">
-                    {/* Changes Added by RUTVIK */}
-                  <StyledBadge badgeContent={cartCount} color="primary"> 
+                  <StyledBadge badgeContent={cartCount} color="primary">
                     <ShoppingCartOutlinedIcon
                       classes={{ root: styles.starCart }}
                     />
                   </StyledBadge>
-                    {/* Changes Added by Rutvik */}
+                    
                   </Link>
                 </Box>
               </Box>
