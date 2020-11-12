@@ -194,7 +194,7 @@ function TopNav() {
 
           <Box>
             <Box className={classes.login} m={1}>
-              <Link className={styles.Toplink} to="/">
+              <Link className={styles.Toplink} to="/store-locator">
                 Store Locator
               </Link>
               <Link className={styles.Toplink} to="/freshFast">

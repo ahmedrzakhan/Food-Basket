@@ -83,7 +83,6 @@ function Cart() {
  
       // localStorage.setItem("myCart", JSON.stringify(cartData))
     //  console.log(totalSum) 
-    const history =useHistory()
 
   return (
     <>

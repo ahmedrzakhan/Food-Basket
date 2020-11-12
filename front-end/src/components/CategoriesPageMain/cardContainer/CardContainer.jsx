@@ -62,7 +62,7 @@ function CardContainer(props) {
                           DELIVERY IN 60 MINUTES{" "}
                         </span>
                       </div>
-                      <p style={{textAlign:"center "}}> {items.product["title"]}  </p>
+                      <p style={{textAlign:"center"}}> {items.product["title"]}  </p>
                    
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <span className={styles.mrpBorder}>MRP ₹ {items.product.price}
