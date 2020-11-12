@@ -3,6 +3,8 @@ import axios from "axios";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import Map from "./Map";
 import { Box, CityBox, Div, Flex, InnerBox, P, Small } from "./Styles";
+import TopNav from "../dashboard/TopNavBar/TopNav";
+import RouteNav from "../dashboard/TopNavBar/RouteNav";
 
 class Store extends Component {
   constructor(props) {
@@ -61,6 +63,9 @@ class Store extends Component {
       .locations.find((location) => location.title === currentStore);
 
     return (
+      <>
+      <TopNav />
+      <RouteNav/>
       <Flex>
         <Box>
           {data.map((cities) => {
@@ -113,7 +118,8 @@ class Store extends Component {
             }}
           />
         </Box>
-      </Flex>
+        </Flex>
+        </>
     );
   }
 }

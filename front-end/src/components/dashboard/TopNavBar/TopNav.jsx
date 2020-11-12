@@ -1,7 +1,8 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   useDispatch, useSelector
 } from "react-redux";
+import { useHistory } from "react-router-dom";
 import throttle from 'lodash.throttle'
 import { Box, InputBase, Divider, IconButton, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -116,37 +117,36 @@ const StyledBadge = withStyles((theme) => ({
 
 function TopNav() {
   const classes = useStyles();
-  const [val,setVal] = useState("")
+  const [val, setVal] = useState("")
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
-  const [otp, setOtp] = useState(false);
-
+  const [otp, setOtp] = useState(false);  
+  const loginStatus =  useSelector((state) => state.auth.loginStatus)
+  const userData = useSelector((state) => state.auth.userData) || JSON.parse(localStorage.getItem("user"))
+  
+  console.log(loginStatus)
   const { searchData, isLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
-  const [userData, setuserData] = useState(null)
-  const[status,setStatus] = useState("")
+  const history =useHistory()
+
 
 
   const handleLogout = () => {
     dispatch(logout());
   };
-   
+
   const handleInput = (e) => {
     setVal(e.target.value)
     dispatch(getBySearch(val))
   }
- console.log(userData)
   const thrott = throttle(handleInput, 1000)
 
-
-  const cartStateChange = useSelector((state) => state.cart.cartChange); //Changes added bu Rutvik
-
-  let [cartCount, setCartCount] = React.useState(0) //Changes added by Rutvik
+  let [cartCount, setCartCount] = React.useState(0) 
 
   const handleEnter = (e) => {
     switch (e.keyCode) {
       case 13: {
-        alert("hey" +val)
+       history.push('/search-page')
         break
 
       }
@@ -154,13 +154,12 @@ function TopNav() {
         return
       }
     }
-}
-
+  }
   useEffect(() => {
-    setuserData (JSON.parse(localStorage.getItem("user")))
-    setStatus (JSON.parse(localStorage.getItem("status")))
     setCartCount(localStorage.length)
-  },[userData,status])
+  }, [])
+
+
   return (
     <>
       <Box>
@@ -200,38 +199,39 @@ function TopNav() {
                 {" "}
                 Fresh & Fast
               </Link>
-              {status ? (
+              {loginStatus ? (
                 <>
                   <div className={styles.hoverUser}>
                     {userData.username}
-                  
+
+
                     <div className={styles.innerHoverUser}>
                       <Button onClick={handleLogout}>LogOut</Button>
                     </div>
                   </div>
                 </>
               ) : (
-                <>
-                  <button
-                    onClick={() => {
-                      setRegister(true);
-                      setLogin(false);
-                    }}
-                    className={styles.topRight}
-                  >
-                    Register
+                  <>
+                    <button
+                      onClick={() => {
+                        setRegister(true);
+                        setLogin(false);
+                      }}
+                      className={styles.topRight}
+                    >
+                      Register
                   </button>
-                  <button
-                    onClick={() => {
-                      setLogin(true);
-                      setRegister(false);
-                    }}
-                    className={styles.topRight}
-                  >
-                    Login
+                    <button
+                      onClick={() => {
+                        setLogin(true);
+                        setRegister(false);
+                      }}
+                      className={styles.topRight}
+                    >
+                      Login
                   </button>
-                </>
-              )}
+                  </>
+                )}
             </Box>
 
             <Box>
@@ -240,9 +240,10 @@ function TopNav() {
                 className={classes.root}
               >
                 <InputBase
+                  onKeyUp={handleEnter}
                   name="val"
                   value={val}
-                  onChange ={thrott}
+                  onChange={thrott}
                   className={classes.input}
                   placeholder="Start Shopping..."
                 />
@@ -252,8 +253,8 @@ function TopNav() {
                   </IconButton>
                 </Box>
                 {/* start from here */}
-                
-              
+
+
                 {val.length === 0 ?
                   <Box classes={{ root: styles.innerHoverDivSearch }}>
                     <p className={styles.trend}>Trending Searches</p>
@@ -330,22 +331,24 @@ function TopNav() {
                       </Link>
                     </p>
                   </Box> :
-                  !isLoading && val.length > 0 && 
-                  <Box  classes={{ root: styles.innerHoverDivSearch }}>
-                  {searchData.map((item, i) => (
-                    <Box key={i} classes ={{root:styles.getsea}}>
-                      <Box><img width="70px"src={item.product["image"]} alt={item.product["title"]}/></Box>
-                      <Box><Link className={styles.newLink}to={`/product/${item._id}`}>{item.product["title"]}</Link></Box>
-                      <Box>1 Pc</Box>
-                      <Box>₹ {item.product["price"]}</Box>
-                      <Box>Qty</Box>
-                      <Box> <AddProduct id={item._id} /></Box>
-                    </Box>
-                   
-                  ))}
-                    </Box>
-               
-                
+                  !isLoading && val.length > 0 &&
+                  <Box classes={{ root: styles.innerHoverDivSearch }}>
+                    {searchData.map((item, i) => (
+                      <Box key={i} classes={{ root: styles.getsea }}>
+                        <Box><img width="70px" src={item.product["image"]} alt={item.product["title"]} /></Box>
+                        <Box><Link className={styles.newLink} to={`/product/${item._id}`}>{item.product["title"]}</Link></Box>
+                        <Box>1 Pc</Box>
+                        <Box>₹ {item.product["price"]}</Box>
+                        <Box>Qty</Box>
+                        <Box> <AddProduct id={item._id} /></Box>
+                      </Box>
+                     
+
+                    ))}
+                    <Box onClick={()=>history.push('/search-page')}classes={{ root: styles.allPro }}>View All Products </Box>
+                  </Box>
+
+
                 }
               </Box>
 
@@ -354,12 +357,12 @@ function TopNav() {
                   <StarIcon classes={{ root: styles.starCart }} />
                   <Divider className={classes.divider} orientation="vertical" />
                   <Link to="/cart">
-                  <StyledBadge badgeContent={cartCount} color="primary">
-                    <ShoppingCartOutlinedIcon
-                      classes={{ root: styles.starCart }}
-                    />
-                  </StyledBadge>
-                    
+                    <StyledBadge badgeContent={cartCount} color="primary">
+                      <ShoppingCartOutlinedIcon
+                        classes={{ root: styles.starCart }}
+                      />
+                    </StyledBadge>
+
                   </Link>
                 </Box>
               </Box>

@@ -11,9 +11,7 @@ import TopNav from "../../dashboard/TopNavBar/TopNav";
 import RouteNav from "../../dashboard/TopNavBar/RouteNav";
 import Footer from '../../Footer/Footer'
 import CategoryCard from '../cardContainer/CategoryCard'
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+
 
 
 const checkBoxInputsArr = [

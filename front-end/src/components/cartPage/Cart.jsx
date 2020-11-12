@@ -1,8 +1,7 @@
-import React, {useEffect} from "react";
-import { Box, Container, Button } from "@material-ui/core";
+import React, { useEffect } from "react";
+import {Box} from '@material-ui/core'
 import TopNav from "../dashboard/TopNavBar/TopNav";
 import RouteNav from "../dashboard/TopNavBar/RouteNav";
-import Footer from "../Footer/Footer";
 import styles from "./cart.module.css";
 import { styled } from '@material-ui/styles';
 import { useHistory } from 'react-router-dom' 
@@ -33,54 +32,51 @@ const MyButton2 = styled(Box)({
 });
 function Cart() {
 
-  // Keep changes from here...by Rutvik
-  const reqId = useSelector((state) => state.cart.cartChange); //by Rutvik
-  let cartData = [] //by Rutvik
-
-  let [cartArr, setCartArr] = React.useState([]) //by Rutvik
-  let [totalSum, setTotalSum] = React.useState(0) //by Rutvik
+  const reqId = useSelector((state) => state.cart.cartChange); 
+  let cartData = [] 
+  let [cartArr, setCartArr] = React.useState([]) 
+  let [totalSum, setTotalSum] = React.useState(0)
+  const history = useHistory()
   
   
-  for(let i=0; i<localStorage.length; i++) //by Rutvik
+  for(let i=0; i<localStorage.length; i++) 
     {
 
-      console.log(Object.keys(localStorage))
-      if(Object.keys(localStorage)[i] !== "rzp_device_id"  || localStorage.getItem( localStorage.key( i ) ) === "false" || localStorage.getItem( localStorage.key( i ) ) === "true" )
+    if (Object.keys(localStorage)[i] !== "rzp_device_id")
+    {
+      if (((localStorage.getItem(localStorage.key(i)))) === "true" ||
+        localStorage.getItem(localStorage.key(i)) === "false" ||
+        Object.keys(localStorage)[i] === "user" || Object.keys(localStorage)[i] === "mapbox.eventData:YWhtZWRyemFraGFu" || Object.keys(localStorage)[i] === "mapbox.eventData.uuid:YWhtZWRyemFraGFu")
       {
-            if( (( localStorage.getItem( localStorage.key( i ) ) ) ) === "true" ||  localStorage.getItem( localStorage.key( i ) ) === "false" )  //by Rutvik
-          { 
-            continue
-          }
-          else
-          {
-            console.log(localStorage.getItem( localStorage.key( i ) ), "LOCAL STORAGE")
-            let temp = JSON.parse(localStorage.getItem( localStorage.key( i ) ))
-            console.log(temp, "TEMP")
-            cartData.push(temp) //by Rutvik
-
-          }
+        continue
       }
-    }
+      else
+      {
+        console.log(localStorage.getItem(localStorage.key(i)), "LOCAL STORAGE")
+        let temp = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        console.log(temp, "TEMP")
+        cartData.push(temp)
+      }
+    } 
+  }
   
-    console.log(cartData)
-    let sum = 0 //by Rutvik
-  let deliveryCharge = 50 //by Rutvik
-  for(let i=0; i<cartData.length; i++) //by Rutvik
+  
+    let sum = 0 
+  let deliveryCharge = 50 
+  for(let i=0; i<cartData.length; i++) 
   {
-    sum = sum + (cartData[i].inCartQty * cartData[i].price) //by Rutvik
+    sum = sum + (cartData[i].inCartQty * cartData[i].price) 
   }
   
 
   useEffect(() => 
   {
-      setCartArr(cartData) //by Rutvik
-      setTotalSum(sum) //by Rutvik
+      setCartArr(cartData) 
+      setTotalSum(sum) 
       
-  },[reqId]); //by Rutvik
-     console.log(totalSum) //by Rutvik
-    const history =useHistory()
-
- //Keep all this..   
+  },[reqId]);
+ 
+  
   return (
     <>
       <TopNav />

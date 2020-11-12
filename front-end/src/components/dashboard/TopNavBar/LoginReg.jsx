@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
@@ -37,10 +37,12 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
   const [emailError, setEmailError] = useState("");
   const [passError, setPassError] = useState("");
   const [mobileError, setMobileError] = useState("");
+  const { message, isAuth } = useSelector((state) => state.auth);
+  
   const [state, setState] = useState({
     logEmail: "",
     logPassword: "",
-    regEmail: "",
+    regEmail: "", 
     regPassword: "",
     mobile: "",
     userOtp: "",
@@ -54,14 +56,20 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
     logPassword,
   } = state;
   const dispatch = useDispatch();
-  const {  message } = useSelector((state) => state.auth);
+
 
   const handleLogin = () => {
     dispatch(loginUser({ email: logEmail, password: logPassword }));
-    setRegister(false);
-    setLogin(false);
-    setOtp(false);
+  
   };
+  
+  useEffect(() => {
+    if (isAuth) {
+      setRegister(false);
+      setLogin(false);
+      setOtp(false);
+    }
+  },[isAuth])
   const handleRegister = () => {
     let obj = {
       email: regEmail,
@@ -111,6 +119,7 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
       }
     }
   };
+
   function handleChange(e) {
     setState({ ...state, [e.target.name]: e.target.value });
   }
@@ -158,7 +167,7 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
             </Box>
           </Box>
         </Box>
-      ) : login ? (
+      ) : !isAuth && login ? (
         <Box classes={{ root: styles.login }}>
           <Box
             classes={{ root: styles.inputBox }}
@@ -199,7 +208,7 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
                     placeholder=" Password"
                   />
                 </Box>
-                <small style={{ color: "red" }}>{message}</small>
+              
               </Box>
               <Box classes={{ root: styles.oneBox }}>
                 <button onClick={handleLogin} className={styles.btnLogin}>

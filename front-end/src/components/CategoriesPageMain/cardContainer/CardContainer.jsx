@@ -7,7 +7,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import AddProduct from "./../../AddProduct/AddProduct"
-import { Typography } from "@material-ui/core";
+
 
 
 function CardContainer(props) {
@@ -23,9 +23,7 @@ function CardContainer(props) {
     console.log(data)
   }, [dispatch, sub_category]);
 
-  const handleClick = () => {
-    alert("Pop");
-  };
+
 
   return (
     <>

@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Box';
 import { Grid } from "@material-ui/core";
 import styles from "./AddProduct.module.css"
 import { TiShoppingCart } from "react-icons/ti";
-import {  useParams } from 'react-router-dom'
+
 import { useDispatch, useSelector } from "react-redux";
 import {getSubcategoryProduct} from "./../Redux/product/action"
 
@@ -14,9 +14,7 @@ function AddProduct(props)
     const [hideFlag, setHideFlag] = React.useState(false)
     const dataArr = useSelector(state => state.product.subCategoryData)
     const dispatch = useDispatch()
-    const params = useParams()
     
-
     useEffect(() => {
         if(props.subCategory)
         {
@@ -26,8 +24,6 @@ function AddProduct(props)
     
 
     let prodId = props.id
-
-    let itemFromDataArr = dataArr.find(item => prodId === item._id)
     let itemFromLocalStorage = JSON.parse(localStorage.getItem(`${prodId}`)) || ""
     
    
