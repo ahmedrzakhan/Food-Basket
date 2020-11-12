@@ -7,7 +7,7 @@ import Cart from "../components/cartPage/Cart";
 import Checkout from "../components/checkout/Checkout";
 
 import SingleProduct from "../components/SingleProduct/SingleProduct";
-import TestGetProduct from "../components/AddProduct/TestGetProduct";
+// import TestGetProduct from "../components/AddProduct/TestGetProduct";
 
 import Store from "./../components/storeLocator/Store";
 import Razorpay from "./../components/payments/Razorpay";

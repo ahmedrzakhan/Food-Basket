@@ -8,6 +8,7 @@ import TopNav from "../dashboard/TopNavBar/TopNav";
 import RouteNav from "../dashboard/TopNavBar/RouteNav";
 import LoginForm from './Login'
 import Address from './Address'
+import OrderSummary from './OrderSummary';
 
 
 
@@ -34,6 +35,9 @@ function Checkout() {
         setValue(newValue);
     };
 
+    const loginStatus = JSON.parse(localStorage.getItem("status"))
+
+    const orderSummaryDataArr = JSON.parse(localStorage.getItem("OrderSummary")) || []
     return (
         <>
             <TopNav />
@@ -43,15 +47,27 @@ function Checkout() {
                 <TabContext value={value}>
                     <AppBar position="static" color="default">
                         <TabList onChange={handleChange} aria-label="simple tabs example">
-                            <Tab className={classes.newTab} label="1.Login" value="1" />
+                            {
+                                loginStatus?
+                                <Tab className={classes.newTab} label="1.Login" value="1" disabled/>
+                                :
+                                <Tab className={classes.newTab} label="1.Login" value="1" />
+                            }
                             <Tab color="primary"label="2.Address" value="2" />
-                            <Tab label="3.Order Summary" value="3" />
-                            <Tab label="4.Payment Options" value="3" />
+                            {
+                                loginStatus && orderSummaryDataArr.length > 0?
+                                <Tab label="3.Order Summary" value="3" />
+                                :
+                                <Tab label="3.Order Summary" value="3" disabled/>
+                            }
+                            {/* <Tab label="4.Payment Options" value="4" /> */}
                         </TabList>
                     </AppBar>
                     <TabPanel value="1">    <LoginForm /></TabPanel>
                     <TabPanel value="2"><Address/></TabPanel>
-                    <TabPanel value="3">Item Three</TabPanel>
+                   
+                    <TabPanel value="3"><OrderSummary/> </TabPanel>
+                    {/* <TabPanel value="4">payments</TabPanel> */}
                 </TabContext>
             </div>
         

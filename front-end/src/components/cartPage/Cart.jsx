@@ -1,8 +1,7 @@
 import React, {useEffect} from "react";
-import { Box, Container, Button } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import TopNav from "../dashboard/TopNavBar/TopNav";
 import RouteNav from "../dashboard/TopNavBar/RouteNav";
-import Footer from "../Footer/Footer";
 import styles from "./cart.module.css";
 import { styled } from '@material-ui/styles';
 import { useHistory } from 'react-router-dom' 
@@ -32,55 +31,58 @@ const MyButton2 = styled(Box)({
     color: 'white',
 });
 function Cart() {
-
-  // Keep changes from here...by Rutvik
-  const reqId = useSelector((state) => state.cart.cartChange); //by Rutvik
-  let cartData = [] //by Rutvik
-
-  let [cartArr, setCartArr] = React.useState([]) //by Rutvik
-  let [totalSum, setTotalSum] = React.useState(0) //by Rutvik
+  const reqId = useSelector((state) => state.cart.cartChange); 
+  let cartData = [] 
+  let [cartArr, setCartArr] = React.useState([]) 
+  let [totalSum, setTotalSum] = React.useState(0) 
   
   
-  for(let i=0; i<localStorage.length; i++) //by Rutvik
+  for(let i=0; i<localStorage.length; i++) 
     {
 
       console.log(Object.keys(localStorage))
-      if(Object.keys(localStorage)[i] !== "rzp_device_id"  || localStorage.getItem( localStorage.key( i ) ) === "false" || localStorage.getItem( localStorage.key( i ) ) === "true" )
+      if(Object.keys(localStorage)[i] !== "rzp_device_id"   )
       {
-            if( (( localStorage.getItem( localStorage.key( i ) ) ) ) === "true" ||  localStorage.getItem( localStorage.key( i ) ) === "false" )  //by Rutvik
-          { 
-            continue
-          }
-          else
-          {
-            console.log(localStorage.getItem( localStorage.key( i ) ), "LOCAL STORAGE")
-            let temp = JSON.parse(localStorage.getItem( localStorage.key( i ) ))
-            console.log(temp, "TEMP")
-            cartData.push(temp) //by Rutvik
+            if( (( localStorage.getItem( localStorage.key( i ) ) ) ) === "true" 
+            || localStorage.getItem( localStorage.key( i ) ) === "false" 
+             || Object.keys(localStorage)[i] === "user"
+             || Object.keys(localStorage)[i] === "OrderSummary"
+             || Object.keys(localStorage)[i] ==="mainCartDataLength" )  
+            { 
+              continue
+            }
+            else
+            {
+              console.log(localStorage.getItem( localStorage.key( i ) ), "LOCAL STORAGE")
+              let temp = JSON.parse(localStorage.getItem( localStorage.key( i ) ))
+              console.log(temp, "TEMP")
+              cartData.push(temp) 
 
-          }
+            }
       }
     }
   
     console.log(cartData)
-    let sum = 0 //by Rutvik
-  let deliveryCharge = 50 //by Rutvik
-  for(let i=0; i<cartData.length; i++) //by Rutvik
+    let sum = 0 
+  let deliveryCharge = 50 
+  for(let i=0; i<cartData.length; i++) 
   {
-    sum = sum + (cartData[i].inCartQty * cartData[i].price) //by Rutvik
+    sum = sum + (cartData[i].inCartQty * cartData[i].price) 
   }
   
 
   useEffect(() => 
   {
-      setCartArr(cartData) //by Rutvik
-      setTotalSum(sum) //by Rutvik
+      setCartArr(cartData) 
+      setTotalSum(sum) 
+      // localStorage.setItem("myCart", JSON.stringify(cartData))
       
-  },[reqId]); //by Rutvik
-     console.log(totalSum) //by Rutvik
+  },[reqId]); 
+     console.log(totalSum) 
     const history =useHistory()
 
- //Keep all this..   
+    localStorage.setItem("mainCartDataLength", JSON.stringify(cartArr.length))
+
   return (
     <>
       <TopNav />
@@ -115,24 +117,13 @@ function Cart() {
           <Box key={i}>
                 <Box classes={{ root: styles.subheading }}>
               <h3>{item.category}</h3>
-                </Box>
-              
-           
-         
-            
+                </Box>   
              <Box classes={{ root: styles.items }}>
               <Box classes={{ root: styles.name1 }}>
                 <Box>
                   <img src={item.imageLink} height="100px" alt="food" />
                 </Box>
                 <Box onClick={() => history.push(`/product/${item.id}`) }>{item.title}</Box>
-                {/* <Box>
-                  <img
-                    height="20px"
-                    src="https://gnbdevcdn.s3-ap-southeast-1.amazonaws.com/Marketing/8ab57ed4-47e0-426a-8382-f4c89b11826a.png"
-                    alt="delivery"
-                  />{" "}
-                </Box> */}
               </Box>
 
               <Box>₹{item.price}</Box>
@@ -177,12 +168,7 @@ function Cart() {
             </MyButton2>
                   </Box>
               </Box>
-              
-          </Box>
-
-      
-          
-         
+          </Box>  
     </>
   );
 }

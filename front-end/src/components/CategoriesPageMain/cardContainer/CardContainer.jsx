@@ -3,11 +3,10 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSubcategoryProduct } from "../../Redux/product/action";
 import styles from "./CardContainer.module.css";
-import { TiShoppingCart } from "react-icons/ti";
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import AddProduct from "./../../AddProduct/AddProduct"
-import { Typography } from "@material-ui/core";
+
 
 
 function CardContainer(props) {
@@ -20,12 +19,9 @@ function CardContainer(props) {
 
   useEffect(() => {
     dispatch(getSubcategoryProduct(sub_category));
-    console.log(data)
   }, [dispatch, sub_category]);
 
-  const handleClick = () => {
-    alert("Pop");
-  };
+  
 
   return (
     <>
