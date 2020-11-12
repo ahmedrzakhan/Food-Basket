@@ -80,6 +80,7 @@ function AddProduct(props)
 
         reqProdToDec.inCartQty = reqProdToDec.inCartQty - 1
 
+        dispatch(subProd(reqProdToDec.inCartQty))
         
         if(reqProdToDec.inCartQty === 0)
         {
@@ -94,7 +95,6 @@ function AddProduct(props)
         }
         localStorage.setItem(`${prodId}`, JSON.stringify(reqProdToDec))
 
-        dispatch(subProd(reqProdToDec.inCartQty))
     }
 
    
