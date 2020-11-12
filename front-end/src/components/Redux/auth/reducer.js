@@ -11,9 +11,6 @@ import { saveUser ,saveStatus} from '../../localStorage'
 
 const initialState = {
   loginStatus: false,
-  isError: false,
-  name: "",
-  user_id: "",
   message: "",
   validation: "",
   userData:""
@@ -26,22 +23,22 @@ const authReducer = (state = initialState, { type, payload }) => {
       return { ...state, isLoading: true, message: "", validation: "" };
     }
     case LOGIN_SUCCESS: {
-      saveStatus('status',true)
+      saveStatus("status",true)
       return { ...state, isLoading: false, loginStatus: true };
     }
     case LOGIN_FAILURE: {
       const { message, validation } = payload;
-      return { ...state, isLoading: false, isError: true, message, validation };
+      return { ...state, isLoading: false, message, validation };
     }
     case REG_ATTEMPT: {
       return {
         ...state,
         message: "",
-        validation: "",
-        isError: false,
+        validation: ""
       };
     }
     case REG_SUCCESS: {
+    console.log(payload)
       saveUser("user", payload)
       saveStatus("status", true )
       return { ...state, loginStatus: true ,userData:payload};
@@ -49,7 +46,7 @@ const authReducer = (state = initialState, { type, payload }) => {
     case REG_FAILURE: {
       const { validation} = payload;
 
-      return { ...state, isError: true, validation,message: payload };
+      return { ...state, validation,message: payload };
     }
     case LOGOUT:
       saveStatus("status", false)

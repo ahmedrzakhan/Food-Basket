@@ -152,7 +152,7 @@ function SingleProduct() {
             <Box className={classes.borderBottomOnly}>
               <small className={styles.inclusive}>
                 {" "}
-                {`(Inclusive of all taxes)`}{" "}
+                Inclusive of all taxes){" "}
               </small>
             </Box>
             <p>Know More</p>

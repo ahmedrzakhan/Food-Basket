@@ -60,9 +60,6 @@ function Cart() {
 
           }
       }
-     
-      
-      // console.log(Object.keys(localStorage)[i])
     }
   
     console.log(cartData)
