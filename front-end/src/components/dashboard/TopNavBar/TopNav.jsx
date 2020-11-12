@@ -120,7 +120,7 @@ function TopNav() {
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
   const [otp, setOtp] = useState(false);
-  const userData = JSON.parse(localStorage.getItem("user"));
+  const userData = JSON.parse(localStorage.getItem("user")) || "dummy";
   const status = JSON.parse(localStorage.getItem("status"));
   const { searchData, isLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
@@ -140,7 +140,7 @@ function TopNav() {
 
   let [cartCount, setCartCount] = React.useState(0) //Changes added by Rutvik
 
-  const thrott = throttle(handleInput, 100)
+  
   const handleEnter = (e) => {
     switch (e.keyCode) {
       case 13: {
@@ -159,7 +159,7 @@ console.log(searchData)
   // Changes added by Rutvik:
   React.useEffect(() =>{
  
-    setCartCount(localStorage.length - 2 )
+    setCartCount(localStorage.length - 1 )
   },[cartStateChange])
   //Changes added by Rutvik
 
