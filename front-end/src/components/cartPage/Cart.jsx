@@ -43,21 +43,26 @@ function Cart() {
   
   for(let i=0; i<localStorage.length; i++) //by Rutvik
     {
-      // if( typeof( JSON.parse( localStorage.getItem( localStorage.key( i ) ) ) ) === "boolean"   ) //by Rutvik
-      // { 
-      //   continue
-      // }
-      // else if( JSON.parse( localStorage.getItem( localStorage.key( i ) ) ).username  ) //by Rutvik
-      // {
-      //   continue
-      // }
-      // else
-      // {
-        cartData.push(JSON.parse(localStorage.getItem( localStorage.key( i ) ) ) ) //by Rutvik
 
-      // }
+      console.log(Object.keys(localStorage))
+      if(Object.keys(localStorage)[i] !== "rzp_device_id"  || localStorage.getItem( localStorage.key( i ) ) === "false" || localStorage.getItem( localStorage.key( i ) ) === "true" )
+      {
+            if( (( localStorage.getItem( localStorage.key( i ) ) ) ) === "true" ||  localStorage.getItem( localStorage.key( i ) ) === "false" )  //by Rutvik
+          { 
+            continue
+          }
+          else
+          {
+            console.log(localStorage.getItem( localStorage.key( i ) ), "LOCAL STORAGE")
+            let temp = JSON.parse(localStorage.getItem( localStorage.key( i ) ))
+            console.log(temp, "TEMP")
+            cartData.push(temp) //by Rutvik
+
+          }
+      }
     }
   
+    console.log(cartData)
     let sum = 0 //by Rutvik
   let deliveryCharge = 50 //by Rutvik
   for(let i=0; i<cartData.length; i++) //by Rutvik
@@ -137,7 +142,7 @@ function Cart() {
                       <AddProduct subCategory={item.sub_ctg} id={item.id} />
                   </Box>
                   :
-                  ""
+                  null
                 }
              
               <Box>
