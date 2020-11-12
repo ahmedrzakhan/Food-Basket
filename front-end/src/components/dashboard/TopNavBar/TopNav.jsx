@@ -127,9 +127,8 @@ function TopNav() {
   console.log(loginStatus)
   const { searchData, isLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
+
   const history =useHistory()
-
-
 
   const handleLogout = () => {
     dispatch(logout());
@@ -139,9 +138,12 @@ function TopNav() {
     setVal(e.target.value)
     dispatch(getBySearch(val))
   }
+
   const thrott = throttle(handleInput, 1000)
 
   let [cartCount, setCartCount] = React.useState(0) 
+
+  const mainCartLength = JSON.parse(localStorage.getItem("mainCartDataLength")) 
 
   const handleEnter = (e) => {
     switch (e.keyCode) {
@@ -155,10 +157,10 @@ function TopNav() {
       }
     }
   }
-  useEffect(() => {
-    setCartCount(localStorage.length)
-  }, [])
 
+  useEffect(() => {
+    setCartCount(mainCartLength)
+  }, [mainCartLength])
 
   return (
     <>
@@ -203,8 +205,6 @@ function TopNav() {
                 <>
                   <div className={styles.hoverUser}>
                     {userData.username}
-
-
                     <div className={styles.innerHoverUser}>
                       <Button onClick={handleLogout}>LogOut</Button>
                     </div>

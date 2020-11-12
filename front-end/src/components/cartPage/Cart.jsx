@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import {Box} from '@material-ui/core'
+import React, {useEffect} from "react";
+import { Box } from "@material-ui/core";
 import TopNav from "../dashboard/TopNavBar/TopNav";
 import RouteNav from "../dashboard/TopNavBar/RouteNav";
 import styles from "./cart.module.css";
@@ -37,6 +37,7 @@ function Cart() {
   let [cartArr, setCartArr] = React.useState([]) 
   let [totalSum, setTotalSum] = React.useState(0)
   const history = useHistory()
+
   
   
   for(let i=0; i<localStorage.length; i++) 
@@ -46,7 +47,9 @@ function Cart() {
     {
       if (((localStorage.getItem(localStorage.key(i)))) === "true" ||
         localStorage.getItem(localStorage.key(i)) === "false" ||
-        Object.keys(localStorage)[i] === "user" || Object.keys(localStorage)[i] === "mapbox.eventData:YWhtZWRyemFraGFu" || Object.keys(localStorage)[i] === "mapbox.eventData.uuid:YWhtZWRyemFraGFu")
+        Object.keys(localStorage)[i] === "user" || Object.keys(localStorage)[i] === "mapbox.eventData:YWhtZWRyemFraGFu" 
+          || Object.keys(localStorage)[i] === "mapbox.eventData.uuid:YWhtZWRyemFraGFu" ||
+          Object.keys(localStorage)[i] === "OrderSummary"  || Object.keys(localStorage)[i] ==="mainCartDataLength" )
       {
         continue
       }
@@ -56,12 +59,14 @@ function Cart() {
         let temp = JSON.parse(localStorage.getItem(localStorage.key(i)))
         console.log(temp, "TEMP")
         cartData.push(temp)
+
       }
     } 
   }
   
   
-    let sum = 0 
+  localStorage.setItem("mainCartDataLength", JSON.stringify(cartData.length))
+  let sum = 0 
   let deliveryCharge = 50 
   for(let i=0; i<cartData.length; i++) 
   {
@@ -76,7 +81,10 @@ function Cart() {
       
   },[reqId]);
  
-  
+      // localStorage.setItem("myCart", JSON.stringify(cartData))
+    //  console.log(totalSum) 
+    const history =useHistory()
+
   return (
     <>
       <TopNav />
@@ -111,24 +119,13 @@ function Cart() {
           <Box key={i}>
                 <Box classes={{ root: styles.subheading }}>
               <h3>{item.category}</h3>
-                </Box>
-              
-           
-         
-            
+                </Box>   
              <Box classes={{ root: styles.items }}>
               <Box classes={{ root: styles.name1 }}>
                 <Box>
                   <img src={item.imageLink} height="100px" alt="food" />
                 </Box>
                 <Box onClick={() => history.push(`/product/${item.id}`) }>{item.title}</Box>
-                {/* <Box>
-                  <img
-                    height="20px"
-                    src="https://gnbdevcdn.s3-ap-southeast-1.amazonaws.com/Marketing/8ab57ed4-47e0-426a-8382-f4c89b11826a.png"
-                    alt="delivery"
-                  />{" "}
-                </Box> */}
               </Box>
 
               <Box>₹{item.price}</Box>
@@ -173,12 +170,7 @@ function Cart() {
             </MyButton2>
                   </Box>
               </Box>
-              
-          </Box>
-
-      
-          
-         
+          </Box>  
     </>
   );
 }

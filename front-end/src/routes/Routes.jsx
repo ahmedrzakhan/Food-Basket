@@ -5,10 +5,7 @@ import Dashboard from "./../components/dashboard/Dashboard";
 import FreshFast from "../components/dashboard/TopNavBar/FreshFast/FreshFast";
 import Cart from "../components/cartPage/Cart";
 import Checkout from "../components/checkout/Checkout";
-
 import SingleProduct from "../components/SingleProduct/SingleProduct";
-
-
 import Store from "./../components/storeLocator/Store";
 import Razorpay from "./../components/payments/Razorpay";
 import SearchCategory from "../components/CategoriesPageMain/searchCategory/CategoryPage";
