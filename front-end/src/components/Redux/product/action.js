@@ -87,7 +87,7 @@ export const getSingleProduct = (payload) => async (dispatch) => {
     const result = await axios(config);
     dispatch(getProductSuccess(result.data));
   } catch (err) {
-    dispatch(getProductFailure(err.response.data));
+    dispatch(getProductFailure(err));
   }
 };
 export const getSubcategoryProduct = (payload) => async (dispatch) => {
@@ -101,7 +101,7 @@ export const getSubcategoryProduct = (payload) => async (dispatch) => {
     const result = await axios(config);
     dispatch(getSubcategorySuccess(result.data));
   } catch (err) {
-    dispatch(getSubcategoryFailure(err.response.data));
+    dispatch(getSubcategoryFailure(err));
   }
 };
 
@@ -116,7 +116,7 @@ export const getCategoryProduct = (payload) => async (dispatch) => {
     const result = await axios(config);
     dispatch(getCategorySuccess(result.data));
   } catch (err) {
-    dispatch(getCategoryFailure(err.response.data));
+    dispatch(getCategoryFailure(err));
   }
 };
 
@@ -131,6 +131,6 @@ export const getBySearch = (payload) => async (dispatch) => {
     const result = await axios(config);
     dispatch(getBySearchSuccess(result.data));
   } catch (err) {
-    dispatch(getBySearchFailure(err.response.data));
+    dispatch(getBySearchFailure(err));
   }
 };

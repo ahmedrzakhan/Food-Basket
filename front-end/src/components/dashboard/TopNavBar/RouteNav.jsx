@@ -16,10 +16,10 @@ function RouteNav() {
             </span>
             <ArrowDropDownIcon classes={{ root: styles.arrow }} />
 
-            <Box classes={{ root: styles.innerHoverDiv }}>
-              <div>
+            <Box classes={{ root: styles.innerHoverDiv }} >
+              <div >
                 <div className={styles.box}>
-                  <Link className={styles.shop} to="/home/Indian_Grocery">
+                  <Link className={styles.shop} to="/home/Indian Grocery">
                     Indian Grocery
                   </Link>
                 </div>
@@ -31,7 +31,10 @@ function RouteNav() {
               </div>
               <div>
                 <div className={styles.box}>
-                  <Link className={styles.shop} to="/home/Fruits-and-Vegetables/Daily-Vegetables">
+                  <Link
+                    className={styles.shop}
+                    to="/home/Fruits-and-Vegetables"
+                  >
                     {" "}
                     Fruits and Vegetables{" "}
                   </Link>
@@ -44,7 +47,10 @@ function RouteNav() {
               </div>
               <div>
                 <div className={styles.box}>
-                  <Link className={styles.shop} to="/home/Meats, Seafood and Eggs">
+                  <Link
+                    className={styles.shop}
+                    to="/home/Meats, Seafood and Eggs"
+                  >
                     {" "}
                     Meats, Seafood and Eggs{" "}
                   </Link>
@@ -57,7 +63,10 @@ function RouteNav() {
               </div>
               <div>
                 <div className={styles.box}>
-                  <Link className={styles.shop} to="/home/Breakfast, Dairy and Bakery">
+                  <Link
+                    className={styles.shop}
+                    to="/home/Breakfast, Dairy and Bakery"
+                  >
                     {" "}
                     Breakfast, Dairy and Bakery{" "}
                   </Link>
@@ -68,17 +77,12 @@ function RouteNav() {
                   />
                 </div>
               </div>
-
-             
             </Box>
           </Box>
         </Box>
 
         <Box classes={{ root: styles.col }}>Past purchases</Box>
-        <Box classes={{ root: styles.col }}>Offers</Box>
-        {/* <Box classes={{ root: styles.col }}>
-                    Connoisseur’s Selection
-                </Box> */}
+        <Box classes={{ root: styles.col }}>Brands</Box>
       </Box>
     </>
   );
