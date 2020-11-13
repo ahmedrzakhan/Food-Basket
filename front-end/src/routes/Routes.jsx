@@ -9,6 +9,7 @@ import SingleProduct from "../components/SingleProduct/SingleProduct";
 import Store from "./../components/storeLocator/Store";
 import Razorpay from "./../components/payments/Razorpay";
 import SearchCategory from "../components/CategoriesPageMain/searchCategory/CategoryPage";
+import PastPurchases from "../components/dashboard/PastPurchases";
 const Routes = () => {
   return (
     <Switch>
@@ -25,6 +26,7 @@ const Routes = () => {
       <Route path="/cart" render={(props) => <Cart {...props} />} />
       <Route path="/checkout" render={() => <Checkout />} />
       <Route path="/payments" render={() => <Razorpay />} />
+      <Route path="/past-purchases" render={() => <PastPurchases />}/>
     </Switch>
   );
 };

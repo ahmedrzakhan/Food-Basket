@@ -40,37 +40,43 @@ function Checkout() {
       <TopNav />
       <RouteNav />
 
-      <div className={classes.root}>
-        <TabContext value={value}>
-          <AppBar position="static" color="default">
-            <TabList onChange={handleChange} aria-label="simple tabs example">
-              {loginStatus ? (
-                <Tab
-                  className={classes.newTab}
-                  label="1.Login"
-                  value="1"
-                  disabled
-                />
-              ) : (
-                <Tab className={classes.newTab} label="1.Login" value="1" />
-              )}
-              <Tab color="primary" label="2.Address" value="2" />
-              {loginStatus && orderSummaryDataArr.length > 0 ? (
-                <Tab label="3.Order Summary" value="3" />
-              ) : (
-                <Tab label="3.Order Summary" value="3" disabled />
-              )}
-              {/* <Tab label="4.Payment Options" value="4" /> */}
-            </TabList>
-          </AppBar>
-          <TabPanel value="1">
-            {" "}
-            <LoginForm />
-          </TabPanel>
-          <TabPanel value="2">
-            <Address />
-          </TabPanel>
-
+    const orderSummaryDataArr = JSON.parse(localStorage.getItem("OrderSummary")) || []
+    // console.log(orderSummaryDataArr.products.length)
+    return (
+        <>
+            <TopNav />
+            <RouteNav />
+           
+            <div className={classes.root}>
+                <TabContext value={value}>
+                    <AppBar position="static" color="default">
+                        <TabList onChange={handleChange} aria-label="simple tabs example">
+                            {
+                                loginStatus?
+                                <Tab className={classes.newTab} label="1.Login" value="1" disabled/>
+                                :
+                                <Tab className={classes.newTab} label="1.Login" value="1" />
+                            }
+                            <Tab color="primary"label="2.Address" value="2" />
+                            {
+                                loginStatus &&  orderSummaryDataArr.products !== undefined && orderSummaryDataArr.products.length > 0 ?
+                                <Tab label="3.Order Summary" value="3" />
+                                :
+                                <Tab label="3.Order Summary" value="3" disabled/>
+                            }
+                            {/* <Tab label="4.Payment Options" value="4" /> */}
+                        </TabList>
+                    </AppBar>
+                    <TabPanel value="1">    <LoginForm /></TabPanel>
+                    <TabPanel value="2"><Address/></TabPanel>
+                   
+                    <TabPanel value="3"><OrderSummary/> </TabPanel>
+                    {/* <TabPanel value="4">payments</TabPanel> */}
+                </TabContext>
+            </div>
+        
+            </>
+   )
           <TabPanel value="3">
             <OrderSummary />{" "}
           </TabPanel>

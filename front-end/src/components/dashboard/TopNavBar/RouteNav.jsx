@@ -3,9 +3,24 @@ import Box from "@material-ui/core/Box";
 import styles from "./routeNav.module.css";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ChevronRightOutlinedIcon from "@material-ui/icons/ChevronRightOutlined";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function RouteNav() {
+
+  const loginStatus = JSON.parse(localStorage.getItem("status"))
+  const history = useHistory()
+  const handlePastPurchaseClick = () => {
+
+    if(loginStatus)
+    {
+
+      history.push("/past-purchases")
+    }
+    else{
+      alert("Please Login to see your purchase history")
+    }
+  }
+
   return (
     <>
       <Box classes={{ root: styles.routes }}>
@@ -81,6 +96,13 @@ function RouteNav() {
           </Box>
         </Box>
 
+        
+        <Box onClick={handlePastPurchaseClick} classes={{ root: styles.col }}> Past purchases</Box>
+        
+        <Box classes={{ root: styles.col }}>Offers</Box>
+        {/* <Box classes={{ root: styles.col }}>
+                    Connoisseur’s Selection
+                </Box> */}
         <Box classes={{ root: styles.col }}>Past purchases</Box>
         <Box classes={{ root: styles.col }}>Brands</Box>
       </Box>

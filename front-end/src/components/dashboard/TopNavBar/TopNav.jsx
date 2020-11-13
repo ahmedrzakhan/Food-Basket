@@ -108,11 +108,11 @@ function TopNav() {
   const [val, setVal] = useState("");
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
-  const [otp, setOtp] = useState(false);
-  const loginStatus = useSelector((state) => state.auth.loginStatus);
-  const userData =
-    useSelector((state) => state.auth.userData) ||
-    JSON.parse(localStorage.getItem("user"));
+  const [otp, setOtp] = useState(false);  
+  const loginStatus =  useSelector((state) => state.auth.loginStatus)
+  const userData = useSelector((state) => state.auth.userData) || JSON.parse(localStorage.getItem("user"))
+  
+  // console.log(loginStatus)
 
   const { searchData, isLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
