@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  useDispatch, useSelector
-} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import throttle from 'lodash.throttle'
+import throttle from "lodash.throttle";
 import { Box, InputBase, Divider, IconButton, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
@@ -12,15 +10,14 @@ import StarIcon from "@material-ui/icons/Star";
 import styles from "./TopNav.module.css";
 import { Link } from "react-router-dom";
 import LoginReg from "./LoginReg";
-import AddProduct from "./../../AddProduct/AddProduct"
+import AddProduct from "./../../AddProduct/AddProduct";
 import { logout } from "../../Redux/auth/action";
 import { getBySearch } from "../../Redux/product/action";
-import Badge from '@material-ui/core/Badge';
-import { withStyles } from '@material-ui/core/styles';
+import Badge from "@material-ui/core/Badge";
+import { withStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    //padding: '1px 1px',
     display: "flex",
     alignItems: "center",
     textAlign: "center",
@@ -31,18 +28,17 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "8px",
     borderRight: "0px",
     [theme.breakpoints.up("md")]: {
-      width: "900px",
+      width: 900,
       alignItems: "center",
       marginLeft: "2%",
     },
     [theme.breakpoints.down("md")]: {
-      width: "600px",
+      width: 600,
       alignItems: "center",
       marginLeft: "2%",
-      border: "1px solid blue",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "350px",
+      width: 350,
       alignItems: "center",
       marginLeft: "2%",
     },
@@ -61,11 +57,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       height: "120px",
       width: "100%",
-    },
-  },
-  login: {
-    [theme.breakpoints.down("md")]: {
-      // display: "none",
     },
   },
 
@@ -100,9 +91,6 @@ const useStyles = makeStyles((theme) => ({
     float: "right",
     marginRight: "2%",
     width: "7%",
-    [theme.breakpoints.down("md")]: {
-      display: "none",
-    },
   },
 }));
 
@@ -111,13 +99,13 @@ const StyledBadge = withStyles((theme) => ({
     right: -3,
     top: 13,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 4px',
+    padding: "0 4px",
   },
 }))(Badge);
 
 function TopNav() {
   const classes = useStyles();
-  const [val, setVal] = useState("")
+  const [val, setVal] = useState("");
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
   const [otp, setOtp] = useState(false);  
@@ -125,42 +113,43 @@ function TopNav() {
   const userData = useSelector((state) => state.auth.userData) || JSON.parse(localStorage.getItem("user"))
   
   // console.log(loginStatus)
+
   const { searchData, isLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
-  const history =useHistory()
+  const history = useHistory();
 
   const handleLogout = () => {
     dispatch(logout());
   };
 
   const handleInput = (e) => {
-    setVal(e.target.value)
-    dispatch(getBySearch(val))
-  }
+    setVal(e.target.value);
+    dispatch(getBySearch(val));
+  };
 
-  const thrott = throttle(handleInput, 1000)
+  const thrott = throttle(handleInput, 1000);
 
-  let [cartCount, setCartCount] = React.useState(0) 
+  let [cartCount, setCartCount] = React.useState(0);
 
-  const mainCartLength = JSON.parse(localStorage.getItem("mainCartDataLength")) 
+  const mainCartLength = JSON.parse(localStorage.getItem("mainCartDataLength"));
 
   const handleEnter = (e) => {
     switch (e.keyCode) {
       case 13: {
-       history.push('/search-page')
-        break
-
+        history.push("/search-page");
+        break;
       }
       default: {
-        return
+        return;
       }
     }
-  }
+  };
 
   useEffect(() => {
-    setCartCount(mainCartLength)
-  }, [mainCartLength])
+    setCartCount(mainCartLength);
+    window.scrollTo(0, 0);
+  }, [mainCartLength]);
 
   return (
     <>
@@ -211,27 +200,27 @@ function TopNav() {
                   </div>
                 </>
               ) : (
-                  <>
-                    <button
-                      onClick={() => {
-                        setRegister(true);
-                        setLogin(false);
-                      }}
-                      className={styles.topRight}
-                    >
-                      Register
+                <>
+                  <button
+                    onClick={() => {
+                      setRegister(true);
+                      setLogin(false);
+                    }}
+                    className={styles.topRight}
+                  >
+                    Register
                   </button>
-                    <button
-                      onClick={() => {
-                        setLogin(true);
-                        setRegister(false);
-                      }}
-                      className={styles.topRight}
-                    >
-                      Login
+                  <button
+                    onClick={() => {
+                      setLogin(true);
+                      setRegister(false);
+                    }}
+                    className={styles.topRight}
+                  >
+                    Login
                   </button>
-                  </>
-                )}
+                </>
+              )}
             </Box>
 
             <Box>
@@ -252,10 +241,7 @@ function TopNav() {
                     <SearchIcon className={classes.iconColor} />
                   </IconButton>
                 </Box>
-                {/* start from here */}
-
-
-                {val.length === 0 ?
+                {val.length === 0 ? (
                   <Box classes={{ root: styles.innerHoverDivSearch }}>
                     <p className={styles.trend}>Trending Searches</p>
                     <p>
@@ -264,7 +250,7 @@ function TopNav() {
                         className={styles.afterTrend}
                       >
                         Exotic Vegetables
-                    </Link>
+                      </Link>
                     </p>
                     <p>
                       <Link
@@ -292,11 +278,11 @@ function TopNav() {
                     </p>
                     <p>
                       <Link
-                        to="/home/Indian Grocery/Cooking Pastes and sauces"
+                        to="/home/Indian Grocery/Cooking Pastes and Sauces"
                         className={styles.afterTrend}
                       >
                         Cooking Pastes and Sauces
-                    </Link>
+                      </Link>
                     </p>
                     <p>
                       <Link
@@ -330,26 +316,46 @@ function TopNav() {
                         Bars and Others{" "}
                       </Link>
                     </p>
-                  </Box> :
-                  !isLoading && val.length > 0 &&
-                  <Box classes={{ root: styles.innerHoverDivSearch }}>
-                    {searchData.map((item, i) => (
-                      <Box key={i} classes={{ root: styles.getsea }}>
-                        <Box><img width="70px" src={item.product["image"]} alt={item.product["title"]} /></Box>
-                        <Box><Link className={styles.newLink} to={`/product/${item._id}`}>{item.product["title"]}</Link></Box>
-                        <Box>1 Pc</Box>
-                        <Box>₹ {item.product["price"]}</Box>
-                        <Box>Qty</Box>
-                        <Box> <AddProduct id={item._id} /></Box>
-                      </Box>
-                     
-
-                    ))}
-                    <Box onClick={()=>history.push('/search-page')}classes={{ root: styles.allPro }}>View All Products </Box>
                   </Box>
-
-
-                }
+                ) : (
+                  !isLoading &&
+                  val.length > 0 && (
+                    <Box classes={{ root: styles.innerHoverDivSearch }}>
+                      {searchData.map((item, i) => (
+                        <Box key={i} classes={{ root: styles.getsea }}>
+                          <Box>
+                            <img
+                              width="70px"
+                              src={item.product["image"]}
+                              alt={item.product["title"]}
+                            />
+                          </Box>
+                          <Box>
+                            <Link
+                              className={styles.newLink}
+                              to={`/product/${item._id}`}
+                            >
+                              {item.product["title"]}
+                            </Link>
+                          </Box>
+                          <Box>1 Pc</Box>
+                          <Box>₹ {item.product["price"]}</Box>
+                          <Box>Qty</Box>
+                          <Box>
+                            {" "}
+                            {/* <AddProduct  /> */}
+                          </Box>
+                        </Box>
+                      ))}
+                      <Box
+                        onClick={() => history.push("/search-page")}
+                        classes={{ root: styles.allPro }}
+                      >
+                        View All Products{" "}
+                      </Box>
+                    </Box>
+                  )
+                )}
               </Box>
 
               <Box className={classes.newBox}>
@@ -362,7 +368,6 @@ function TopNav() {
                         classes={{ root: styles.starCart }}
                       />
                     </StyledBadge>
-
                   </Link>
                 </Box>
               </Box>

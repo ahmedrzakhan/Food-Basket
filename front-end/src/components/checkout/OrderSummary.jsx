@@ -14,13 +14,18 @@ import styles from "./OrderSummary.module.css"
 import {userOrder} from "./../Redux/orders/actions"
 import { useDispatch, useSelector } from "react-redux";
 
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
 });
 
-function OrderSummary(){
+function OrderSummary() {
+  const userDeatils = JSON.parse(localStorage.getItem("user"));
+  const history = useHistory();
+  const dispatch = useDispatch();
+
 
     const userDeatils = JSON.parse(localStorage.getItem("user"))
     const history = useHistory()
@@ -39,8 +44,6 @@ function OrderSummary(){
         totalAmt = totalAmt + (orderSummaryArr.products[i].price * orderSummaryArr.products[i].inCartQty)
     }
     }
-
-    
 
     const handlePayment = () => {
 
@@ -85,7 +88,16 @@ function OrderSummary(){
             </button>
         </>
     )
-
+      <h3>Total Bill: ₹{totalAmt} </h3>
+      {/* <Button  variant="contained" color="primary"> */}
+      <Razorpay
+        onClick={handlePayment}
+        className={styles.PayBtn}
+        amt={totalAmt}
+      />
+      {/* </Button> */}
+    </>
+  );
 }
 
-export default OrderSummary
+export default OrderSummary;

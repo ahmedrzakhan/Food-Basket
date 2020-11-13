@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams,  useHistory } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleProduct } from "../Redux/product/action";
 import Box from "@material-ui/core/Box";
@@ -11,7 +11,6 @@ import { Grid } from "@material-ui/core";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import styles from "./SingleProduct.module.css";
-import { TiShoppingCart } from "react-icons/ti";
 import Footer from "../Footer/Footer";
 import TopNav from "../dashboard/TopNavBar/TopNav";
 import RouteNav from "../dashboard/TopNavBar/RouteNav";
@@ -65,17 +64,13 @@ function SingleProduct() {
   const data = useSelector((state) => state.product.singleProData);
   const dispatch = useDispatch();
   const params = useParams();
-  const history = useHistory()
+
 
   useEffect(() => {
     dispatch(getSingleProduct(params.id));
   }, [dispatch, params.id]);
 
-  const handleAddClick = () => {
-    // alert("Clicked on Add button");
-    history.go(-1)
-  };
-  // console.log(data);
+
   if (data.length === 0) {
     return null;
   }
@@ -137,16 +132,6 @@ function SingleProduct() {
                   MRP ₹{data.product.price}{" "}
                 </span>
                 <AddProduct subCategory ={data.sub_category} id={data._id} />
-                {/* <span onClick={handleAddClick} className={styles.AddBtn}>
-                  <TiShoppingCart
-                    style={{
-                      color: "white",
-                      marginRight: "2px",
-                      marginTop: "-2px",
-                    }}
-                  />
-                  Add
-                </span> */}
               </div>
             </Box>
             <Box className={classes.borderBottomOnly}>
