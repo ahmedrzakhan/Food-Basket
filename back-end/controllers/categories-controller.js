@@ -40,10 +40,18 @@ const getProductItem = async (req, res) => {
 
 const getProductsBySearch = async (req, res) => {
   const { query } = req.query;
-  
+
   const items = await Categories.find({
     "product.title": { $regex: query, $options: "i" },
   }).limit(5);
+
+  res.send(items);
+};
+
+const getProductsByBrand = async (req, res) => {
+  const { brand } = req.query;
+
+  const items = await Categories.find({ "product.brand": brand });
 
   res.send(items);
 };
@@ -54,4 +62,5 @@ module.exports = {
   getBySubCategory,
   getProductItem,
   getProductsBySearch,
+  getProductsByBrand,
 };
