@@ -13,30 +13,18 @@ import Razorpay from "../payments/Razorpay";
 import styles from "./OrderSummary.module.css"
 import {userOrder} from "./../Redux/orders/actions"
 import { useDispatch, useSelector } from "react-redux";
-
-
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
 });
-
-function OrderSummary() {
-  const userDeatils = JSON.parse(localStorage.getItem("user"));
-  const history = useHistory();
-  const dispatch = useDispatch();
-
-
+function OrderSummary(){
     const userDeatils = JSON.parse(localStorage.getItem("user"))
     const history = useHistory()
     const dispatch = useDispatch()
-   
     const orderSummaryArr = JSON.parse(localStorage.getItem("OrderSummary")) || []
-   
     const classes = useStyles();
-
     let totalAmt = 0
-
     if(orderSummaryArr && orderSummaryArr.products)
     {
         for(let i=0; i< orderSummaryArr.products.length; i++)
@@ -44,9 +32,7 @@ function OrderSummary() {
         totalAmt = totalAmt + (orderSummaryArr.products[i].price * orderSummaryArr.products[i].inCartQty)
     }
     }
-
     const handlePayment = () => {
-
         alert("PAYMENT")
         dispatch(userOrder(orderSummaryArr))
         // history.push("/payments")
@@ -81,23 +67,11 @@ function OrderSummary() {
                     </TableBody>
                 </Table>
             </TableContainer>
-
             <h3>Total Bill: ₹{totalAmt} </h3>
             <button onClick={handlePayment}  >
                 <Razorpay  amt={totalAmt} />
             </button>
         </>
     )
-      <h3>Total Bill: ₹{totalAmt} </h3>
-      {/* <Button  variant="contained" color="primary"> */}
-      <Razorpay
-        onClick={handlePayment}
-        className={styles.PayBtn}
-        amt={totalAmt}
-      />
-      {/* </Button> */}
-    </>
-  );
 }
-
-export default OrderSummary;
+export default OrderSummary
