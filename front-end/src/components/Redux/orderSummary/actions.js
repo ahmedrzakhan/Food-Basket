@@ -24,8 +24,8 @@ export const usergetOrder = (payload) => (dispatch) => {
     axios.get(`http://localhost:5000/api/orders/get-order?username=${payload}`)
     .then((response)=> {
       // handle success
-      console.log(response.data[0]);
-      dispatch( getOrderSuccess(response.data[0].products) )
+      console.log(response.data.map(item => item.products));
+      dispatch( getOrderSuccess(response.data.map(item => item.products.map(item => item) )) )
     })
     .catch((error)=> {
       // handle error

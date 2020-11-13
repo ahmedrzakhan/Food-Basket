@@ -124,7 +124,7 @@ function TopNav() {
   const loginStatus =  useSelector((state) => state.auth.loginStatus)
   const userData = useSelector((state) => state.auth.userData) || JSON.parse(localStorage.getItem("user"))
   
-  console.log(loginStatus)
+  // console.log(loginStatus)
   const { searchData, isLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
 

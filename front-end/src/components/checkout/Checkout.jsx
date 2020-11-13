@@ -38,6 +38,7 @@ function Checkout() {
     const loginStatus = JSON.parse(localStorage.getItem("status"))
 
     const orderSummaryDataArr = JSON.parse(localStorage.getItem("OrderSummary")) || []
+    // console.log(orderSummaryDataArr.products.length)
     return (
         <>
             <TopNav />
@@ -55,7 +56,7 @@ function Checkout() {
                             }
                             <Tab color="primary"label="2.Address" value="2" />
                             {
-                                loginStatus && orderSummaryDataArr.length > 0?
+                                loginStatus &&  orderSummaryDataArr.products !== undefined && orderSummaryDataArr.products.length > 0 ?
                                 <Tab label="3.Order Summary" value="3" />
                                 :
                                 <Tab label="3.Order Summary" value="3" disabled/>

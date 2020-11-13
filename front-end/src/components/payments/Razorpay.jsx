@@ -40,7 +40,7 @@ const Razorpay = (props) => {
 
   return (
     <div>
-      <button onClick={paymentHandler}>PAY</button>
+      <span onClick={paymentHandler}>PAY</span>
     </div>
   );
 };

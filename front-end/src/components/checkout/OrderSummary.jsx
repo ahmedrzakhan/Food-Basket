@@ -7,11 +7,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {usergetOrder} from "./../Redux/orderSummary/actions"
-import { useDispatch, useSelector } from "react-redux";
+// import {usergetOrder} from "./../Redux/orderSummary/actions"
 import { useHistory } from "react-router-dom";
 import Razorpay from "../payments/Razorpay";
 import styles from "./OrderSummary.module.css"
+import {userOrder} from "./../Redux/orders/actions"
+import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles({
   table: {
@@ -24,30 +25,28 @@ function OrderSummary(){
     const userDeatils = JSON.parse(localStorage.getItem("user"))
     const history = useHistory()
     const dispatch = useDispatch()
-    //Below function gets all the orders. This is for past purchases
-    // useEffect(() => {
-
-    //     dispatch(usergetOrder(userDeatils.username) )
-
-    // },[])
-
-    // const orderSummaryArr = useSelector((state) => state.summaryRoot.summaryArr)
+   
     const orderSummaryArr = JSON.parse(localStorage.getItem("OrderSummary")) || []
-    console.log(orderSummaryArr, "ORDER SUMMARY ARR")
+   
     const classes = useStyles();
 
-    // let finalArr = orderSummaryArr.products
-    // console.log(finalArr)
     let totalAmt = 0
 
-    for(let i=0; i< orderSummaryArr.products.length; i++)
+    if(orderSummaryArr && orderSummaryArr.products)
+    {
+        for(let i=0; i< orderSummaryArr.products.length; i++)
     {
         totalAmt = totalAmt + (orderSummaryArr.products[i].price * orderSummaryArr.products[i].inCartQty)
     }
+    }
+
+    
 
     const handlePayment = () => {
 
-        history.push("/payments")
+        alert("PAYMENT")
+        dispatch(userOrder(orderSummaryArr))
+        // history.push("/payments")
     }
     return(
         <>
@@ -81,9 +80,9 @@ function OrderSummary(){
             </TableContainer>
 
             <h3>Total Bill: ₹{totalAmt} </h3>
-            {/* <Button  variant="contained" color="primary"> */}
-                <Razorpay onClick={handlePayment} className={styles.PayBtn} amt={totalAmt} />
-            {/* </Button> */}
+            <button onClick={handlePayment}  >
+                <Razorpay  amt={totalAmt} />
+            </button>
         </>
     )
 
