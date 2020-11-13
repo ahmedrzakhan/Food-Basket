@@ -3,11 +3,8 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSubcategoryProduct } from "../../Redux/product/action";
 import styles from "./CardContainer.module.css";
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import AddProduct from "./../../AddProduct/AddProduct"
-
-
+import { Typography, Grid } from "@material-ui/core";
+import AddProduct from "./../../AddProduct/AddProduct";
 
 function CardContainer(props) {
   const data = useSelector((state) => state.product.subCategoryData);
@@ -16,22 +13,21 @@ function CardContainer(props) {
   const history = useHistory();
   const { sub_category } = params;
 
-
   useEffect(() => {
     dispatch(getSubcategoryProduct(sub_category));
   }, [dispatch, sub_category]);
 
   return (
     <>
-      <Container>
-        <Grid m={2} container>
+
+        <Grid m={2} container >
           {data &&
             data.map((items, i) => {
               return (
                 <>
-                  <Grid
-                    m={2}
+                  <Grid 
                     key={i}
+                    m={2}
                     container
                     item
                     xs={12}
@@ -57,26 +53,32 @@ function CardContainer(props) {
                             color: "#880033",
                             fontSize: "15px",
                             fontWeight: "600",
+          
                           }}
                         >
                           DELIVERY IN 60 MINUTES{" "}
                         </span>
                       </div>
-                      <p style={{textAlign:"center"}}> {items.product["title"]}  </p>
-                   
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <span className={styles.mrpBorder}>MRP ₹ {items.product.price}
-                    </span>
-                      <AddProduct id={items._id} />
-
-                  </div>
-                </div>
-              </Grid>
-            </>
-          );
-        })}
+                      <Typography noWrap={false} classes ={{root:styles.text}}>
+                        {" "}
+                        {items.product["title"]}{" "}
+                      </Typography>
+                      <div
+                        style={{ display: "flex", justifyContent: "center",paddingTop:"5%" ,marginTop:"5%"}}
+                      >
+                        <span className={styles.mrpBorder}>
+                          MRP ₹ {items.product.price}
+                        </span>
+                        <AddProduct id={items._id} />
+                      </div>
+                    </div>
+                  </Grid>
+                </>
+              );
+            })}
         </Grid>
-      </Container>
+  
+   
     </>
   );
 }

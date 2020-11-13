@@ -3,9 +3,8 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoryProduct } from "../../Redux/product/action";
 import styles from "./CardContainer.module.css";
-import { TiShoppingCart } from "react-icons/ti";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
+import { Typography, Grid } from "@material-ui/core";
+import AddProduct from "./../../AddProduct/AddProduct";
 
 function CategoryCard(props) {
   const data = useSelector((state) => state.product.categoryData);
@@ -16,15 +15,12 @@ function CategoryCard(props) {
 
   useEffect(() => {
     dispatch(getCategoryProduct(categories));
+    window.scrollTo(0, 0);
   }, [dispatch, categories]);
-
-  const handleClick = () => {
-    alert("Pop");
-  };
 
   return (
     <>
-      <Container>
+     
         <Grid m={2} container>
           {data &&
             data.map((items, i) => {
@@ -63,25 +59,17 @@ function CategoryCard(props) {
                           DELIVERY IN 60 MINUTES{" "}
                         </span>
                       </div>
-                      <p style={{ textAlign: "center " }}>
+                      <Typography noWrap="false" classes={{ root: styles.text }}>
                         {" "}
                         {items.product["title"]}{" "}
-                      </p>
-                      <p></p>
+                      </Typography>
                       <div
-                        style={{ display: "flex", justifyContent: "center" }}
+                        style={{ display: "flex", justifyContent: "center", paddingTop: "5%", marginTop: "5%" }}
                       >
-                        <span className={styles.mrpBorder}>MRP ₹</span>
-                        <span onClick={handleClick} className={styles.AddBtn}>
-                          <TiShoppingCart
-                            style={{
-                              color: "white",
-                              marginRight: "2px",
-                              marginTop: "-2px",
-                            }}
-                          />
-                          Add
+                        <span className={styles.mrpBorder}>
+                          MRP ₹ {items.product.price}
                         </span>
+                        <AddProduct subCategory={items.sub_category}id={items._id} />
                       </div>
                     </div>
                   </Grid>
@@ -89,7 +77,6 @@ function CategoryCard(props) {
               );
             })}
         </Grid>
-      </Container>
     </>
   );
 }

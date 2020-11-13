@@ -5,7 +5,6 @@
   border: 1px solid #aaaca9;
   height: 40px;
   margin: 1.5%;
-  margin-top: 6%;
   margin-bottom: 0px;
   border-bottom: 0px;
   display: flex;
@@ -28,7 +27,7 @@
   }
 }
 .col {
-  width: 23%;
+  width: 33%;
   margin-left: 0%;
   float: left;
   font-size: 20px;

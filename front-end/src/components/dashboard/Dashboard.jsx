@@ -13,7 +13,6 @@ import TopNav from "./TopNavBar/TopNav";
 import RouteNav from "./TopNavBar/RouteNav";
 import Footer from "../Footer/Footer";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -45,21 +44,25 @@ function Dashboard() {
   const classes = useStyles();
   const history = useHistory();
 
+  const handleScroll = () => {
+    window.scrollTo(0, 0);
+  };
+
   const items = [
     {
       url:
         "https://d1z88p83zuviay.cloudfront.net/BannerImages/11330ca1-f7f7-4bcd-a3ed-8176fd6cd6fa_1320x376.png",
-      send: "/home /Fruits-and-Vegetables/Daily-Vegetables",
+      send: "/home/Fruits-and-Vegetables/Daily-Vegetables",
     },
     {
       url:
         "https://d1z88p83zuviay.cloudfront.net/BannerImages/4587d34a-2402-419e-b2cc-47f633f3b535_1320x376.png",
-      send: "/home/Meats Seafoods & Eggs/Cold Cuts & Sausage",
+      send: "/home/Meats Seafoods & Eggs/Cold Cuts and Sausages",
     },
     {
       url:
         "https://d1z88p83zuviay.cloudfront.net/BannerImages/882b5089-f02e-4af7-b93f-ac102bb4a304_1320x376.png",
-      send: "/home/Breakfast Dairy & Bakery/Fresh Artisanal Breads",
+      send: "/home/Breakfast Dairy & Bakery/Bakery",
     },
     {
       url:
@@ -121,7 +124,7 @@ function Dashboard() {
         </Box>
         <Box m={6} mb={4}>
           <Grid container spacing={1}>
-            <Grid item xs={12} sm={6} md={6} lg={3}>
+            <Grid item xs={12} sm={6} md={6} lg={3} onClick={handleScroll}>
               <Link to="/home/Fruits-and-Vegetables/Exotic-Vegetables">
                 <img
                   width="95%"
@@ -196,7 +199,7 @@ function Dashboard() {
                 </div>
               </div>
             </Grid>
-            <Grid item xs={12} sm={6} md={6} lg={3}>
+            <Grid item xs={12} sm={6} md={6} lg={3} onClick={handleScroll}>
               <Link to="/home/Meats, Seafood and Eggs/Cold Cuts and Sausages">
                 <img
                   width="95%"
@@ -269,7 +272,7 @@ function Dashboard() {
                 </div>
               </div>
             </Grid>
-            <Grid item xs={12} sm={6} md={6} lg={3}>
+            <Grid item xs={12} sm={6} md={6} lg={3} onClick={handleScroll}>
               <Link to="/home/Breakfast, Dairy and Bakery/Bakery">
                 <img
                   width="95%"
@@ -341,7 +344,7 @@ function Dashboard() {
                 </div>
               </div>
             </Grid>
-            <Grid item xs={12} sm={6} md={6} lg={3}>
+            <Grid item xs={12} sm={6} md={6} lg={3} onClick={handleScroll}>
               <Link to="/home/Indian Grocery/Daily Essentials">
                 <img
                   width="95%"
@@ -364,7 +367,7 @@ function Dashboard() {
                     className={styles.linking}
                     to="/product/5faa4180706898075a9b2ecb"
                   >
-                   Orange Juice{" "}
+                    Orange Juice{" "}
                   </Link>
                 </div>
                 <div>
@@ -415,21 +418,7 @@ function Dashboard() {
             </Grid>
           </Grid>
         </Box>
-        <Box>
-          <Carousel>
-            {items.map((item, i) => (
-              <img
-                className={styles.banner}
-                key={i}
-                src={item.url}
-                alt="carousel"
-              />
-            ))}
-          </Carousel>
-        </Box>
-        <Box>
-          <Typography className={classes.head}>WHAT'S TRENDING</Typography>
-        </Box>
+
         <Box>
           <Typography className={classes.head}>OUR EVENTS</Typography>
         </Box>
