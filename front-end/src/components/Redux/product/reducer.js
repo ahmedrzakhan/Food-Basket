@@ -10,7 +10,10 @@ import {
   GET_CATEGORY_SUCCESS,
   GET_BY_SEARCH_FAILURE,
   GET_BY_SEARCH_SUCCESS,
-  GET_BY_SEARCH_ATTEMPT
+  GET_BY_SEARCH_ATTEMPT,
+  GET_BY_BRAND_FAILURE,
+  GET_BY_BRAND_SUCCESS,
+  GET_BY_BRAND_ATTEMPT
 } from "./actionTypes";
 
 export const initState = {
@@ -18,7 +21,8 @@ export const initState = {
   singleProData: [],
   subCategoryData: [],
   categoryData: [],
-  searchData :[]
+  searchData: [],
+  brandData:[]
 };
 
 const productReducer = (state = initState, { type, payload }) => {
@@ -99,6 +103,27 @@ const productReducer = (state = initState, { type, payload }) => {
     }
 
     case GET_BY_SEARCH_FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+      };
+    }
+    case GET_BY_BRAND_ATTEMPT: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case GET_BY_BRAND_SUCCESS: {
+      console.log(payload)
+      return {
+        ...state,
+        isLoading: false,
+        brandData: payload,
+      };
+    }
+
+    case GET_BY_BRAND_FAILURE: {
       return {
         ...state,
         isLoading: false,

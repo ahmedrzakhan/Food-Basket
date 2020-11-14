@@ -12,8 +12,6 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import styles from "./SingleProduct.module.css";
 import Footer from "../Footer/Footer";
-import TopNav from "../dashboard/TopNavBar/TopNav";
-import RouteNav from "../dashboard/TopNavBar/RouteNav";
 import AddProduct from "../AddProduct/AddProduct";
 
 const singleProductSample = {
@@ -76,8 +74,7 @@ function SingleProduct() {
   }
   return (
     <>
-      <TopNav />
-      <RouteNav />
+    
       <div style={{ marginTop: "30px", clear: "both" }}></div>
       <Box className={classes.marginLeftSide}>
         <Breadcrumbs separator="›" aria-label="breadcrumb">

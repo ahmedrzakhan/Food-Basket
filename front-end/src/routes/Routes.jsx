@@ -26,7 +26,8 @@ const Routes = () => {
       <Route path="/cart" render={(props) => <Cart {...props} />} />
       <Route path="/checkout" render={() => <Checkout />} />
       <Route path="/payments" render={() => <Razorpay />} />
-      <Route path="/past-purchases" render={() => <PastPurchases />}/>
+      <Route path="/past-purchases" render={() => <PastPurchases />} />
+      <Route path="/brand/:name" render={() => <CategoriesPage />} />
     </Switch>
   );
 };

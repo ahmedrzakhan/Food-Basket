@@ -1,7 +1,5 @@
 import React, {useEffect} from "react";
 import { Box } from "@material-ui/core";
-import TopNav from "../dashboard/TopNavBar/TopNav";
-import RouteNav from "../dashboard/TopNavBar/RouteNav";
 import styles from "./cart.module.css";
 import { styled } from '@material-ui/styles';
 import { useHistory } from 'react-router-dom' 
@@ -16,7 +14,8 @@ const MyButton1 = styled(Box)({
     float: "left",
     fontSize: "16px",
     color: '#595959',
-    marginRight:"10px"
+  marginRight: "10px",
+    cursor:"pointer"
 });
 const MyButton2 = styled(Box)({
     background: '#578f1b',
@@ -26,7 +25,8 @@ const MyButton2 = styled(Box)({
     padding: '10px 30px',
     float: "left",
     fontSize: "16px",
-    color: 'white',
+  color: 'white',
+  cursor: "pointer"
 });
 function Cart() {
   const reqId = useSelector((state) => state.cart.cartChange); 
@@ -80,8 +80,7 @@ function Cart() {
     }
   return (
     <>
-      <TopNav />
-      <RouteNav />
+
       {cartArr.length > 0 ? 
         <Box classes={{ root: styles.main }}>
           <Box classes={{ root: styles.shopping }}>
