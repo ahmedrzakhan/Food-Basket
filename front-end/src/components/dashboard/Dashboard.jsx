@@ -9,8 +9,6 @@ import ArrowRightOutlinedIcon from "@material-ui/icons/ArrowRightOutlined";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import TopNav from "./TopNavBar/TopNav";
-import RouteNav from "./TopNavBar/RouteNav";
 import Footer from "../Footer/Footer";
 
 const useStyles = makeStyles((theme) => ({
@@ -78,8 +76,7 @@ function Dashboard() {
 
   return (
     <>
-      <TopNav />
-      <RouteNav />
+     
       <Container className={classes.main}>
         <Box>
           <Carousel>

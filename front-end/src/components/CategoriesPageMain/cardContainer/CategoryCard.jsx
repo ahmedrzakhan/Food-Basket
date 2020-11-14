@@ -12,6 +12,7 @@ function CategoryCard(props) {
   const params = useParams();
   const history = useHistory();
   const { categories } = params;
+  console.log(params)
 
   useEffect(() => {
     dispatch(getCategoryProduct(categories));

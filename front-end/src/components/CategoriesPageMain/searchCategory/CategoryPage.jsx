@@ -5,8 +5,6 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
-import TopNav from "../../dashboard/TopNavBar/TopNav";
-import RouteNav from "../../dashboard/TopNavBar/RouteNav";
 import Footer from "../../Footer/Footer";
 import CardPage from "./CardPage";
 
@@ -63,8 +61,7 @@ function SearchCategory() {
  
   return (
     <>
-      <TopNav />
-      <RouteNav />
+  
       <div style={{ clear: "both" }}></div>
       <div>
         <div className={styles.FilterClearAll}>

@@ -98,13 +98,9 @@ function RouteNav() {
 
         
         <Box onClick={handlePastPurchaseClick} classes={{ root: styles.col }}> Past purchases</Box>
-        
-        <Box classes={{ root: styles.col }}>Offers</Box>
-        {/* <Box classes={{ root: styles.col }}>
-                    Connoisseur’s Selection
-                </Box> */}
-        <Box classes={{ root: styles.col }}>Past purchases</Box>
-        <Box classes={{ root: styles.col }}>Brands</Box>
+        <Box onClick={()=>history.push('/brand/Amul')}classes={{ root: styles.col }}>Amul</Box>
+        <Box onClick={()=>history.push('/brand/Natures Best')}classes={{ root: styles.col }}>Natures Best</Box>
+        <Box onClick={() => history.push('/brand/L Exclusif')}classes={{ root: styles.col }}>L Exclusif</Box>
       </Box>
     </>
   );

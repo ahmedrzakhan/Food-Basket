@@ -15,7 +15,6 @@ function AddProduct(props) {
   const newData = useSelector((state) => state.product.singleProData);
   const dispatch = useDispatch();
   const params = useParams()
-  console.log(params)
  
 
   useEffect(() => {

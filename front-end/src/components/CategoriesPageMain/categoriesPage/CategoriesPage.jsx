@@ -7,10 +7,9 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
-import TopNav from "../../dashboard/TopNavBar/TopNav";
-import RouteNav from "../../dashboard/TopNavBar/RouteNav";
 import Footer from "../../Footer/Footer";
 import CategoryCard from "../cardContainer/CategoryCard";
+import BrandCard from "../cardContainer/BrandCard";
 
 const checkBoxInputsArr = [
   "Fruits and Vegetables",
@@ -54,6 +53,8 @@ function CategoriesPage() {
   const params = useParams();
   const { sub_category } = params;
   const { categories } = params;
+  const { name } = params
+  console.log(categories,sub_category)
  
   const checkBoxChange = (e) => {
     if ([e.target.name] === e.target.value) {
@@ -70,8 +71,7 @@ function CategoriesPage() {
 
   return (
     <>
-      <TopNav />
-      <RouteNav />
+   
       <div style={{ clear: "both" }}></div>
       <div onClick={window.scrollTo(0, 0)}>
         <div className={styles.FilterClearAll}>
@@ -113,13 +113,15 @@ function CategoriesPage() {
           <div>
             <h1 style={{ borderBottom: "1px solid rgb(232, 232, 232)" }}>
               {" "}
-              {categories === undefined ? sub_category : categories}
+              {categories !== undefined ? categories : sub_category !==undefined?sub_category : name}
             </h1>
           </div>
           <div style={{ fontSize: "20px", fontWeight: "600" }}>Explore</div>
           <div className={styles.productsDisplay}>
-            {categories === undefined ? <CardContainer /> : <CategoryCard />}
+            {categories !== undefined ? <CategoryCard /> : sub_category!==undefined?<CardContainer />:<BrandCard/>} 
+           
           </div>
+        
         </Grid>
 
         <Grid

@@ -12,6 +12,7 @@ function CardContainer(props) {
   const params = useParams();
   const history = useHistory();
   const { sub_category } = params;
+  console.log(params)
 
   useEffect(() => {
     dispatch(getSubcategoryProduct(sub_category));
