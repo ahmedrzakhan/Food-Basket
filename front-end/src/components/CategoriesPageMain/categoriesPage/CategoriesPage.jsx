@@ -9,52 +9,14 @@ import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
 import Footer from "../../Footer/Footer";
 import CategoryCard from "../cardContainer/CategoryCard";
-import BrandCard from "../cardContainer/BrandCard";
 
-const checkBoxInputsArr = [
-  "Fruits and Vegetables",
-  "Nature's Best",
-  "Nature's Basket",
-  "Raw Pressery",
-  "Jain Farm Fresh",
-  "American Garden",
-  "Tomato Cherry",
-  "Yummiez",
-];
 
-const listHeading = "Brands";
-
-const SubCategoryItemsArr = [
-  "Fruits",
-  "Exotic Fruits",
-  "Daily Vegetables",
-  "Exotic Vegetables",
-  "Baby tender Vegetables",
-  "Canned & Frozen",
-  "Cold Press Fresh",
-];
-
-const dietaryLifestyle = [
-  "Vegetarian",
-  "Vegetarian",
-  "Vegetarian",
-  "Vegetarian",
-  "Vegetarian",
-  "Vegetarian",
-  "Vegetarian",
-  "Vegetarian",
-  "Vegetarian",
-  "Vegetarian",
-  "Vegetarian",
-  "Vegetarian",
-  "Vegetarian",
-];
 function CategoriesPage() {
   const params = useParams();
   const { sub_category } = params;
   const { categories } = params;
-  const { name } = params
-  console.log(categories,sub_category)
+  // const { name } = params
+  // console.log(categories,sub_category)
  
   const checkBoxChange = (e) => {
     if ([e.target.name] === e.target.value) {
@@ -74,33 +36,19 @@ function CategoriesPage() {
    
       <div style={{ clear: "both" }}></div>
       <div onClick={window.scrollTo(0, 0)}>
-        <div className={styles.FilterClearAll}>
-          <p style={{ textAlign: "center" }}>FILTER</p>
-          <p
-            style={{
-              textAlign: "right",
-              fontSize: "10px",
-              paddingTop: "10px",
-              paddingRight: "5px",
-              marginLeft: "6%",
-            }}
-          >
-            CLEAR ALL
-          </p>
-        </div>
       </div>
       <Grid container>
-        <div style={{ clear: "both" }}></div>
+        {/* <div style={{ clear: "both" }}></div>
         <Hidden only={["sm", "xs"]}>
           <Grid className={styles.filtersContainer} item lg={2}></Grid>
-        </Hidden>
+        </Hidden> */}
 
         <Grid
           item
           style={{ paddingLeft: "20px", marginBottom: "20px" }}
           sm={12}
           md={12}
-          lg={9}
+          lg={12}
         >
           <Breadcrumbs separator="›" aria-label="breadcrumb">
             <Link color="inherit" href="/" >
@@ -113,12 +61,12 @@ function CategoriesPage() {
           <div>
             <h1 style={{ borderBottom: "1px solid rgb(232, 232, 232)" }}>
               {" "}
-              {categories !== undefined ? categories : sub_category !==undefined?sub_category : name}
+              {categories === undefined ? sub_category : categories}
             </h1>
           </div>
           <div style={{ fontSize: "20px", fontWeight: "600" }}>Explore</div>
           <div className={styles.productsDisplay}>
-            {categories !== undefined ? <CategoryCard /> : sub_category!==undefined?<CardContainer />:<BrandCard/>} 
+          {categories === undefined || params.name ? <CardContainer /> : <CategoryCard />}
            
           </div>
         

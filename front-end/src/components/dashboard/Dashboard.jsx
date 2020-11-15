@@ -55,12 +55,12 @@ function Dashboard() {
     {
       url:
         "https://d1z88p83zuviay.cloudfront.net/BannerImages/4587d34a-2402-419e-b2cc-47f633f3b535_1320x376.png",
-      send: "/home/Meats Seafoods & Eggs/Cold Cuts and Sausages",
+      send: "/home/Meats, Seafood and Eggs/Cold Cuts and Sausages",
     },
     {
       url:
         "https://d1z88p83zuviay.cloudfront.net/BannerImages/882b5089-f02e-4af7-b93f-ac102bb4a304_1320x376.png",
-      send: "/home/Breakfast Dairy & Bakery/Bakery",
+      send: "/home/Breakfast, Dairy and Bakery/Bakery",
     },
     {
       url:

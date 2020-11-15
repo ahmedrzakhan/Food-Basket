@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSubcategoryProduct } from "../../Redux/product/action";
+import { getSubcategoryProduct, getByBrand } from "../../Redux/product/action";
 import styles from "./CardContainer.module.css";
 import { Typography, Grid } from "@material-ui/core";
 import AddProduct from "./../../AddProduct/AddProduct";
 
 function CardContainer(props) {
-  const data = useSelector((state) => state.product.subCategoryData);
+  const data = useSelector((state) => state.product.subCategoryData) ;
   const dispatch = useDispatch();
   const params = useParams();
   const history = useHistory();
@@ -15,13 +15,26 @@ function CardContainer(props) {
   console.log(params)
 
   useEffect(() => {
-    dispatch(getSubcategoryProduct(sub_category));
+    if(sub_category)
+    {
+      dispatch(getSubcategoryProduct(sub_category));
+    }
+    // if(params.categories)
+    // {
+
+    //   dispatch(getCategoryProduct(categories));
+    // }
+
+    if(params.name)
+    {
+      dispatch( getByBrand(params.name) )
+    }
   }, [dispatch, sub_category]);
 
   return (
     <>
 
-        <Grid m={2} container >
+        <Grid m={2} spacing={1} container >
           {data &&
             data.map((items, i) => {
               return (
@@ -29,7 +42,7 @@ function CardContainer(props) {
                   <Grid 
                     key={i}
                     m={2}
-                    container
+                    
                     item
                     xs={12}
                     lg={3}

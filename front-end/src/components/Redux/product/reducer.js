@@ -108,6 +108,7 @@ const productReducer = (state = initState, { type, payload }) => {
         isLoading: false,
       };
     }
+
     case GET_BY_BRAND_ATTEMPT: {
       return {
         ...state,
@@ -119,7 +120,7 @@ const productReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
-        brandData: payload,
+        subCategoryData: payload,
       };
     }
 
@@ -129,7 +130,7 @@ const productReducer = (state = initState, { type, payload }) => {
         isLoading: false,
       };
     }
-
+   
     default:
       return state;
   }
