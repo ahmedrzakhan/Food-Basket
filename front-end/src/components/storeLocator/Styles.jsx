@@ -6,7 +6,6 @@ export const Flex = styled.div`
   max-width: 100%;
   height: 110%;
   padding: 40px;
-  border: 1px solid red;
   @media (max-width: 1030px) {
     flex-direction: column;
   }
