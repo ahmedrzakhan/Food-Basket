@@ -69,7 +69,7 @@ function Cart() {
   }, [reqId]);
   // localStorage.setItem("myCart", JSON.stringify(cartData))
   //  console.log(totalSum)
-  console.log(cartArr.length);
+  // console.log(cartArr.length);
   // console.log(cartArr)
   const handleItemRemove = (id) => {
     alert("Item will be deleted");

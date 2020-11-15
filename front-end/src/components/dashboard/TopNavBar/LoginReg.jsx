@@ -108,7 +108,7 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
       };
       try {
         const result = await axios(config);
-        console.log(result.data);
+        // console.log(result.data);
       } catch (err) {
         console.log(err);
       }

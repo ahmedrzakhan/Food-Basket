@@ -28,7 +28,7 @@ export const userOrder = (payload) => (dispatch) => {
       products: payload.products,
     })
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       dispatch(orderReqSuccess(res));
     })
     .catch((err) => {

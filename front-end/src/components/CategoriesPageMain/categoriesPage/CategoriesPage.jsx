@@ -33,17 +33,17 @@ function CategoriesPage() {
       <div style={{ clear: "both" }}></div>
       <div onClick={window.scrollTo(0, 0)}></div>
       <Grid container>
-        {/* <div style={{ clear: "both" }}></div>
+        <div style={{ clear: "both" }}></div>
         <Hidden only={["sm", "xs"]}>
           <Grid className={styles.filtersContainer} item lg={2}></Grid>
-        </Hidden> */}
+        </Hidden>
 
         <Grid
           item
           style={{ paddingLeft: "20px", marginBottom: "20px" }}
           sm={12}
           md={12}
-          lg={12}
+          lg={9}
         >
           <Breadcrumbs separator="›" aria-label="breadcrumb">
             <Link color="inherit" href="/">

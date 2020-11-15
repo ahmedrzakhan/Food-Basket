@@ -115,7 +115,7 @@ const productReducer = (state = initState, { type, payload }) => {
       };
     }
     case GET_BY_BRAND_SUCCESS: {
-      console.log(payload);
+      // console.log(payload);
       return {
         ...state,
         isLoading: false,
