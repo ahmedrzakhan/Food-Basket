@@ -108,10 +108,12 @@ function TopNav() {
   const [val, setVal] = useState("");
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
-  const [otp, setOtp] = useState(false);  
-  const loginStatus =  useSelector((state) => state.auth.loginStatus)
-  const userData = useSelector((state) => state.auth.userData) || JSON.parse(localStorage.getItem("user"))
-  
+  const [otp, setOtp] = useState(false);
+  const loginStatus = useSelector((state) => state.auth.loginStatus);
+  const userData =
+    useSelector((state) => state.auth.userData) ||
+    JSON.parse(localStorage.getItem("user"));
+
   // console.log(loginStatus)
 
   const { searchData, isLoading } = useSelector((state) => state.product);
@@ -134,17 +136,17 @@ function TopNav() {
 
   const mainCartLength = JSON.parse(localStorage.getItem("mainCartDataLength"));
 
-  const handleEnter = (e) => {
-    switch (e.keyCode) {
-      case 13: {
-        history.push("/search-page");
-        break;
-      }
-      default: {
-        return;
-      }
-    }
-  };
+  // const handleEnter = (e) => {
+  //   switch (e.keyCode) {
+  //     case 13: {
+  //       history.push("/search-page");
+  //       break;
+  //     }
+  //     default: {
+  //       return;
+  //     }
+  //   }
+  // };
 
   useEffect(() => {
     setCartCount(mainCartLength);
@@ -229,7 +231,7 @@ function TopNav() {
                 className={classes.root}
               >
                 <InputBase
-                  onKeyUp={handleEnter}
+                  // onKeyUp={handleEnter}
                   name="val"
                   value={val}
                   onChange={thrott}
@@ -341,18 +343,15 @@ function TopNav() {
                           <Box>1 Pc</Box>
                           <Box>₹ {item.product["price"]}</Box>
                           <Box>Qty</Box>
-                          <Box>
-                            {" "}
-                            {/* <AddProduct  /> */}
-                          </Box>
+                          <Box> {/* <AddProduct  /> */}</Box>
                         </Box>
                       ))}
-                      <Box
+                      {/* <Box
                         onClick={() => history.push("/search-page")}
                         classes={{ root: styles.allPro }}
                       >
                         View All Products{" "}
-                      </Box>
+                      </Box> */}
                     </Box>
                   )
                 )}

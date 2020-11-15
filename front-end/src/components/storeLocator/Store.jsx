@@ -57,69 +57,67 @@ class Store extends Component {
 
     const { currentCity, currentStore } = this.state;
     const { changeCity, changeStore } = this;
-    console.log(this.state)
+    console.log(this.state);
     const storeCoordinates = data
       .find((cities) => cities.city === currentCity)
       .locations.find((location) => location.title === currentStore);
 
     return (
       <>
-      <TopNav />
-      <RouteNav/>
-      <Flex>
-        <Box>
-          {data.map((cities) => {
-            if (cities.city === currentCity) {
-              return (
-                <CityBox key={cities.city} style={{ background: "#b71761" }}>
-                  <Div
-                    onClick={() => changeCity(cities.city)}
-                    style={{ color: "#fff" }}
-                  >
-                    <div>{cities.city}</div>
-                    <div>
-                      <NavigateNextIcon />
-                    </div>
-                  </Div>
-                </CityBox>
-              );
-            } else {
-              return (
-                <CityBox key={cities.city}>
-                  <Div onClick={() => changeCity(cities.city)}>
-                    <div>{cities.city}</div>
-                    <div>
-                      <NavigateNextIcon />
-                    </div>
-                  </Div>
-                </CityBox>
-              );
-            }
-          })}
-        </Box>
-        <Box>
-          {data
-            .find((cities) => cities.city === currentCity)
-            .locations.map((location) => (
-              <InnerBox key={location.title}>
-                <P onClick={() => changeStore(location.title)}>
-                  {location.title}
-                </P>
-                <Small>{location.address}</Small>
-                <Small>{location.timings}</Small>
-              </InnerBox>
-            ))}
-        </Box>
-        <Box big>
-          <Map
-            coordinates={{
-              lat: storeCoordinates.lat,
-              long: storeCoordinates.long,
-            }}
-          />
-        </Box>
+        <Flex>
+          <Box>
+            {data.map((cities) => {
+              if (cities.city === currentCity) {
+                return (
+                  <CityBox key={cities.city} style={{ background: "#b71761" }}>
+                    <Div
+                      onClick={() => changeCity(cities.city)}
+                      style={{ color: "#fff" }}
+                    >
+                      <div>{cities.city}</div>
+                      <div>
+                        <NavigateNextIcon />
+                      </div>
+                    </Div>
+                  </CityBox>
+                );
+              } else {
+                return (
+                  <CityBox key={cities.city}>
+                    <Div onClick={() => changeCity(cities.city)}>
+                      <div>{cities.city}</div>
+                      <div>
+                        <NavigateNextIcon />
+                      </div>
+                    </Div>
+                  </CityBox>
+                );
+              }
+            })}
+          </Box>
+          <Box>
+            {data
+              .find((cities) => cities.city === currentCity)
+              .locations.map((location) => (
+                <InnerBox key={location.title}>
+                  <P onClick={() => changeStore(location.title)}>
+                    {location.title}
+                  </P>
+                  <Small>{location.address}</Small>
+                  <Small>{location.timings}</Small>
+                </InnerBox>
+              ))}
+          </Box>
+          <Box big>
+            <Map
+              coordinates={{
+                lat: storeCoordinates.lat,
+                long: storeCoordinates.long,
+              }}
+            />
+          </Box>
         </Flex>
-        </>
+      </>
     );
   }
 }

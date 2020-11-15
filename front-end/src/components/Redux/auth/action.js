@@ -79,5 +79,5 @@ export const registerUser = (payload) => async (dispatch) => {
 
 export const logout = (payload) => ({
   type: LOGOUT,
-  payload
+  payload,
 });

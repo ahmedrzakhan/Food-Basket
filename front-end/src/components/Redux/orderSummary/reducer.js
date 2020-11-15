@@ -1,35 +1,36 @@
-import {GET_ORDER_REQUEST, GET_ORDER_SUCCESS, GET_ORDER_FAILURE} from "./actionTypes"
+import {
+  GET_ORDER_REQUEST,
+  GET_ORDER_SUCCESS,
+  GET_ORDER_FAILURE,
+} from "./actionTypes";
 
 export const getOrderInitState = {
-
-    summaryArr: []
-}
+  summaryArr: [],
+};
 
 const summaryReducer = (state = getOrderInitState, action) => {
+  switch (action.type) {
+    case GET_ORDER_REQUEST:
+      return {
+        ...state,
+        summaryArr: [],
+      };
 
-    switch(action.type)
-    {
-        case GET_ORDER_REQUEST:
-            return{
-                ...state,
-                summaryArr: []
-            }
-         
-        case GET_ORDER_SUCCESS:
-            return{
-                ...state,
-                summaryArr: action.payload
-            }    
+    case GET_ORDER_SUCCESS:
+      return {
+        ...state,
+        summaryArr: action.payload,
+      };
 
-        case GET_ORDER_FAILURE:
-            return{
-                ...state,
-                summaryArr: []
-            }
-            
-        default:
-            return state    
-    }
-}
+    case GET_ORDER_FAILURE:
+      return {
+        ...state,
+        summaryArr: [],
+      };
 
-export default summaryReducer
+    default:
+      return state;
+  }
+};
+
+export default summaryReducer;

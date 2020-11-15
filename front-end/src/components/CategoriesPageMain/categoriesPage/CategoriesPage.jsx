@@ -10,14 +10,13 @@ import Hidden from "@material-ui/core/Hidden";
 import Footer from "../../Footer/Footer";
 import CategoryCard from "../cardContainer/CategoryCard";
 
-
 function CategoriesPage() {
   const params = useParams();
   const { sub_category } = params;
   const { categories } = params;
   // const { name } = params
   // console.log(categories,sub_category)
- 
+
   const checkBoxChange = (e) => {
     if ([e.target.name] === e.target.value) {
       e.target.checked = !e.target.checked;
@@ -29,14 +28,10 @@ function CategoriesPage() {
     }
   };
 
- 
-
   return (
     <>
-   
       <div style={{ clear: "both" }}></div>
-      <div onClick={window.scrollTo(0, 0)}>
-      </div>
+      <div onClick={window.scrollTo(0, 0)}></div>
       <Grid container>
         {/* <div style={{ clear: "both" }}></div>
         <Hidden only={["sm", "xs"]}>
@@ -51,10 +46,10 @@ function CategoriesPage() {
           lg={12}
         >
           <Breadcrumbs separator="›" aria-label="breadcrumb">
-            <Link color="inherit" href="/" >
+            <Link color="inherit" href="/">
               Home
             </Link>
-            <Link color="inherit" href="/" >
+            <Link color="inherit" href="/">
               {categories === undefined ? sub_category : categories}
             </Link>
           </Breadcrumbs>
@@ -66,10 +61,12 @@ function CategoriesPage() {
           </div>
           <div style={{ fontSize: "20px", fontWeight: "600" }}>Explore</div>
           <div className={styles.productsDisplay}>
-          {categories === undefined || params.name ? <CardContainer /> : <CategoryCard />}
-           
+            {categories === undefined || params.name ? (
+              <CardContainer />
+            ) : (
+              <CategoryCard />
+            )}
           </div>
-        
         </Grid>
 
         <Grid

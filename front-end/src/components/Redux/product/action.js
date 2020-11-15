@@ -15,7 +15,7 @@ import {
   GET_BY_SEARCH_ATTEMPT,
   GET_BY_BRAND_FAILURE,
   GET_BY_BRAND_SUCCESS,
-  GET_BY_BRAND_ATTEMPT
+  GET_BY_BRAND_ATTEMPT,
 } from "./actionTypes";
 
 const getProductAttempt = (payload) => ({
@@ -78,16 +78,12 @@ const getBySearchFailure = (payload) => ({
   payload,
 });
 
-
-
-
 export const getSingleProduct = (payload) => async (dispatch) => {
   dispatch(getProductAttempt(payload));
 
   var config = {
     method: "get",
     url: `http://localhost:5000/api/categories/product?_id=${payload}`,
-    
   };
   try {
     const result = await axios(config);
@@ -130,9 +126,9 @@ export const getBySearch = (payload) => async (dispatch) => {
   dispatch(getBySearchAttempt(payload));
 
   var config = {
-    method: 'get',
+    method: "get",
     url: `http://localhost:5000/api/categories/product/search?query=${payload}`,
-  }
+  };
   try {
     const result = await axios(config);
     dispatch(getBySearchSuccess(result.data));
@@ -160,9 +156,8 @@ export const getByBrand = (payload) => async (dispatch) => {
   dispatch(getByBrandAttempt(payload));
 
   var config = {
-    method: 'get',
+    method: "get",
     url: `http://localhost:5000/api/categories/product/brand?brand=${payload}`,
-
   };
 
   try {

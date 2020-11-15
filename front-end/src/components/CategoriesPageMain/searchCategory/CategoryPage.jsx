@@ -58,10 +58,8 @@ function SearchCategory() {
     }
   };
 
- 
   return (
     <>
-  
       <div style={{ clear: "both" }}></div>
       <div>
         <div className={styles.FilterClearAll}>
@@ -97,7 +95,7 @@ function SearchCategory() {
               Home
             </Link>
           </Breadcrumbs>
-      
+
           <div style={{ fontSize: "20px", fontWeight: "600" }}>Explore</div>
           <div className={styles.productsDisplay}>{<CardPage />}</div>
         </Grid>

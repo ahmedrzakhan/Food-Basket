@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleProduct } from "../Redux/product/action";
 import Box from "@material-ui/core/Box";
@@ -63,18 +63,15 @@ function SingleProduct() {
   const dispatch = useDispatch();
   const params = useParams();
 
-
   useEffect(() => {
     dispatch(getSingleProduct(params.id));
   }, [dispatch, params.id]);
-
 
   if (data.length === 0) {
     return null;
   }
   return (
     <>
-    
       <div style={{ marginTop: "30px", clear: "both" }}></div>
       <Box className={classes.marginLeftSide}>
         <Breadcrumbs separator="›" aria-label="breadcrumb">
@@ -128,7 +125,7 @@ function SingleProduct() {
                 <span className={styles.mrpBorder}>
                   MRP ₹{data.product.price}{" "}
                 </span>
-                <AddProduct subCategory ={data.sub_category} id={data._id} />
+                <AddProduct subCategory={data.sub_category} id={data._id} />
               </div>
             </Box>
             <Box className={classes.borderBottomOnly}>

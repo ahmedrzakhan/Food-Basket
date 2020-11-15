@@ -28,13 +28,11 @@ body {
   margin: 0em;
   font-weight: initial;
 }
-.arrowBox{
-
-  float:left;
-  width:80%;
-  text-align:left;
-    border-bottom: 1px solid #f1f1f1;
-
+.arrowBox {
+  float: left;
+  width: 80%;
+  text-align: left;
+  border-bottom: 1px solid #f1f1f1;
 }
 .span {
   color: #83b748;
@@ -84,11 +82,9 @@ small {
 @media screen and (max-width: 800px) and (min-width: 200px) {
   .imageBoxEvent {
     width: 100%;
-
   }
-  .event{
+  .event {
     flex-direction: column;
-        margin-right:2%
+    margin-right: 2%;
   }
 }
-

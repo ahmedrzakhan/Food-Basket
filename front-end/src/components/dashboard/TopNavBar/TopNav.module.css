@@ -52,7 +52,6 @@ body {
   margin-top: 0px;
 }
 
-
 .hoverUser {
   position: relative;
   float: right;
@@ -74,7 +73,6 @@ body {
   z-index: 1;
   margin-left: -30px;
 }
-
 
 .hoverDivSearch {
   position: relative;
@@ -110,7 +108,6 @@ body {
   }
 }
 
-
 .innerHoverDivSearch > p {
   display: block;
   text-align: center;
@@ -119,43 +116,40 @@ body {
 .hoverDivSearch:hover .innerHoverDivSearch {
   display: block;
 }
-.getsea{
-    display:flex;
-    flex-direction: row;
-    border-bottom:1px solid #cdcdcd;
-    align-items: center; 
+.getsea {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #cdcdcd;
+  align-items: center;
 }
-.newLink{
-    text-decoration:none;
-    color:black;
-    font-size: small;
-    text-transform: uppercase;
+.newLink {
+  text-decoration: none;
+  color: black;
+  font-size: small;
+  text-transform: uppercase;
 }
 
- .getsea>*{ 
+.getsea > * {
   flex-shrink: 0;
   flex-basis: 80px;
   text-align: left;
   color: #555555;
-
- }
-.getsea>*:nth-of-type(2) {
-  flex-basis: 400px;
-  color:black
 }
-.getsea>*:nth-of-type(6) {
+.getsea > *:nth-of-type(2) {
+  flex-basis: 400px;
+  color: black;
+}
+.getsea > *:nth-of-type(6) {
   flex-basis: 150px;
-
 }
 .newLink:hover {
   text-decoration: underline;
-
 }
-.allPro{
-  padding:1%;
-  color:white;
-  background:#6fa624
+.allPro {
+  padding: 1%;
+  color: white;
+  background: #6fa624;
 }
-.arrow{
-  margin-top:1.5%
+.arrow {
+  margin-top: 1.5%;
 }

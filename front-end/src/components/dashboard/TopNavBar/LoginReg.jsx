@@ -1,13 +1,10 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import EmailIcon from "@material-ui/icons/Email";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
-import {
-  Button,
-  Box,
-} from "@material-ui/core";
+import { Button, Box } from "@material-ui/core";
 import PhoneAndroidOutlinedIcon from "@material-ui/icons/PhoneAndroidOutlined";
 import { registerUser, loginUser } from "../../Redux/auth/action";
 import styles from "./styles.module.css";
@@ -38,11 +35,11 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
   const [passError, setPassError] = useState("");
   const [mobileError, setMobileError] = useState("");
   const { message, isAuth } = useSelector((state) => state.auth);
-  
+
   const [state, setState] = useState({
     logEmail: "",
     logPassword: "",
-    regEmail: "", 
+    regEmail: "",
     regPassword: "",
     mobile: "",
     userOtp: "",
@@ -57,19 +54,17 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
   } = state;
   const dispatch = useDispatch();
 
-
   const handleLogin = () => {
     dispatch(loginUser({ email: logEmail, password: logPassword }));
-  
   };
-  
+
   useEffect(() => {
     if (isAuth) {
       setRegister(false);
       setLogin(false);
       setOtp(false);
     }
-  },[isAuth])
+  }, [isAuth]);
   const handleRegister = () => {
     let obj = {
       email: regEmail,
@@ -208,7 +203,6 @@ function LoginReg({ login, setLogin, register, setRegister, otp, setOtp }) {
                     placeholder=" Password"
                   />
                 </Box>
-              
               </Box>
               <Box classes={{ root: styles.oneBox }}>
                 <button onClick={handleLogin} className={styles.btnLogin}>

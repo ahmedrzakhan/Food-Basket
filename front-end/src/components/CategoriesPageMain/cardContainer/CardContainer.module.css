@@ -3,8 +3,7 @@
   text-align: center;
   padding: 20px;
   margin-left: 5px;
-  width:250px
-
+  width: 250px;
 }
 
 .productCard:hover {
@@ -18,12 +17,12 @@
   border: 0.5px solid rgb(175, 175, 175);
   padding: 5.9px 5px;
   color: black;
-  height:30px
+  height: 30px;
 }
 
-.text{
-  margin-top:15%;
-  padding-top:5%
+.text {
+  margin-top: 15%;
+  padding-top: 5%;
 }
 
 body {

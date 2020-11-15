@@ -1,12 +1,10 @@
 import React from "react";
 import axios from "axios";
 
-// Render this component in place of make payment button
-
 const Razorpay = (props) => {
   const paymentHandler = async (e) => {
     e.preventDefault();
-// 
+    //
     const amount = props.amt;
     const API_URL = `http://localhost:5000/api/payments`;
     const orderUrl = `${API_URL}/order?amount=${amount}`;

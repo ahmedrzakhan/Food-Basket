@@ -11,8 +11,6 @@ body {
   font-size: 15px;
 }
 
-
-
 .ScrollBarContainer::-webkit-scrollbar {
   width: 4px;
   height: 4px;
@@ -50,8 +48,7 @@ body {
   color: rgb(146, 190, 77);
   cursor: pointer;
 }
-​ 
-.SubCategoryItem {
+​ .SubCategoryItem {
   list-style: none;
 }
 

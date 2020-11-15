@@ -6,20 +6,11 @@ import ChevronRightOutlinedIcon from "@material-ui/icons/ChevronRightOutlined";
 import { Link, useHistory } from "react-router-dom";
 
 function RouteNav() {
-
-  const loginStatus = JSON.parse(localStorage.getItem("status")) || false
-  const history = useHistory()
+  const loginStatus = JSON.parse(localStorage.getItem("status")) || false;
+  const history = useHistory();
   const handlePastPurchaseClick = () => {
-
-    // if(loginStatus)
-    // {
-
-      history.push("/past-purchases")
-    // }
-    // else{
-    //   alert("Please Login to see your purchase history")
-    // }
-  }
+    history.push("/past-purchases");
+  };
 
   return (
     <>
@@ -31,8 +22,8 @@ function RouteNav() {
             </span>
             <ArrowDropDownIcon classes={{ root: styles.arrow }} />
 
-            <Box classes={{ root: styles.innerHoverDiv }} >
-              <div >
+            <Box classes={{ root: styles.innerHoverDiv }}>
+              <div>
                 <div className={styles.box}>
                   <Link className={styles.shop} to="/home/Indian Grocery">
                     Indian Grocery
@@ -96,11 +87,28 @@ function RouteNav() {
           </Box>
         </Box>
 
-        
-        <Box onClick={handlePastPurchaseClick} classes={{ root: styles.col }}> Past purchases</Box>
-        <Box onClick={()=>history.push('/brand/Amul')}classes={{ root: styles.col }}>Amul</Box>
-        <Box onClick={()=>history.push('/brand/Natures Best')}classes={{ root: styles.col }}>Natures Best</Box>
-        <Box onClick={() => history.push('/brand/L Exclusif')}classes={{ root: styles.col }}>L Exclusif</Box>
+        <Box onClick={handlePastPurchaseClick} classes={{ root: styles.col }}>
+          {" "}
+          Past purchases
+        </Box>
+        <Box
+          onClick={() => history.push("/brand/Amul")}
+          classes={{ root: styles.col }}
+        >
+          Amul
+        </Box>
+        <Box
+          onClick={() => history.push("/brand/Natures Best")}
+          classes={{ root: styles.col }}
+        >
+          Natures Best
+        </Box>
+        <Box
+          onClick={() => history.push("/brand/L Exclusif")}
+          classes={{ root: styles.col }}
+        >
+          L Exclusif
+        </Box>
       </Box>
     </>
   );

@@ -76,7 +76,6 @@ function Dashboard() {
 
   return (
     <>
-     
       <Container className={classes.main}>
         <Box>
           <Carousel>

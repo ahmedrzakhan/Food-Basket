@@ -2,16 +2,16 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import productReducer from "./product/reducer";
 import authReducer from "./auth/reducer";
-import cartReducer from "./cart/reducer"
-import orderReducer from "./orders/reducer"
-import summaryReducer from "./orderSummary/reducer"
+import cartReducer from "./cart/reducer";
+import orderReducer from "./orders/reducer";
+import summaryReducer from "./orderSummary/reducer";
 
 const rootReducer = combineReducers({
   product: productReducer,
   auth: authReducer,
   cart: cartReducer,
   orderRoot: orderReducer,
-  summaryRoot: summaryReducer
+  summaryRoot: summaryReducer,
 });
 
 const composeEnhancers =

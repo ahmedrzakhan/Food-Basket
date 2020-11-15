@@ -13,7 +13,7 @@ import {
   GET_BY_SEARCH_ATTEMPT,
   GET_BY_BRAND_FAILURE,
   GET_BY_BRAND_SUCCESS,
-  GET_BY_BRAND_ATTEMPT
+  GET_BY_BRAND_ATTEMPT,
 } from "./actionTypes";
 
 export const initState = {
@@ -22,7 +22,7 @@ export const initState = {
   subCategoryData: [],
   categoryData: [],
   searchData: [],
-  brandData:[]
+  brandData: [],
 };
 
 const productReducer = (state = initState, { type, payload }) => {
@@ -57,8 +57,7 @@ const productReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
-        subCategoryData:payload
-     
+        subCategoryData: payload,
       };
     }
 
@@ -116,7 +115,7 @@ const productReducer = (state = initState, { type, payload }) => {
       };
     }
     case GET_BY_BRAND_SUCCESS: {
-      console.log(payload)
+      console.log(payload);
       return {
         ...state,
         isLoading: false,
@@ -130,7 +129,7 @@ const productReducer = (state = initState, { type, payload }) => {
         isLoading: false,
       };
     }
-   
+
     default:
       return state;
   }
