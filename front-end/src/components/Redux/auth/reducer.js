@@ -25,7 +25,7 @@ const authReducer = (state = initialState, { type, payload }) => {
     case LOGIN_SUCCESS: {
       saveStatus("status", true);
       saveUser("user", payload.user);
-      console.log("logged in");
+      // console.log("logged in");
       return {
         ...state,
         isLoading: false,

@@ -25,7 +25,7 @@ export const usergetOrder = (payload) => (dispatch) => {
     .get(`http://localhost:5000/api/orders/get-order?username=${payload}`)
     .then((response) => {
       // handle success
-      console.log(response.data.map((item) => item.products));
+      // console.log(response.data.map((item) => item.products));
       dispatch(
         getOrderSuccess(
           response.data.map((item) => item.products.map((item) => item))

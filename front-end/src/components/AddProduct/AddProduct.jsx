@@ -20,9 +20,9 @@ function AddProduct(props) {
   const dataArrBrand = useSelector((state) => state.product.subCategoryData);
   const dispatch = useDispatch();
   const params = useParams();
-  console.log(params, "ADD PRODUCT PARAMS");
-  console.log(dataArr, "DATA ARR ADD PRODUCTS SUB CATEGORY");
-  console.log(dataArrCategory, "DATA ARR ADD PRODUCTS CATEGORY");
+  // console.log(params, "ADD PRODUCT PARAMS");
+  // console.log(dataArr, "DATA ARR ADD PRODUCTS SUB CATEGORY");
+  // console.log(dataArrCategory, "DATA ARR ADD PRODUCTS CATEGORY");
 
   useEffect(() => {
     if (props.subCategory) {
@@ -45,7 +45,7 @@ function AddProduct(props) {
     setCounter((counter) => counter + 1);
 
     setHideFlag(true);
-    console.log(prodId);
+    // console.log(prodId);
 
     let reqitem = {};
     if (dataArr.length !== 0 && props.subCategory) {
@@ -57,7 +57,7 @@ function AddProduct(props) {
     }
     // console.log(dataArr)
 
-    console.log(reqitem, "REQ");
+    // console.log(reqitem, "REQ");
 
     let reqProd = {};
     if (reqitem !== undefined) {
