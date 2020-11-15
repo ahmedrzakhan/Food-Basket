@@ -79,20 +79,6 @@ const getBySearchFailure = (payload) => ({
 });
 
 
-const getByBrandAttempt = (payload) => ({
-  type: GET_BY_BRAND_ATTEMPT,
-  payload,
-});
-
-const getByBrandSuccess = (payload) => ({
-  type: GET_BY_BRAND_SUCCESS,
-  payload,
-});
-
-const getByBrandFailure = (payload) => ({
-  type: GET_BY_BRAND_FAILURE,
-  payload,
-});
 
 
 export const getSingleProduct = (payload) => async (dispatch) => {
@@ -154,13 +140,29 @@ export const getBySearch = (payload) => async (dispatch) => {
     dispatch(getBySearchFailure(err));
   }
 };
+
+const getByBrandAttempt = (payload) => ({
+  type: GET_BY_BRAND_ATTEMPT,
+  payload,
+});
+
+const getByBrandSuccess = (payload) => ({
+  type: GET_BY_BRAND_SUCCESS,
+  payload,
+});
+
+const getByBrandFailure = (payload) => ({
+  type: GET_BY_BRAND_FAILURE,
+  payload,
+});
+
 export const getByBrand = (payload) => async (dispatch) => {
   dispatch(getByBrandAttempt(payload));
 
   var config = {
     method: 'get',
     url: `http://localhost:5000/api/categories/product/brand?brand=${payload}`,
-  
+
   };
 
   try {

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategoryProduct } from "../../Redux/product/action";
+import { getCategoryProduct, getByBrand } from "../../Redux/product/action";
 import styles from "./CardContainer.module.css";
 import { Typography, Grid } from "@material-ui/core";
 import AddProduct from "./../../AddProduct/AddProduct";
 
 function CategoryCard(props) {
-  const data = useSelector((state) => state.product.categoryData);
+  const data = useSelector((state) => state.product.categoryData) 
   const dispatch = useDispatch();
   const params = useParams();
   const history = useHistory();
@@ -15,9 +15,18 @@ function CategoryCard(props) {
   console.log(params)
 
   useEffect(() => {
-    dispatch(getCategoryProduct(categories));
+    if(categories)
+    {
+
+      dispatch(getCategoryProduct(categories));
+    }
+
+    if(params.name)
+    {
+      dispatch( getByBrand(params.name) )
+    }
     window.scrollTo(0, 0);
-  }, [dispatch, categories]);
+  }, [dispatch, categories, params.name]);
 
   return (
     <>
@@ -70,13 +79,14 @@ function CategoryCard(props) {
                         <span className={styles.mrpBorder}>
                           MRP ₹ {items.product.price}
                         </span>
-                        <AddProduct subCategory={items.sub_category}id={items._id} />
+                        <AddProduct subCategory={items.sub_category} id={items._id} />
                       </div>
                     </div>
                   </Grid>
                 </>
               );
-            })}
+            })
+            }
         </Grid>
     </>
   );

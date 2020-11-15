@@ -7,18 +7,18 @@ import { Link, useHistory } from "react-router-dom";
 
 function RouteNav() {
 
-  const loginStatus = JSON.parse(localStorage.getItem("status"))
+  const loginStatus = JSON.parse(localStorage.getItem("status")) || false
   const history = useHistory()
   const handlePastPurchaseClick = () => {
 
-    if(loginStatus)
-    {
+    // if(loginStatus)
+    // {
 
       history.push("/past-purchases")
-    }
-    else{
-      alert("Please Login to see your purchase history")
-    }
+    // }
+    // else{
+    //   alert("Please Login to see your purchase history")
+    // }
   }
 
   return (
@@ -76,7 +76,7 @@ function RouteNav() {
                   />
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <div className={styles.box}>
                   <Link
                     className={styles.shop}
@@ -91,7 +91,7 @@ function RouteNav() {
                     classes={{ root: styles.chevron }}
                   />
                 </div>
-              </div>
+              </div> */}
             </Box>
           </Box>
         </Box>

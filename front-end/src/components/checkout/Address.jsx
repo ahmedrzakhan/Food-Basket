@@ -10,7 +10,7 @@ function Address() {
     // const dispatch = useDispatch()
     const userDeatils = JSON.parse(localStorage.getItem("user"))
     // console.log(userDeatils)
-    const loginStatus = JSON.parse(localStorage.getItem("status"))
+    const loginStatus = JSON.parse(localStorage.getItem("status")) || false
     let userDeliveryDetailsTemp
     let userDeliveryDetails
     let myCart = []
@@ -103,16 +103,17 @@ function Address() {
 
     return (
         <>
-            <Box>
+            
+              
+              {loginStatus? 
+              <>
+              <Box>
                 <Box>ADDRESS <span>DETAILS</span></Box>
                 <Box ><button onClick={handleReviewAndPlaceOrder} className={ styles.btn }>REVIEW AND PLACE ORDER</button></Box>
                 <Box classes={{ root: styles.ship }}>
                 Enter Shipping Address<br/>
                 <small>(Fields marked with * are mandatory)
                     </small></Box>
-              
-              {loginStatus? 
-              <>
                     <Box>
                     <Box classes={{ root: styles.box }}>
                        First Name*</Box>
@@ -159,60 +160,13 @@ function Address() {
                         Mobile No*</Box>
                     <Box> <TextField name="mobile_no" onChange={ handleChange}  variant="outlined" required /></Box>
                 </Box>
+                </Box>
                     </>
                     :
-                    <>
-                     <Box>
-                    <Box classes={{ root: styles.box }}>
-                       First Name*</Box>
-                    <Box> <TextField name="first_name" onChange={ handleChange} variant="outlined" required /></Box>
-                </Box>
-                <Box>
-                    <Box classes={{ root: styles.box }}>
-                        Last Name*</Box>
-                    <Box> <TextField name="last_name" onChange={ handleChange} variant="outlined" required /></Box>
-                </Box>
-
-                <Box>
-                    <Box classes ={{root:styles.box}}>
-                        Address*</Box>
-                    <Box> <TextField name="address" onChange={ handleChange} variant="outlined" required/></Box>
-                </Box>
-                <Box>
-                    <Box classes={{ root: styles.box }}>
-                        Landmark*</Box>
-                    <Box> <TextField name="landmark" onChange={ handleChange} variant="outlined" required/></Box>
-                </Box>
-                <Box>
-                    <Box classes={{ root: styles.box }}>
-                        Pincode*</Box>
-                    <Box> <TextField name="pincode" onChange={ handleChange} variant="outlined"  required/></Box>
-                </Box>
-                <Box>
-                    <Box classes={{ root: styles.box }}>
-                        Country*</Box>
-                    <Box> <TextField name="country" onChange={ handleChange} variant="outlined" required/></Box>
-                </Box>
-                <Box>
-                    <Box classes={{ root: styles.box }}>
-                        State*</Box>
-                    <Box> <TextField name="state" onChange={ handleChange} variant="outlined" required/></Box>
-                </Box>
-                <Box>
-                    <Box classes={{ root: styles.box }}>
-                        City*</Box>
-                    <Box> <TextField name="city" onChange={ handleChange} variant="outlined" required /></Box>
-                </Box>
-                <Box>
-                    <Box classes={{ root: styles.box }}>
-                        Mobile No*</Box>
-                    <Box> <TextField name="mobile_no" onChange={ handleChange} variant="outlined" required /></Box>
-                </Box>
-                    </>
-
+                  <h1 style={{textAlign: "center"}}>Please Login first</h1>
                 }
                
-            </Box>
+            
         </>
     )
 }
