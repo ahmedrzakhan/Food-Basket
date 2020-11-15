@@ -49,7 +49,7 @@ function Checkout() {
                                  loginStatus &&  orderSummaryDataArr.products !== undefined && orderSummaryDataArr.products.length > 0 ?
                                 <Tab label="3.Order Summary" value="3" />
                                 :
-                                <Tab label="3.Order Summary" value="3" disabled/>
+                                <Tab label="3.Order Summary" value="3" />
                             }
                             {/* <Tab label="4.Payment Options" value="4" /> */}
                         </TabList>
@@ -66,7 +66,12 @@ function Checkout() {
                         }
                     </TabPanel>
                     <TabPanel value="2"><Address/></TabPanel>
-                    <TabPanel value="3"><OrderSummary/> </TabPanel>
+                    {loginStatus &&  orderSummaryDataArr.products !== undefined && orderSummaryDataArr.products.length > 0?
+                        <TabPanel value="3"><OrderSummary/> </TabPanel>
+                        :
+                        <TabPanel value="3"> <h1 style={{textAlign: "center"}}>Please fill in details to confirm order</h1> </TabPanel>
+                    
+                    }
                     {/* <TabPanel value="4">payments</TabPanel> */}
                 </TabContext>
             </div>
