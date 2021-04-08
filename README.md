@@ -13,7 +13,7 @@
 - Razorpay (Payment)
 
 ## Live URL
-http://ec2-13-233-96-177.ap-south-1.compute.amazonaws.com/
+https://food-basket.netlify.app/
 
 ## Instructions to run locally
 ```
